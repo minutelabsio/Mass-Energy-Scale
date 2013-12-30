@@ -1,0 +1,18 @@
+permalink: /:year-:month-:day/:title
+markdown: rdiscount
+exclude: ["README.md", "CNAME", "LICENSE", "build", "config.rb", "Gruntfile.js", "package.json", "jshint.json"]
+
+title : "Mass is Energy" # changeme
+id : "/DATE/TITLE" # changeme
+description : "Short description" # changeme
+thumb: "http://minutelabs.io/assets/THUMB_IMAGE" # changeme
+version: "0.0.1"
+
+ml_url: "http://minutelabs.io"
+library_path: "library" # changeme
+
+show :
+  branding: true
+  details: true
+  comments: true
+
