@@ -11,42 +11,40 @@ html, body, #wrap-outer {
 
 #scale-left,
 #scale-right {
-    position: relative;
+    position: absolute;
+    top: 2em;
+    width: 100%;
 }
+#scale-left {
+    left: 0;
+}
+#scale-right {
+    right: 0;
+}
+
 .marker {
     $offset: 120px;
     $circle: 8px;
     $pad: 10px;
     position: absolute;
     top: 0;
-    left: $offset;
     width: 30%;
     margin-top: - $circle/2 - 2px;
     background: #fff;
 
-    @include transition(background .3s ease);
     @include transition(transform .3s ease);
 
     label {
-        position: relative;
-        top: -.5em;
-        padding: .5em;
         display: block;
         // font: 1em/1.2 "latin-modern-mono", Courier, monospace;
         font: 1.3em/1.2 "sf_cartoonist_hand", Helvetica, Arial, sans-serif;
-        height: 2em;
-        @include background( linear-gradient($text-color 1em, #fff 2.5em) );
-        @include background-clip( text );
-        // -webkit-text-fill-color: transparent;
-        color: transparent;
     }
 
-    
+    $width: $offset - ($circle + $pad + 3px * 2);
     &:before {
         content: '';
         position: absolute;
         top: 4px;
-        left: $pad - $offset;
         background: #fff;
         border: 3px solid $deep-grey;
         width: $circle;
@@ -54,11 +52,9 @@ html, body, #wrap-outer {
         @include border-radius( 50% );
     }
     &:after {
-        $width: $offset - ($circle + $pad + 3px * 2);
         content: '';
         position: absolute;
         top: 10px;
-        left: -$width;
         border-bottom: 3px solid $deep-grey;
         width: $width - $pad;
         @include transform(translate(0, -.5px));
@@ -66,16 +62,31 @@ html, body, #wrap-outer {
 
     &:hover {
         z-index: 2;
-        label {
-            height: auto;
-            background: $grey-light;
-            color: $text-color;
-            @include border-radius( 5px );
-        }
-
+        
         &:before,
         &:after {
             border-color: $blue;
         }
     }
+
+    #scale-left & {
+        left: $offset;
+        &:before {
+            left: $pad - $offset;
+        }
+        &:after {
+            left: -$width;
+        }
+    }
+    #scale-right & {
+        text-align: right;
+        right: $offset;
+        &:before {
+            right: $pad - $offset;
+        }
+        &:after {
+            right: -$width;
+        }
+    }
+
 }

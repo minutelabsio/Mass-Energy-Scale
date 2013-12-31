@@ -40,6 +40,10 @@ define(
             constructor : function(){
 
                 var self = this;
+
+                self.min = 1e-28;
+                self.max = 1e-20;
+
                 self.initEvents();
 
                 $(function(){
@@ -73,12 +77,13 @@ define(
                 self.elEnergy = d3.select('#scale-left');
                 self.elMass = d3.select('#scale-right');
 
-                self.buildScale( self.elEnergy, dataEnergy );
+                self.placeMarkers( self.elEnergy, dataEnergy, 1 );
+                self.placeMarkers( self.elMass, dataMass, 1.11265006e-17 );
 
                 wrap.removeClass('loading');
             },
 
-            buildScale : function( wrap, data ){
+            placeMarkers : function( wrap, data, a ){
 
                 var self = this
                     ,scale = d3.scale.log()
@@ -90,7 +95,7 @@ define(
                     ;
 
                 wrap.style('height', height+'px');
-                scale.domain([ d3.min(vals), d3.max(vals) ]).range([0, height]);
+                scale.domain([ self.min * a, self.max * a ]).range([0, height]);
                 markers = wrap.selectAll('.marker').data( data );
 
                 markers.enter()
