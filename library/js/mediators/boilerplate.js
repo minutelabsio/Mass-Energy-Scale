@@ -22,6 +22,10 @@ define(
             console.error( err.toString() );
         }
 
+        function pfx( str ){
+            return Modernizr.prefixed( str ).replace(/([A-Z])/g, function(str,m1){ return '-' + m1.toLowerCase(); }).replace(/^ms-/,'-ms-');
+        }
+
         /**
          * Page-level Mediator
          * @module Boilerplate
@@ -66,15 +70,15 @@ define(
                     ,wrap = $('#scale-wrap')
                     ;
 
-                self.svgEnergy = d3.select('#scale-left').append('svg');
-                self.svgMass = d3.select('#scale-right').append('svg');
+                self.elEnergy = d3.select('#scale-left');
+                self.elMass = d3.select('#scale-right');
 
-                self.buildScale( self.svgEnergy, dataEnergy );
+                self.buildScale( self.elEnergy, dataEnergy );
 
                 wrap.removeClass('loading');
             },
 
-            buildScale : function( svg, data ){
+            buildScale : function( wrap, data ){
 
                 var self = this
                     ,scale = d3.scale.log()
@@ -82,19 +86,18 @@ define(
                     ,vals = data.map(function( el ){
                         return el[0];
                     })
-                    ,height = 2000
+                    ,height = 3000
                     ;
 
-                svg.attr('height', height);
+                wrap.style('height', height+'px');
                 scale.domain([ d3.min(vals), d3.max(vals) ]).range([0, height]);
-                markers = svg.selectAll('.marker').data( data );
+                markers = wrap.selectAll('.marker').data( data );
 
                 markers.enter()
-                    .append('g')
+                    .append('div')
                     .attr('class', 'marker')
-                    .attr('height', 40)
-                    .attr('transform', function( d ){ return 'translate(0,'+scale( d[0] )+')'; })
-                    .append('text')
+                    .style(pfx('transform'), function( d ){ return 'translate3d(0,'+scale( d[0] )+'px, 0)'; })
+                    .append('label')
                         .text(function( d ){ return d.join(': '); })
                     ;
 
