@@ -26,6 +26,10 @@ define(
             return Modernizr.prefixed( str ).replace(/([A-Z])/g, function(str,m1){ return '-' + m1.toLowerCase(); }).replace(/^ms-/,'-ms-');
         }
 
+        function log10(val) {
+            return Math.log(val) / Math.LN10;
+        }
+
         /**
          * Page-level Mediator
          * @module Boilerplate
@@ -41,8 +45,9 @@ define(
 
                 var self = this;
 
-                self.min = 1e-28;
-                self.max = 1e-20;
+                self.min = 1e-23;
+                self.max = 1e-8;
+                self.height = 3000;
 
                 self.initEvents();
 
@@ -71,31 +76,65 @@ define(
             onDomReady : function(){
 
                 var self = this
-                    ,wrap = $('#scale-wrap')
+                    ,wrap = $('#scale-wrap').height(self.height)
+                    ,scaleEnergy = d3.scale.log()
+                        .domain([ self.min, self.max ])
+                        .range([0, self.height])
+                    ,scaleMass = d3.scale.log()
+                        .domain([ self.min * 1.11265006e-17, self.max * 1.11265006e-17 ])
+                        .range([0, self.height])
                     ;
 
                 self.elEnergy = d3.select('#scale-left');
                 self.elMass = d3.select('#scale-right');
 
-                self.placeMarkers( self.elEnergy, dataEnergy, 1 );
-                self.placeMarkers( self.elMass, dataMass, 1.11265006e-17 );
+                self.placeAxis( self.elEnergy, scaleEnergy, 'left' );
+                self.placeAxis( self.elMass, scaleMass, 'right' );
+
+                self.placeMarkers( self.elEnergy, dataEnergy, scaleEnergy );
+                self.placeMarkers( self.elMass, dataMass, scaleMass );
 
                 wrap.removeClass('loading');
             },
 
-            placeMarkers : function( wrap, data, a ){
+            placeAxis : function( el, scale, orientation ){
 
                 var self = this
-                    ,scale = d3.scale.log()
+                    ,svg = el.append('svg')
+                    ,axis = d3.svg.axis()
+                    ,width = 100
+                    ,domain = scale.domain()
+                    ;
+
+                axis.scale( scale )
+                    .orient( orientation || 'left' )
+                    .tickFormat( function(n){
+                        return (n / Math.pow(10, Math.floor(log10(n))) - 1) < 0.00001 ? Math.round(log10(n)) : '';
+                    })
+                    .innerTickSize( 4 )
+                    // .outerTickSize( 20 )
+                    ;
+                svg.attr('class', 'axis')
+                    .attr('width', width)
+                    .attr('height', scale.range()[1])
+                    .append('g')
+                    .attr('transform', 'translate('+ (orientation === 'left' ? width - 1 : 1) +',30)')
+                    .call( axis )
+                    ;
+
+
+            },
+
+            placeMarkers : function( wrap, data, scale ){
+
+                var self = this
                     ,markers
                     ,vals = data.map(function( el ){
                         return el[0];
                     })
-                    ,height = 3000
                     ;
 
-                wrap.style('height', height+'px');
-                scale.domain([ self.min * a, self.max * a ]).range([0, height]);
+                
                 markers = wrap.selectAll('.marker').data( data );
 
                 markers.enter()

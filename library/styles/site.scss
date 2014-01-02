@@ -9,17 +9,53 @@ html, body, #wrap-outer {
     height: 100%;
 }
 
+$offcenter: 100px;
+ 
+#scale-wrap {
+    position: relative;
+    top: 500px;
+}   
 #scale-left,
 #scale-right {
     position: absolute;
     top: 2em;
-    width: 100%;
+    width: 50%;
+
+    .axis {
+        position: absolute;
+        top: -30px;
+
+        path,
+        line {
+            fill: none;
+            stroke-width: 2px;
+            stroke: $deep-grey-dark;
+            shape-rendering: crispEdges;
+        }
+
+        .tick text {
+            stroke: $deep-grey;
+            fill: $deep-grey;
+            font-family: $font-family-comic;
+            font-size: 40px;
+        }
+    }
 }
+
 #scale-left {
     left: 0;
+
+    .axis {
+        right: $offcenter - 1px;
+    }
 }
 #scale-right {
     right: 0;
+
+    .axis {
+        left: $offcenter - 1px;
+        @include translate(-.5px, 0);
+    }
 }
 
 .marker {
@@ -28,16 +64,16 @@ html, body, #wrap-outer {
     $pad: 10px;
     position: absolute;
     top: 0;
-    width: 30%;
-    margin-top: - $circle/2 - 2px;
+    width: 50%;
+    margin-top: - $circle - 2px;
     background: #fff;
 
     @include transition(transform .3s ease);
 
     label {
         display: block;
-        // font: 1em/1.2 "latin-modern-mono", Courier, monospace;
-        font: 1.3em/1.2 "sf_cartoonist_hand", Helvetica, Arial, sans-serif;
+        // font: 1em/1.2 $font-family-minute-labs
+        font: 1.3em/1.2 $font-family-comic;
     }
 
     $width: $offset - ($circle + $pad + 3px * 2);
@@ -46,7 +82,7 @@ html, body, #wrap-outer {
         position: absolute;
         top: 4px;
         background: #fff;
-        border: 3px solid $deep-grey;
+        border: 3px solid $blue-dark;
         width: $circle;
         height: $circle;
         @include border-radius( 50% );
@@ -55,7 +91,7 @@ html, body, #wrap-outer {
         content: '';
         position: absolute;
         top: 10px;
-        border-bottom: 3px solid $deep-grey;
+        border-bottom: 3px solid $blue-dark;
         width: $width - $pad;
         @include transform(translate(0, -.5px));
     }
@@ -70,22 +106,23 @@ html, body, #wrap-outer {
     }
 
     #scale-left & {
-        left: $offset;
-        &:before {
-            left: $pad - $offset;
-        }
-        &:after {
-            left: -$width;
-        }
-    }
-    #scale-right & {
         text-align: right;
-        right: $offset;
+        right: $offset + $offcenter - $circle - $pad;
         &:before {
             right: $pad - $offset;
         }
         &:after {
             right: -$width;
+        }
+        
+    }
+    #scale-right & {
+        left: $offset + $offcenter - $circle/2 - 3px - $pad;
+        &:before {
+            left: $pad - $offset;
+        }
+        &:after {
+            left: -$width;
         }
     }
 
