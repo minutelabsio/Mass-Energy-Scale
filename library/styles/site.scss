@@ -1,12 +1,17 @@
 // site styles
 
 @import 'compass/css3';
+@import "compass/utilities/general";
 @import '_vars';
 
 $text-color: #434343;
 
 html, body, #wrap-outer {
     height: 100%;
+}
+
+[data-offcanvas="wrap"] {
+    
 }
 
 $offcenter: 100px;
@@ -34,8 +39,8 @@ $offcenter: 100px;
         }
 
         .tick text {
-            stroke: $deep-grey;
-            fill: $deep-grey;
+            stroke: $deep-grey-dark;
+            fill: $deep-grey-dark;
             font-family: $font-family-comic;
             font-size: 40px;
         }
@@ -46,15 +51,14 @@ $offcenter: 100px;
     left: 0;
 
     .axis {
-        right: $offcenter - 1px;
+        right: $offcenter - 2px;
     }
 }
 #scale-right {
     right: 0;
 
     .axis {
-        left: $offcenter - 1px;
-        @include translate(-.5px, 0);
+        left: $offcenter - 2px;
     }
 }
 
@@ -64,7 +68,7 @@ $offcenter: 100px;
     $pad: 10px;
     position: absolute;
     top: 0;
-    width: 50%;
+    width: 300px;
     margin-top: - $circle - 2px;
     background: #fff;
 
@@ -127,3 +131,138 @@ $offcenter: 100px;
     }
 
 }
+
+#equation {
+    position: absolute;
+    top: 330px;
+    left: 50%;
+    font-size: 70px;
+    font-family: $font-family-comic;
+    color: $deep-grey-dark;
+
+    .equals {
+        position: relative;
+        right: 0.15em;
+        vertical-align: middle;
+    }
+
+    .c2 {
+        position: relative;
+        left: 0.5em;
+    }
+
+    sup {
+        font-size: 0.4em;
+    }
+}
+
+#middle {
+    $width: 196px;
+    position: fixed;
+    top: 300px;
+    left: 50%;
+    margin-left: -$width/2;
+    margin-top: -$width/2;
+    width: $width;
+    color: $deep-grey-dark;
+    @include transition( transform .35s ease-out );
+
+    .offcanvas-active & {
+        @include transform( translate3d(500px, 0, 0) );
+    }
+
+    input {
+        font-family: $font-family-minute-labs;
+    }
+
+    .energy,
+    .mass {
+        @include box-sizing( border-box );
+        clear: none;
+        float: left;
+        width: 50%;
+        padding: .5em;
+        text-align: center;
+        font-size: 70px;
+        @include transition( background .3s ease );
+
+        label {
+            font-family: $font-family-comic;
+            margin: 0;
+            padding: 0;
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            border-bottom: 2px solid $red;
+            width: 15px;
+        }
+    }
+
+    .energy:after{
+        left: -17px;
+    }
+
+    .mass:after{
+        right: -17px;
+    }
+
+    .energy-controls,
+    .mass-controls {
+        @include clearfix;
+        padding: 1em;
+        @include transition( opacity .3s ease );
+        opacity: 1;
+
+        input {
+            @include box-sizing( border-box );
+            width: 100%;
+            margin-bottom: 0.5em;
+        }
+        select {
+            display: block;
+        }
+    }
+
+    .energy,
+    .energy-controls {
+        background: $yellow-light;
+        input {
+            border-color: darken($yellow-light, 15);
+        }
+    }
+
+    .mass,
+    .mass-controls {
+        background: $blue-light;
+        input {
+            border-color: darken($blue-light, 15);
+            text-align: right;
+        }
+        select {
+            float: right;
+        }
+    }
+
+    &.outside {
+        .energy:after,
+        .mass:after {
+            display: none;
+        }
+        .energy {
+            background: transparentize($yellow-light, 1);
+        }
+        .mass {
+            background: transparentize($blue-light, 1);
+        }
+        .energy-controls,
+        .mass-controls {
+            opacity: 0;
+        }
+    }
+}
+
+
+

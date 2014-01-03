@@ -48,6 +48,7 @@ define(
                 self.min = 1e-23;
                 self.max = 1e-8;
                 self.height = 3000;
+                self.axisOffset = 30;
 
                 self.initEvents();
 
@@ -85,6 +86,10 @@ define(
                         .range([0, self.height])
                     ;
 
+                self.wrap = wrap;
+                self.scaleEnergy = scaleEnergy;
+                self.scaleMass = scaleMass;
+
                 self.elEnergy = d3.select('#scale-left');
                 self.elMass = d3.select('#scale-right');
 
@@ -94,7 +99,35 @@ define(
                 self.placeMarkers( self.elEnergy, dataEnergy, scaleEnergy );
                 self.placeMarkers( self.elMass, dataMass, scaleMass );
 
+                self.initControls();
+
                 wrap.removeClass('loading');
+            },
+
+            initControls: function(){
+                var self = this
+                    ,$mid = $('#middle').appendTo('#wrap-outer')
+                    ,$inputEnergy = $mid.find('.energy-controls input')
+                    ,$inputMass = $mid.find('.mass-controls input')
+                    ,$win = $(window)
+                    ,fudge = $mid.height()/2 + $mid.offset().top - self.axisOffset - self.wrap.offset().top
+                    ,format = d3.format('.2e')
+                    ,scaleEnergy = self.scaleEnergy
+                    ,scaleMass = self.scaleMass
+                    ;
+
+                $(window).on('scroll', function(){
+                    var scroll = $win.scrollTop() + fudge;
+                    if ( scroll > 0 ){
+                        $mid.removeClass('outside');
+                        $inputEnergy.val( format(scaleEnergy.invert(scroll)) );
+                        $inputMass.val( format(scaleMass.invert(scroll)) );
+                    } else {
+                        $inputEnergy.val('');
+                        $inputMass.val('')
+                        $mid.addClass('outside');
+                    }
+                });
             },
 
             placeAxis : function( el, scale, orientation ){
@@ -118,7 +151,7 @@ define(
                     .attr('width', width)
                     .attr('height', scale.range()[1])
                     .append('g')
-                    .attr('transform', 'translate('+ (orientation === 'left' ? width - 1 : 1) +',30)')
+                    .attr('transform', 'translate('+ (orientation === 'left' ? width - 1 : 1) +','+self.axisOffset+')')
                     .call( axis )
                     ;
 
