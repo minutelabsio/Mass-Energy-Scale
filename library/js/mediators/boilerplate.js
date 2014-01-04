@@ -100,8 +100,99 @@ define(
                 self.placeMarkers( self.elMass, dataMass, scaleMass );
 
                 self.initControls();
+                self.initExplanations();
 
                 wrap.removeClass('loading');
+            },
+
+            initExplanations: function(){
+
+                var self = this
+                    ,$expl = $('#explanations').appendTo('#wrap-outer')
+                    ,before = []
+                    ,inside = []
+                    ,after = []
+                    ,sortExitDec = function(a, b){
+                        return -(a.exit - b.exit);
+                    }
+                    ,sortExitAsc = function(a, b){
+                        return (a.exit - b.exit);
+                    }
+                    ,sortEnterAsc = function(a, b){
+                        return (a.enter - b.enter);
+                    }
+                    ;
+
+                $expl.find('section').each(function(){
+
+                    var $this = $(this)
+                        ,enter = $this.data('enter')
+                        ,exit = $this.data('exit')
+                        ,data = {
+                            enter: enter|0
+                            ,exit: exit|0
+                            ,el: $this
+                        }
+                        ;
+
+                    if (!enter){
+                        $this.addClass('on');
+                        inside.push( data );
+                    } else {
+                        before.push( data );
+                    }
+                });
+
+                $(window).on('scroll', function(){
+                    var pos = Math.max($(this).scrollTop(), 0)
+                        ,i
+                        ,l
+                        ;
+
+                    for ( i = 0, l = before.length; i < l; ++i ){
+                        
+                        if ( pos >= before[ i ].enter ){
+                            before[ i ].el.addClass('on');
+                            inside.push( before.shift() );
+                            l--;
+                            i--;
+                        } else {
+                            break;
+                        }
+                    }
+
+                    for ( i = 0, l = after.length; i < l; ++i ){
+                        
+                        if ( pos < after[ i ].exit ){
+                            after[ i ].el.addClass('on');
+                            inside.push( after.shift() );
+                            l--;
+                            i--;
+                        } else {
+                            break;
+                        }
+                    }
+
+                    inside.sort(sortEnterAsc);
+
+                    for ( i = 0, l = inside.length; i < l; ++i ){
+                        
+                        if ( pos > inside[ i ].exit ){
+                            inside[ i ].el.removeClass('on');
+                            after.push( inside.shift() );
+                            l--;
+                            i--;
+                        } else if ( pos < inside[ i ].enter ){
+                            inside[ i ].el.removeClass('on');
+                            before.push( inside.shift() );
+                            l--;
+                            i--;
+                        }
+                    }
+
+                    after.sort(sortExitDec);
+                    before.sort(sortEnterAsc);
+                });
             },
 
             initControls: function(){
@@ -114,9 +205,15 @@ define(
                     ,format = d3.format('.2e')
                     ,scaleEnergy = self.scaleEnergy
                     ,scaleMass = self.scaleMass
+                    ,to
+                    ,disable
                     ;
 
                 $(window).on('scroll', function(){
+                    if (disable){
+                        return;
+                    }
+
                     var scroll = $win.scrollTop() + fudge;
                     if ( scroll > 0 ){
                         $mid.removeClass('outside');
@@ -127,6 +224,32 @@ define(
                         $inputMass.val('')
                         $mid.addClass('outside');
                     }
+                });
+
+                function scrollTo(){
+                    var $this = $(this)
+                        ,val = $this.val()
+                        ,scale = $this.is($inputEnergy) ? scaleEnergy : scaleMass
+                        ,pos = scale( val ) - fudge
+                        ;
+                    
+                    if (pos && pos > 0){
+                        disable = true;
+                        $('body').animate({
+                            scrollTop: pos
+                        }, {
+                            duration: 500,
+                            complete: function(){
+                                disable = false;
+                                $(window).trigger('scroll');
+                            }
+                        });
+                    }
+                }
+
+                $(document).on('keyup', '#middle input[type="text"]', function(){
+                    clearTimeout(to);
+                    to = setTimeout(scrollTo.bind(this), 1000);
                 });
             },
 

@@ -18,7 +18,7 @@ $offcenter: 100px;
  
 #scale-wrap {
     position: relative;
-    top: 500px;
+    top: 1500px;
 }   
 #scale-left,
 #scale-right {
@@ -78,6 +78,7 @@ $offcenter: 100px;
         display: block;
         // font: 1em/1.2 $font-family-minute-labs
         font: 1.3em/1.2 $font-family-comic;
+        letter-spacing: 1px;
     }
 
     $width: $offset - ($circle + $pad + 3px * 2);
@@ -134,7 +135,7 @@ $offcenter: 100px;
 
 #equation {
     position: absolute;
-    top: 330px;
+    top: 300px;
     left: 50%;
     font-size: 70px;
     font-family: $font-family-comic;
@@ -153,6 +154,44 @@ $offcenter: 100px;
 
     sup {
         font-size: 0.4em;
+    }
+}
+#explanations {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    font: 30px/1.2 $font-family-comic;
+    letter-spacing: 1px;
+
+    section {
+        position: absolute;
+        opacity: 0;
+        @include transition( opacity .3s ease );
+
+        p {
+            margin: 0;
+        }
+
+        &.on {
+            opacity: 1;
+        }
+    }
+
+    section:nth-child(2) {
+        top: 400px;
+        width: 600px;
+        left: 50%;
+        margin-left: -270px;
+        text-align: center;
+    }
+
+    section:nth-child(3) {
+        top: 300px;
+        width: 250px;
+        left: 50%;
+        margin-left: -350px;
     }
 }
 
