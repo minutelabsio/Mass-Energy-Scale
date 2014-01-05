@@ -10,6 +10,10 @@ html, body, #wrap-outer {
     height: 100%;
 }
 
+sup {
+    font-size: 0.4em;
+}
+
 [data-offcanvas="wrap"] {
     
 }
@@ -18,7 +22,7 @@ $offcenter: 100px;
  
 #scale-wrap {
     position: relative;
-    top: 1500px;
+    margin-top: 2600px;
 }   
 #scale-left,
 #scale-right {
@@ -151,10 +155,6 @@ $offcenter: 100px;
         position: relative;
         left: 0.5em;
     }
-
-    sup {
-        font-size: 0.4em;
-    }
 }
 #explanations {
     position: fixed;
@@ -192,6 +192,28 @@ $offcenter: 100px;
         width: 250px;
         left: 50%;
         margin-left: -350px;
+    }
+
+    section:nth-child(4) {
+        top: 300px;
+        width: 250px;
+        left: 50%;
+        margin-left: 180px;
+    }
+
+    section:nth-child(5) {
+        top: 225px;
+        width: 450px;
+        left: 50%;
+        margin-left: -200px;
+        text-align: center;
+    }
+
+    section:nth-child(6) {
+        top: 400px;
+        width: 400px;
+        left: 50%;
+        margin-left: -180px;
     }
 }
 

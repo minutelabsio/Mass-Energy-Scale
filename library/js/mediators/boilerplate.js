@@ -179,12 +179,14 @@ define(
                         
                         if ( pos > inside[ i ].exit ){
                             inside[ i ].el.removeClass('on');
-                            after.push( inside.shift() );
+                            after.push( inside[ i ] );
+                            inside.splice(i, 1);
                             l--;
                             i--;
                         } else if ( pos < inside[ i ].enter ){
                             inside[ i ].el.removeClass('on');
-                            before.push( inside.shift() );
+                            before.push( inside[ i ] );
+                            inside.splice(i, 1);
                             l--;
                             i--;
                         }
