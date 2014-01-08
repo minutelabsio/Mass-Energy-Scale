@@ -45,9 +45,9 @@ define(
 
                 var self = this;
 
-                self.min = 1e-23;
-                self.max = 1e-8;
-                self.height = 3000;
+                self.min = 1e-19;
+                self.max = 1e30;
+                self.height = 8000;
                 self.axisOffset = 30;
 
                 self.initEvents();
@@ -299,8 +299,12 @@ define(
                     .append('div')
                     .attr('class', 'marker')
                     .style(pfx('transform'), function( d ){ return 'translate3d(0,'+scale( d[0] )+'px, 0)'; })
-                    .append('label')
-                        .text(function( d ){ return d.join(': '); })
+                    .append('abbr')
+                        .attr('title', function(d){ return d[0]; })
+                        .html(function( d ){ 
+                            var link = d[2] ? ' <a href="'+d[2]+'" class="more">more</a>' : '';
+                            return d[1]+link; 
+                        })
                     ;
 
             }
