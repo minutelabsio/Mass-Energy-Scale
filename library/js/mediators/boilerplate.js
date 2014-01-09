@@ -46,8 +46,8 @@ define(
                 var self = this;
 
                 self.min = 1e-19;
-                self.max = 1e30;
-                self.height = 8000;
+                self.max = 1e47;
+                self.height = 18000;
                 self.axisOffset = 30;
 
                 self.initEvents();
@@ -267,7 +267,7 @@ define(
                 axis.scale( scale )
                     .orient( orientation || 'left' )
                     .tickFormat( function(n){
-                        return (n / Math.pow(10, Math.floor(log10(n))) - 1) < 0.00001 ? Math.round(log10(n)) : '';
+                        return Math.abs(n / Math.pow(10, Math.round(log10(n))) - 1) < 1e-4 ? Math.round(log10(n)) : '';
                     })
                     .innerTickSize( 4 )
                     // .outerTickSize( 20 )
