@@ -33,7 +33,7 @@
     [3, "A newborn human baby", "http://en.wikipedia.org/wiki/Baby"],
     [15, "A medium sized dog", "http://en.wikipedia.org/wiki/Orders_of_magnitude_(mass)#cite_note-69"],
     [70, "Adult Human", "http://en.wikipedia.org/wiki/Orders_of_magnitude_(mass)#cite_note-Mass_of_an_Adult-71"],
-    [180, "A large male lion (the king of the jungle)", "http://en.wikipedia.org/wiki/Lion"],
+    [180, "A large male lion", "http://en.wikipedia.org/wiki/Lion"],
 
     [3e3, "A small adult elephant", "http://en.wikipedia.org/wiki/Elephant"],
     [4.9e3, "A teaspoon of a White Dwarf Star", "http://imagine.gsfc.nasa.gov/docs/science/know_l2/dwarfs.html"],
@@ -44,7 +44,7 @@
     [2e6, "Mass of the Space Shuttle (before takeoff)", "http://en.wikipedia.org/wiki/Space_Shuttle"],
     [1e7, "Annual production of Darjeeling tea", "http://en.wikipedia.org/wiki/Orders_of_magnitude_(mass)#cite_note-90"],
     [5.2e7, "The Titanic", "http://en.wikipedia.org/wiki/RMS_Titanic"],
-    [4.3e9, "Amount of matter converted to energy by the Sun every second", "http://en.wikipedia.org/wiki/Sun"],
+    [4.3e9, "The amount of matter the Sun converts to energy every second", "http://en.wikipedia.org/wiki/Sun"],
     [6e9, "Great Pyramid of Giza", "http://en.wikipedia.org/wiki/Great_Pyramid_of_Giza"],
     [4e11, "All humans on earth combined", "http://en.wikipedia.org/wiki/Orders_of_magnitude_(mass)#cite_note-Mass_of_an_Adult-71"],
 
