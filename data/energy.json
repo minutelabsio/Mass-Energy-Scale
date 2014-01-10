@@ -1,9 +1,8 @@
 [
-    [ 2e-23,"average kinetic energy of translational motion of a molecule in the Boomerang Nebula, the coldest place known outside of a laboratory, at a temperature of 1 kelvin" ],
-    [ 1.7e-21,"1 kJ/mol, converted to energy per molecule" ],
-    [ 2.1e-21,"thermal energy in each degree of freedom of a molecule at 25 °C (kT/2) (0.01 eV)" ],
-    [ 2.856e-21,"By Landauer's principle, the minimum amount of energy required at 25 °C to change one bit of information." ],
-    [ 5e-21,"energy of a van der Waals interaction between atoms (0.02–0.04 eV)" ],
-    [ 4.1e-21,"kT at 25 °C, a common rough approximation for the total thermal energy of each molecule in a system (0.03 eV)" ],
-    [ 14e-21,"energy of a hydrogen bond (0.04 to 0.13 eV)" ]
+    [ 2e-19, "Visible light spectrum begins", "http://en.wikipedia.org/wiki/Visible_light" ],
+    [ 5e-19, "Ultraviolet spectrum begins", "http://en.wikipedia.org/wiki/Ultraviolet"],
+    [ 2e-17, "X-ray spectrum begins", "http://en.wikipedia.org/wiki/X-ray" ],
+    [ 2e-14, "Gamma ray spectrum begins", "http://en.wikipedia.org/wiki/Gamma_ray"],
+    [ 1.6e-7, "Kinetic Energy of a flying Mosquito", "http://en.wikipedia.org/wiki/Orders_of_magnitude_(energy)#cite_note-46"],
+    [ 5e-2, "What you'd need to power a single Christmas light (LED) for one second", "http://en.wikipedia.org/wiki/Holiday_lighting_technology#LEDs"]
 ]

@@ -47,7 +47,7 @@ define(
 
                 self.min = 1e-19;
                 self.max = 1e47;
-                self.height = 18000;
+                self.height = 20000;
                 self.axisOffset = 30;
 
                 self.initEvents();
@@ -300,7 +300,7 @@ define(
                     .attr('class', 'marker')
                     .style(pfx('transform'), function( d ){ return 'translate3d(0,'+scale( d[0] )+'px, 0)'; })
                     .append('abbr')
-                        .attr('title', function(d){ return d[0]; })
+                        .attr('title', function(d){ return d[0].toPrecision(2); })
                         .html(function( d ){ 
                             var link = d[2] ? ' <a href="'+d[2]+'" class="more">more</a>' : '';
                             return d[1]+link; 
