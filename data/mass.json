@@ -44,14 +44,36 @@
     [2e6, "Mass of the Space Shuttle (before takeoff)", "http://en.wikipedia.org/wiki/Space_Shuttle"],
     [1e7, "Annual production of Darjeeling tea", "http://en.wikipedia.org/wiki/Orders_of_magnitude_(mass)#cite_note-90"],
     [5.2e7, "The Titanic", "http://en.wikipedia.org/wiki/RMS_Titanic"],
+    [6.2e8, "Garbage produced in U.S.A every day", "http://curiosity.discovery.com/question/america-produce-trash"],
+    [2.7e9, "Great Pacific Garbage Patch", "http://www.telegraph.co.uk/earth/environment/5208645/Drowning-in-plastic-The-Great-Pacific-Garbage-Patch-is-twice-the-size-of-France.html"],
     [4.3e9, "The amount of matter the Sun converts to energy every second", "http://en.wikipedia.org/wiki/Sun"],
     [6e9, "Great Pyramid of Giza", "http://en.wikipedia.org/wiki/Great_Pyramid_of_Giza"],
+    [2.3e11, "Amount of garbage produced by the U.S.A per year", "http://curiosity.discovery.com/question/america-produce-trash"],
     [4e11, "All humans on earth combined", "http://en.wikipedia.org/wiki/Orders_of_magnitude_(mass)#cite_note-Mass_of_an_Adult-71"],
-
+    [1e12, "Global biomass of fish", "http://en.wikipedia.org/wiki/Orders_of_magnitude_(mass)#cite_note-103"],
     [5.5e12, "A teaspoon of Neutron Star material", "http://en.wikipedia.org/wiki/Neutron_star"],
 
+    [2.2e14, "Halley's Comet", "http://en.wikipedia.org/wiki/Halley's_Comet"],
+    [4.2e15, "Water that could fill the Grand Canyon", "http://www.nps.gov/grca/parkmgmt/statistics.htm"],
 
-    
 
-    [3e19, "Saturn's Rings", "http://en.wikipedia.org/wiki/Rings_of_Saturn"]
+    [5.1e18, "Earth's Atmosphere", "http://en.wikipedia.org/wiki/Earth%27s_atmosphere"],
+    [2.76e19, "Antarctic Ice Sheet", "http://www.sciencedaily.com/articles/a/antarctic_ice_sheet.htm"],
+    [3e19, "Saturn's Rings", "http://en.wikipedia.org/wiki/Rings_of_Saturn"],
+    [1.4e21, "Earth's Oceans", "http://en.wikipedia.org/wiki/World_Ocean"],
+    [3e21, "Our solar system's asteroid belt", "http://en.wikipedia.org/wiki/Asteroid_belt"],
+    [1.3e22, "Pluto", "http://en.wikipedia.org/wiki/Pluto"],
+    [7.3e22, "Earth's Moon", "http://en.wikipedia.org/wiki/Moon"],
+    [3.3e23, "Mercury (planet)", "http://en.wikipedia.org/wiki/Mercury_(planet)"],
+    [6.4e23, "Mars", "http://en.wikipedia.org/wiki/Mars"],
+    [4.9e24, "Venus", "http://en.wikipedia.org/wiki/Venus"],
+    [6e24, "Earth", "http://en.wikipedia.org/wiki/Earth"],
+    [8.7e25, "Uranus", "http://en.wikipedia.org/wiki/Uranus"],
+    [1e26, "Neptune", "http://en.wikipedia.org/wiki/Neptune"],
+    [5.7e26, "Saturn", "http://en.wikipedia.org/wiki/Saturn"],
+    [1.9e27, "Jupiter", "http://en.wikipedia.org/wiki/Jupiter"],
+    [5e28, "Brown Dwarf Stars (they vary around this order of magnitude)", "http://en.wikipedia.org/wiki/Brown_dwarf"],
+    [2e30, "The Sun", "http://en.wikipedia.org/wiki/Sun"],
+    [1e35, "A typical globular cluster that orbits the Milky Way", "http://en.wikipedia.org/wiki/Globular_cluster"],
+    [1.2e42, "The Milky Way (Our galaxy)", "http://en.wikipedia.org/wiki/Milky_Way_galaxy"]
 ]
