@@ -77,13 +77,14 @@ define(
             onDomReady : function(){
 
                 var self = this
-                    ,wrap = $('#scale-wrap').height(self.height)
+                    ,wrap = $('#scale-wrap').height(self.height).css('margin-bottom', $(window).height() - 342)
                     ,scaleEnergy = d3.scale.log()
                         .domain([ self.min, self.max ])
                         .range([0, self.height])
                     ,scaleMass = d3.scale.log()
                         .domain([ self.min * 1.11265006e-17, self.max * 1.11265006e-17 ])
                         .range([0, self.height])
+                    ,s
                     ;
 
                 self.wrap = wrap;
@@ -99,10 +100,12 @@ define(
                 self.placeMarkers( self.elEnergy, dataEnergy, scaleEnergy );
                 self.placeMarkers( self.elMass, dataMass, scaleMass );
 
+                s = $(window).scrollTop();
+                $(window).scrollTop( 0 );
                 self.initControls();
                 self.initExplanations();
-
                 wrap.removeClass('loading');
+                $(window).scrollTop( s );
             },
 
             initExplanations: function(){
