@@ -104,7 +104,7 @@ define(
                 $(window).scrollTop( 0 );
                 self.initControls();
                 self.initExplanations();
-                wrap.removeClass('loading');
+                $('body').removeClass('loading');
                 $(window).scrollTop( s );
             },
 
