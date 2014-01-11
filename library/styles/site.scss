@@ -15,7 +15,15 @@ sup {
 }
 
 [data-offcanvas="wrap"] {
-    
+    z-index: 2;
+}
+
+.offcanvas-inside {
+    @include transition( transform .35s ease-out );
+
+    .offcanvas-active & {
+        @include transform( translate3d(500px, 0, 0) );
+    }
 }
 
 $offcenter: 100px;
@@ -78,11 +86,22 @@ $offcenter: 100px;
 
     @include transition(transform .3s ease);
 
-    label {
+    abbr {
         display: block;
+        text-decoration: none;
         // font: 1em/1.2 $font-family-minute-labs
         font: 1.3em/1.2 $font-family-comic;
         letter-spacing: 1px;
+
+        a {
+            opacity: 0;
+            @include transition( opacity 0.3s ease-out );
+            text-decoration: none;
+        }
+
+        &:hover a {
+            opacity: 1;
+        }
     }
 
     $width: $offset - ($circle + $pad + 3px * 2);
@@ -162,8 +181,11 @@ $offcenter: 100px;
     left: 0;
     right: 0;
     bottom: 0;
+    z-index: 1;
     font: 30px/1.2 $font-family-comic;
     letter-spacing: 1px;
+
+    @extend .offcanvas-inside;
 
     section {
         position: absolute;
@@ -222,16 +244,14 @@ $offcenter: 100px;
     position: fixed;
     top: 300px;
     left: 50%;
+    z-index: 3;
     margin-left: -$width/2;
     margin-top: -$width/2;
     width: $width;
     color: $deep-grey-dark;
-    @include transition( transform .35s ease-out );
 
-    .offcanvas-active & {
-        @include transform( translate3d(500px, 0, 0) );
-    }
-
+    @extend .offcanvas-inside;
+    
     input {
         font-family: $font-family-minute-labs;
     }
