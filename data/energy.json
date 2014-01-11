@@ -1,8 +1,23 @@
 [
     [ 2e-19, "Needed to create Visible light", "http://en.wikipedia.org/wiki/Visible_light" ],
     [ 5e-19, "Needed to create Ultraviolet light", "http://en.wikipedia.org/wiki/Ultraviolet"],
+    [ 2.18e-18, "Energy needed to pull out an electron from a Hydrogen atom in its ground state", "http://en.wikipedia.org/wiki/Electron_binding_energy"],
     [ 2e-17, "Needed to create an X-ray", "http://en.wikipedia.org/wiki/X-ray" ],
     [ 2e-14, "Needed to create a Gamma ray", "http://en.wikipedia.org/wiki/Gamma_ray"],
-    [ 1.6e-7, "Kinetic Energy of a flying Mosquito", "http://en.wikipedia.org/wiki/Orders_of_magnitude_(energy)#cite_note-46"],
-    [ 5e-2, "What you'd need to power a single Christmas light (LED) for one second", "http://en.wikipedia.org/wiki/Holiday_lighting_technology#LEDs"]
+    [ 1.6e-7, "Kinetic energy of a flying Mosquito", "http://en.wikipedia.org/wiki/Orders_of_magnitude_(energy)#cite_note-46"],
+    [ 2.2e-6, "Kinetic energy per proton in the LHC when running at full power", "http://en.wikipedia.org/wiki/Large_Hadron_Collider"],
+    [ 5e-2, "What you'd need to power a single Christmas light (LED) for one second", "http://en.wikipedia.org/wiki/Holiday_lighting_technology#LEDs"],
+
+    [ 4.1, "One (thermochemical) calorie", "http://en.wikipedia.org/wiki/Calorie"],
+    [ 0.1, "Needed to melt a snowflake from just below its freezing temperature"],
+    [ 1.6e1, "Approximate energy stored in a 9V alkaline battery", "http://en.wikipedia.org/wiki/Nine-volt_battery"],
+    [ 7.2e2, "Needed to run something at 1 horsepower for 1 second", "http://en.wikipedia.org/wiki/Orders_of_magnitude_(energy)#cite_note-NIST_SI_units-44"],
+    [ 4.2e3, "One (food) Calorie", "http://en.wikipedia.org/wiki/Calorie"],
+    [ 5.4e3, "Lost by your body while lying down for one minute", "http://ajcn.nutrition.org/content/72/6/1451.full"],
+    [ 2.1e4, "Lost by your body while walking briskly for one minute", "http://ajcn.nutrition.org/content/72/6/1451.full"],
+    [ 3.3e5, "Needed to bring 1 litre of (room temperature) water to a boil"],
+    [ 4.6e6, "Daily energy requirement of a sedentary two year old child", "http://www.hc-sc.gc.ca/fn-an/food-guide-aliment/basics-base/1_1_1-eng.php" ],
+    [ 1e8, "Daily energy usage of an average american household", "http://www.eia.gov/tools/faqs/faq.cfm?id=97&t=3"],
+    [ 3.9e10, "Yearly energy usage of an average american household", "http://www.eia.gov/tools/faqs/faq.cfm?id=97&t=3"],
+    [ 2.5e15, "LHC operational energy for one year", "http://lhc-machine-outreach.web.cern.ch/lhc-machine-outreach/faq/lhc-energy-consumption.htm"]
 ]
