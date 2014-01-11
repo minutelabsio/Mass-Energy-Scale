@@ -109,7 +109,7 @@ sup {
     left: 50%;
     text-align: center;
     width: 100px;
-    margin-left: -40px;
+    margin-left: -30px;
     font-size: 20px;
     font-family: $font-family-minute-labs;
 
@@ -197,6 +197,7 @@ $offcenter: 100px;
         letter-spacing: 1px;
 
         a {
+            display: block;
             opacity: 0;
             @include transition( opacity 0.3s ease-out );
             text-decoration: none;

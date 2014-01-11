@@ -305,7 +305,7 @@ define(
                     .append('abbr')
                         .attr('title', function(d){ return d[0].toPrecision(2); })
                         .html(function( d ){ 
-                            var link = d[2] ? ' <a href="'+d[2]+'" class="more">more</a>' : '';
+                            var link = d[2] ? ' <a href="'+d[2]+'" class="more" target="_blank">(ref)</a>' : '';
                             return d[1]+link; 
                         })
                     ;
