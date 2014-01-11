@@ -1,8 +1,8 @@
 [
-    [ 2e-19, "Visible light spectrum begins", "http://en.wikipedia.org/wiki/Visible_light" ],
-    [ 5e-19, "Ultraviolet spectrum begins", "http://en.wikipedia.org/wiki/Ultraviolet"],
-    [ 2e-17, "X-ray spectrum begins", "http://en.wikipedia.org/wiki/X-ray" ],
-    [ 2e-14, "Gamma ray spectrum begins", "http://en.wikipedia.org/wiki/Gamma_ray"],
+    [ 2e-19, "Needed to create Visible light", "http://en.wikipedia.org/wiki/Visible_light" ],
+    [ 5e-19, "Needed to create Ultraviolet light", "http://en.wikipedia.org/wiki/Ultraviolet"],
+    [ 2e-17, "Needed to create an X-ray", "http://en.wikipedia.org/wiki/X-ray" ],
+    [ 2e-14, "Needed to create a Gamma ray", "http://en.wikipedia.org/wiki/Gamma_ray"],
     [ 1.6e-7, "Kinetic Energy of a flying Mosquito", "http://en.wikipedia.org/wiki/Orders_of_magnitude_(energy)#cite_note-46"],
     [ 5e-2, "What you'd need to power a single Christmas light (LED) for one second", "http://en.wikipedia.org/wiki/Holiday_lighting_technology#LEDs"]
 ]
