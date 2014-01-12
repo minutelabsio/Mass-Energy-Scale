@@ -185,7 +185,7 @@ $offcenter: 100px;
     top: 0;
     width: 300px;
     margin-top: - $circle - 2px;
-    background: #fff;
+    // background: #fff;
 
     @include transition(transform .3s ease);
 
