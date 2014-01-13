@@ -181,6 +181,8 @@ $offcenter: 100px;
     $offset: 120px;
     $circle: 8px;
     $pad: 10px;
+    $width: $offset - ($circle + $pad + 3px * 2);
+    
     position: absolute;
     top: 0;
     width: 300px;
@@ -206,9 +208,23 @@ $offcenter: 100px;
         &:hover a {
             opacity: 1;
         }
+
+        .shim {
+            border: 0 solid $blue-dark;
+            border-top-width: 3px;
+            position: relative;
+            top: 10px;
+            width: ($width - $pad)/2;
+        }
+
+        &.shim-up,
+        &.shim-down {
+            .shim {
+                display: block;
+            }
+        }
     }
 
-    $width: $offset - ($circle + $pad + 3px * 2);
     &:before {
         content: '';
         position: absolute;
@@ -224,13 +240,13 @@ $offcenter: 100px;
         position: absolute;
         top: 10px;
         border-bottom: 3px solid $blue-dark;
-        width: $width - $pad;
-        @include transform(translate(0, -.5px));
+        width: ($width - $pad)/2;
     }
 
     &:hover {
         z-index: 2;
-        
+
+        .shim,
         &:before,
         &:after {
             border-color: $blue;
@@ -240,6 +256,25 @@ $offcenter: 100px;
     #scale-left & {
         text-align: right;
         right: $offset + $offcenter - $circle - $pad;
+        .shim {
+            left: ($width + $pad)/2;
+            float: right;
+        }
+        .shim-up {
+            .shim {
+                border-width: 3px 3px 0 0;
+                float: right;
+                margin-left: -100%;
+            }
+            .shim + div {
+                display: inline;
+            }
+        }
+        .shim-down {
+            .shim {
+                border-width: 0 3px 3px 0;
+            }
+        }
         &:before {
             right: $pad - $offset;
         }
@@ -250,6 +285,24 @@ $offcenter: 100px;
     }
     #scale-right & {
         left: $offset + $offcenter - $circle/2 - 3px - $pad;
+        .shim {
+            right: ($width + $pad)/2;
+        }
+        .shim-up {
+            .shim {
+                border-width: 3px 0 0 3px;
+                float: left;
+                margin-right: -100%;
+            }
+            .shim + div {
+                display: inline;
+            }
+        }
+        .shim-down {
+            .shim {
+                border-width: 0 0 3px 3px;
+            }
+        }
         &:before {
             left: $pad - $offset;
         }

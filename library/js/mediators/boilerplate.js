@@ -290,6 +290,7 @@ define(
 
                 var self = this
                     ,markers
+                    ,tag
                     ,vals = data.map(function( el ){
                         return el[0];
                     })
@@ -298,15 +299,32 @@ define(
                 
                 markers = wrap.selectAll('.marker').data( data );
 
-                markers.enter()
+                tag = markers.enter()
                     .append('div')
                     .attr('class', 'marker')
                     .style(pfx('transform'), function( d ){ return 'translate3d(0,'+scale( d[0] )+'px, 0)'; })
                     .append('abbr')
-                        .attr('title', function(d){ return d[0].toPrecision(2); })
+                        .each(function( d ){
+                            var el = d3.select(this)
+                                ,shim = d[ 3 ]
+                                ,up
+                                ;
+
+                            if ( shim === undefined ){
+                                return;
+                            }
+
+                            el.attr('class', (shim > 0) ? 'shim-down' : 'shim-up');
+                            el.style('margin-top', (shim > 0) ? '' : shim + 'px');
+                        })
+                        .attr('title', function( d ){ return d[0].toPrecision(2); })
                         .html(function( d ){ 
                             var link = d[2] ? ' <a href="'+d[2]+'" class="more" target="_blank">(ref)</a>' : '';
-                            return d[1]+link; 
+                            return '<div class="shim"></div><div>'+d[1]+'</div>'+link; 
+                        })
+                        .select('div')
+                        .style('height', function( d ){
+                            return Math.abs(d[ 3 ]) + 'px';
                         })
                     ;
 

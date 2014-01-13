@@ -14,8 +14,8 @@
     [ 1.6e1, "Approximate energy stored in a 9V alkaline battery", "http://en.wikipedia.org/wiki/Nine-volt_battery"],
     [ 3e2, "A lethal dose of X-rays", "http://en.wikipedia.org/wiki/X-ray"],
     
-    [ 4.2e3, "One (food) Calorie", "http://en.wikipedia.org/wiki/Calorie"],
-    [ 5.4e3, "Lost by your body while lying down for one minute", "http://ajcn.nutrition.org/content/72/6/1451.full"],
+    [ 4.2e3, "One (food) Calorie", "http://en.wikipedia.org/wiki/Calorie", -20],
+    [ 5.4e3, "Lost by your body while lying down for one minute", "http://ajcn.nutrition.org/content/72/6/1451.full", 20],
     [ 4.32e4, "Running something at 1 horsepower for 1 minute", "http://en.wikipedia.org/wiki/Orders_of_magnitude_(energy)#cite_note-NIST_SI_units-44"],
     [ 3.3e5, "Bringing 1 litre of (room temperature) water to a boil"],
     [ 4.6e6, "Daily energy requirement of a sedentary two year old child", "http://www.hc-sc.gc.ca/fn-an/food-guide-aliment/basics-base/1_1_1-eng.php" ],
