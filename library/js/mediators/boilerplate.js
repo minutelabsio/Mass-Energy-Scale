@@ -47,7 +47,7 @@ define(
 
                 self.min = 1e-19;
                 self.max = 1e47;
-                self.height = 20000;
+                self.height = 13000;
                 self.axisOffset = 30;
 
                 self.initEvents();
@@ -94,18 +94,31 @@ define(
                 self.elEnergy = d3.select('#scale-left');
                 self.elMass = d3.select('#scale-right');
 
-                self.placeAxis( self.elEnergy, scaleEnergy, 'left' );
-                self.placeAxis( self.elMass, scaleMass, 'right' );
+                self.axisEnergy = self.placeAxis( self.elEnergy, scaleEnergy, 'left' );
+                self.axisMass = self.placeAxis( self.elMass, scaleMass, 'right' );
 
                 self.placeMarkers( self.elEnergy, dataEnergy, scaleEnergy );
                 self.placeMarkers( self.elMass, dataMass, scaleMass );
 
+                // fix scrolling issues on reload
                 s = $(window).scrollTop();
                 $(window).scrollTop( 0 );
                 self.initControls();
                 self.initExplanations();
-                $('body').removeClass('loading');
-                $(window).scrollTop( s );
+
+                self.niceLoad(function(){
+                    $('body').removeClass('loading');
+                    $(window).scrollTop( s );
+                });
+            },
+
+            niceLoad: function( fn ){
+                var t = window.performance && window.performance.timing;
+                if ( t && (t.domComplete - t.responseEnd) < 1000 ){
+                    setTimeout(fn, 1000);
+                } else {
+                    fn();
+                }
             },
 
             initExplanations: function(){
@@ -208,8 +221,6 @@ define(
                     ,$win = $(window)
                     ,fudge = $mid.height()/2 + $mid.offset().top - self.axisOffset - self.wrap.offset().top
                     ,format = d3.format('.2e')
-                    ,scaleEnergy = self.scaleEnergy
-                    ,scaleMass = self.scaleMass
                     ,to
                     ,disable
                     ;
@@ -222,8 +233,8 @@ define(
                     var scroll = $win.scrollTop() + fudge;
                     if ( scroll > 0 ){
                         $mid.removeClass('outside');
-                        $inputEnergy.val( format(scaleEnergy.invert(scroll)) );
-                        $inputMass.val( format(scaleMass.invert(scroll)) );
+                        $inputEnergy.val( format(self.scaleEnergy.invert(scroll)) );
+                        $inputMass.val( format(self.scaleMass.invert(scroll)) );
                     } else {
                         $inputEnergy.val('');
                         $inputMass.val('')
@@ -234,27 +245,44 @@ define(
                 function scrollTo(){
                     var $this = $(this)
                         ,val = $this.val()
-                        ,scale = $this.is($inputEnergy) ? scaleEnergy : scaleMass
+                        ,scale = $this.is($inputEnergy) ? self.scaleEnergy : self.scaleMass
                         ,pos = scale( val ) - fudge
                         ;
                     
                     if (pos && pos > 0){
-                        disable = true;
                         $('body').animate({
                             scrollTop: pos
                         }, {
                             duration: 500,
                             complete: function(){
-                                disable = false;
                                 $(window).trigger('scroll');
                             }
                         });
                     }
                 }
 
-                $(document).on('keyup', '#middle input[type="text"]', function(){
-                    clearTimeout(to);
-                    to = setTimeout(scrollTo.bind(this), 1000);
+                $(document).on({
+                    'keyup': function(){
+                        disable = true;
+                        clearTimeout(to);
+                        to = setTimeout(scrollTo.bind(this), 1000);
+                    },
+                    'blur': function(){
+                        disable = false;
+                        $(window).trigger('scroll');
+                    }
+                }, '#middle input[type="text"]')
+                .on('change', '#middle .energy-controls select', function(){
+                    // change the scale and remember it
+                    self.scaleEnergy = self.axisEnergy.scaleBy( 1 / parseFloat($(this).val()) );
+                    // reset numbers
+                    $(window).trigger('scroll');
+                })
+                .on('change', '#middle .mass-controls select', function(){
+                    // change the scale and remember it
+                    self.scaleMass = self.axisMass.scaleBy( 1 / parseFloat($(this).val()) );
+                    // reset numbers
+                    $(window).trigger('scroll');
                 });
             },
 
@@ -270,11 +298,12 @@ define(
                 axis.scale( scale )
                     .orient( orientation || 'left' )
                     .tickFormat( function(n){
-                        return Math.abs(n / Math.pow(10, Math.round(log10(n))) - 1) < 1e-4 ? Math.round(log10(n)) : '';
+                        return Math.abs(n / Math.pow(10, Math.round(log10(n))) - 1) < 1e-4 ? ['(', Math.round(log10(n)), ')'].join(' ') : '';
                     })
                     .innerTickSize( 4 )
                     // .outerTickSize( 20 )
                     ;
+                
                 svg.attr('class', 'axis')
                     .attr('width', width)
                     .attr('height', scale.range()[1])
@@ -283,13 +312,27 @@ define(
                     .call( axis )
                     ;
 
+                // scale the original axis by a value and return the d3 scale
+                function scaleBy( val ){
 
+                    var sc = scale.copy().domain([ domain[0] * val, domain[1] * val ]);
+                    axis.scale( sc );
+                    svg.select('g').call( axis );
+                    return sc;
+                }
+
+                return {
+                    axis: axis,
+                    svg: svg,
+                    scaleBy: scaleBy
+                };
             },
 
             placeMarkers : function( wrap, data, scale ){
 
                 var self = this
                     ,markers
+                    ,tag
                     ,vals = data.map(function( el ){
                         return el[0];
                     })
@@ -298,15 +341,32 @@ define(
                 
                 markers = wrap.selectAll('.marker').data( data );
 
-                markers.enter()
+                tag = markers.enter()
                     .append('div')
                     .attr('class', 'marker')
                     .style(pfx('transform'), function( d ){ return 'translate3d(0,'+scale( d[0] )+'px, 0)'; })
                     .append('abbr')
-                        .attr('title', function(d){ return d[0].toPrecision(2); })
+                        .each(function( d ){
+                            var el = d3.select(this)
+                                ,shim = d[ 3 ]
+                                ,up
+                                ;
+
+                            if ( shim === undefined ){
+                                return;
+                            }
+
+                            el.attr('class', (shim > 0) ? 'shim-down' : 'shim-up');
+                            el.style('margin-top', (shim > 0) ? '' : shim + 'px');
+                        })
+                        .attr('title', function( d ){ return d[0].toPrecision(2) + ' joules'; })
                         .html(function( d ){ 
                             var link = d[2] ? ' <a href="'+d[2]+'" class="more" target="_blank">(ref)</a>' : '';
-                            return d[1]+link; 
+                            return '<div class="shim"></div><div>'+d[1]+'</div>'+link; 
+                        })
+                        .select('div')
+                        .style('height', function( d ){
+                            return Math.abs(d[ 3 ]) + 'px';
                         })
                     ;
 
