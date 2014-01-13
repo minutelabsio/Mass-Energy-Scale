@@ -1,8 +1,9 @@
 // site styles
 
-@import 'compass/css3';
+@import "compass/css3";
 @import "compass/utilities/general";
-@import '_vars';
+@import "_vars";
+@import "_loading-screen";
 
 $text-color: #434343;
 
@@ -10,8 +11,19 @@ html, body, #wrap-outer {
     height: 100%;
 }
 
+#mp-loader {
+    @include loading-screen();
+    opacity: 0;
+    z-index: -1;
+}
+
 body.loading {
     overflow: hidden;
+
+    #mp-loader {
+        opacity: 1;
+        z-index: 10000;
+    }    
 }
 
 sup {
@@ -29,103 +41,6 @@ sup {
         @include transform( translate3d(500px, 0, 0) );
     }
 }
-
-/// spinner
-@-webkit-keyframes rotate { 100% { -webkit-transform: rotate(360deg) }}
-@-moz-keyframes rotate { 100% { -webkit-transform: rotate(360deg) }}
-@-ms-keyframes rotate { 100% { -webkit-transform: rotate(360deg) }}
-@-o-keyframes rotate { 100% { -webkit-transform: rotate(360deg) }}
-@keyframes rotate { 100% { transform: rotate(360deg); -webkit-transform: rotate(360deg) }}
-
-@-webkit-keyframes bounce {
-  0%, 100% { -webkit-transform: scale(0.0) }
-  50% { -webkit-transform: scale(1.0) }
-}
-@-moz-keyframes bounce {
-  0%, 100% { -webkit-transform: scale(0.0) }
-  50% { -webkit-transform: scale(1.0) }
-}
-@-ms-keyframes bounce {
-  0%, 100% { -webkit-transform: scale(0.0) }
-  50% { -webkit-transform: scale(1.0) }
-}
-@-o-keyframes bounce {
-  0%, 100% { -webkit-transform: scale(0.0) }
-  50% { -webkit-transform: scale(1.0) }
-}
-@keyframes bounce {
-  0%, 100% { 
-    transform: scale(0.0);
-    -webkit-transform: scale(0.0);
-  } 50% { 
-    transform: scale(1.0);
-    -webkit-transform: scale(1.0);
-  }
-}
-
-.spinner {
-    width: 40px;
-    height: 40px;
-    position: relative;
-    text-align: center;
-
-    -webkit-animation: rotate 2.0s infinite linear;
-    -moz-animation: rotate 2.0s infinite linear;
-    -ms-animation: rotate 2.0s infinite linear;
-    -o-animation: rotate 2.0s infinite linear;
-    animation: rotate 2.0s infinite linear;
-
-    .dot1, 
-    .dot2 {
-        width: 60%;
-        height: 60%;
-        display: inline-block;
-        position: absolute;
-        top: 0;
-        background-color: #333;
-        border-radius: 100%;
-
-        -webkit-animation: bounce 2.0s infinite ease-in-out;
-        -moz-animation: bounce 2.0s infinite ease-in-out;
-        -ms-animation: bounce 2.0s infinite ease-in-out;
-        -o-animation: bounce 2.0s infinite ease-in-out;
-        animation: bounce 2.0s infinite ease-in-out;
-    }
-
-    .dot2 {
-        top: auto;
-        bottom: 0px;
-        -webkit-animation-delay: -1.0s;
-        animation-delay: -1.0s;
-    }
-}
-
-///////////
-
-#loading-msg {
-    display: none;
-    position: absolute;
-    top: 400px;
-    left: 50%;
-    text-align: center;
-    width: 100px;
-    margin-left: -30px;
-    font-size: 20px;
-    font-family: $font-family-minute-labs;
-
-    &:after {
-        content: 'loading';
-    }
-
-    .spinner {
-        margin: 1em auto;
-    }
-
-    .loading & {
-        display: block;
-    }
-}
-
 
 $offcenter: 100px;
  
@@ -154,10 +69,10 @@ $offcenter: 100px;
         }
 
         .tick text {
-            stroke: $deep-grey-dark;
-            fill: $deep-grey-dark;
+            stroke: darken($grey-dark, 5);
+            fill: darken($grey-dark, 5);
             font-family: $font-family-comic;
-            font-size: 40px;
+            font-size: 38px;
         }
     }
 }
@@ -210,7 +125,7 @@ $offcenter: 100px;
         }
 
         .shim {
-            border: 0 solid $blue-dark;
+            border: 0 solid $deep-grey-dark;
             border-top-width: 3px;
             position: relative;
             top: 10px;
@@ -230,7 +145,7 @@ $offcenter: 100px;
         position: absolute;
         top: 4px;
         background: #fff;
-        border: 3px solid $blue-dark;
+        border: 3px solid $deep-grey-dark;
         width: $circle;
         height: $circle;
         @include border-radius( 50% );
@@ -239,7 +154,7 @@ $offcenter: 100px;
         content: '';
         position: absolute;
         top: 10px;
-        border-bottom: 3px solid $blue-dark;
+        border-bottom: 3px solid $deep-grey-dark;
         width: ($width - $pad)/2;
     }
 
@@ -249,7 +164,7 @@ $offcenter: 100px;
         .shim,
         &:before,
         &:after {
-            border-color: $blue;
+            border-color: rgb(246, 185, 66);
         }
     }
 
@@ -422,7 +337,7 @@ $offcenter: 100px;
         padding: .5em;
         text-align: center;
         font-size: 70px;
-        @include transition( background .3s ease );
+        @include transition( background .27s linear );
 
         label {
             font-family: $font-family-comic;
@@ -451,7 +366,7 @@ $offcenter: 100px;
     .mass-controls {
         @include clearfix;
         padding: 1em;
-        @include transition( opacity .3s ease );
+        @include transition( opacity .3s linear );
         opacity: 1;
 
         input {
@@ -466,22 +381,28 @@ $offcenter: 100px;
 
     .energy,
     .energy-controls {
-        background: $yellow-light;
+        // background: $yellow-light;
+        background: transparentize($deep-grey-dark, 0);
         input {
-            border-color: darken($yellow-light, 15);
+            border-color: $grey-dark;
         }
     }
 
     .mass,
     .mass-controls {
-        background: $blue-light;
+        // background: $blue-light;
+        background: transparentize($grey-dark, 0);
         input {
-            border-color: darken($blue-light, 15);
+            border-color: $deep-grey-dark;
             text-align: right;
         }
         select {
             float: right;
         }
+    }
+
+    .energy {
+        color: $grey-light;
     }
 
     &.outside {
@@ -490,10 +411,13 @@ $offcenter: 100px;
             display: none;
         }
         .energy {
-            background: transparentize($yellow-light, 1);
+            // background: transparentize($yellow-light, 1);
+            background: transparentize($deep-grey-dark, 1);
+            color: $deep-grey-dark;
         }
         .mass {
-            background: transparentize($blue-light, 1);
+            // background: transparentize($blue-light, 1);
+            background: transparentize($grey-dark, 1);
         }
         .energy-controls,
         .mass-controls {
