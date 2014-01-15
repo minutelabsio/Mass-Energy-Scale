@@ -3,6 +3,8 @@
     [9.11e-31, "Electron, the lightest elementary particle that scientists have measured", "http://en.wikipedia.org/wiki/Electron"],
     [2.2e-28, "The Higgs Boson", "http://en.wikipedia.org/wiki/Higgs_boson"],
     [1.673e-27, "Protons and Neutrons: particles found in the nuclei of atoms. (Also roughly the same mass as a Hydrogen atom)", "http://en.wikipedia.org/wiki/Proton"],
+    [2.37e-27, "Dark matter per cubic meter of space", "http://map.gsfc.nasa.gov/universe/uni_matter.html", 76],
+
     [3.0e-26, "Water molecule", "http://en.wikipedia.org/wiki/Water_molecule"],
     [3.2e-25, "A Caffeine molecule", "http://en.wikipedia.org/wiki/Caffeine"],
     [5.5e-23, "A typical protein", "http://en.wikipedia.org/wiki/Protein"],
@@ -47,7 +49,7 @@
     [6.2e8, "Garbage produced in U.S.A every day", "http://curiosity.discovery.com/question/america-produce-trash"],
     [2.7e9, "Great Pacific Garbage Patch", "http://www.telegraph.co.uk/earth/environment/5208645/Drowning-in-plastic-The-Great-Pacific-Garbage-Patch-is-twice-the-size-of-France.html"],
     [6e9, "Great Pyramid of Giza", "http://en.wikipedia.org/wiki/Great_Pyramid_of_Giza"],
-    [2.3e11, "Amount of garbage produced by the U.S.A per year", "http://curiosity.discovery.com/question/america-produce-trash"],
+    [2.3e11, "Amount of garbage produced by the U.S.A per year", "http://curiosity.discovery.com/question/america-produce-trash", -26],
     [4e11, "All humans on earth combined", "http://en.wikipedia.org/wiki/Orders_of_magnitude_(mass)#cite_note-Mass_of_an_Adult-71"],
     [1e12, "Global biomass of fish", "http://en.wikipedia.org/wiki/Orders_of_magnitude_(mass)#cite_note-103"],
     [5.5e12, "A teaspoon of Neutron Star material", "http://en.wikipedia.org/wiki/Neutron_star"],
