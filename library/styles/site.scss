@@ -230,7 +230,7 @@ $offcenter: 100px;
 
 #equation {
     position: absolute;
-    top: 300px;
+    top: 316px;
     left: 50%;
     font-size: 70px;
     font-family: $font-family-comic;
@@ -382,10 +382,42 @@ $offcenter: 100px;
         @include transition( opacity .3s linear );
         opacity: 1;
 
-        input {
+        .input {
             @include box-sizing( border-box );
+            @include border-radius( 3px );
+            font-size: 1.4em;
             width: 100%;
             margin-bottom: 0.5em;
+            background: #fff;
+            text-align: left;
+
+            .meter {
+                text-align: right;
+                padding: 0.1em;
+                margin: 0 -0.05em 0.2em 0.2em;
+            }
+            .mag {
+                width: 1.6em;
+                font-size: 0.8em;
+                vertical-align: super;
+                margin-left: -0.35em;
+            }
+        }
+        input {
+            border: none;
+            background: none;
+            display: inline-block;
+            width: 40%;
+            outline: none;
+            border: 1px solid transparent;
+
+            &:hover {
+                border-color: $grey-dark;
+            }
+            &:focus {
+                border-color: $yellow-dark;
+            }
+
         }
         select {
             display: block;
@@ -396,7 +428,7 @@ $offcenter: 100px;
     .energy-controls {
         // background: $yellow-light;
         background: transparentize($deep-grey-dark, 0);
-        input {
+        .input {
             border-color: $grey-dark;
         }
     }
@@ -405,9 +437,8 @@ $offcenter: 100px;
     .mass-controls {
         // background: $blue-light;
         background: transparentize($grey-dark, 0);
-        input {
+        .input {
             border-color: $deep-grey-dark;
-            text-align: right;
         }
         select {
             float: right;

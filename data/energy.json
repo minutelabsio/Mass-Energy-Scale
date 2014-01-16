@@ -50,6 +50,8 @@
 
     [ 1e32, "Energy delivered by the laser on the Death Star (if it were real)", "http://www.youtube.com/watch?v=HDL0KAm9Cbs"],
     [ 5e36, "Radiated by the Milky Way galaxy in one second", "http://en.wikipedia.org/wiki/Milky_Way"],
+    
+    [ 1e39, "Radiated by a Radio galaxy in one second", "http://en.wikipedia.org/wiki/Radio_galaxy"],
     [ 1e40, "Typical amount released by a Quasar in one second", "http://en.wikipedia.org/wiki/Quasar"],
     [ 2e44, "A Supernova", "http://en.wikipedia.org/wiki/Supernova"],
     [ 1e46, "A Hypernova", "http://en.wikipedia.org/wiki/Hypernova"],
