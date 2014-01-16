@@ -106,6 +106,12 @@ $offcenter: 100px;
 
     @include transition(transform .3s ease);
 
+    .thumb {
+        position: absolute;
+        left: 50%;
+        top: 0;
+    }
+
     abbr {
         display: block;
         text-decoration: none;
