@@ -37,6 +37,14 @@
     [ 3.9e22, "Estimated to be contained in the world's fossil fuel reserves (2010)", "http://www.bp.com/assets/bp_internet/globalbp/globalbp_uk_english/reports_and_publications/statistical_energy_review_2011/STAGING/local_assets/pdf/statistical_review_of_world_energy_full_report_2011.pdf"],
     [ 2.2e23, "Global uranium-238 resources using fast reactor technology", "http://www.iaea.org/newscenter/news/2006/uranium_resources.html"],
     [ 3.84e26, "Produced by the Sun, every second", "http://en.wikipedia.org/wiki/Sun#Core"],
+    [ 2.138e29, "The Earth's rotational energy", "http://en.wikipedia.org/wiki/Rotational_energy"],
+
+    [ 1e32, "Energy delivered by the laser on the Death Star (if it were real)", "http://www.youtube.com/watch?v=HDL0KAm9Cbs"],
+    [ 5e36, "Radiated by the Milky Way galaxy in one second", "http://en.wikipedia.org/wiki/Milky_Way"],
+    
+    [ 1e39, "Radiated by a Radio galaxy in one second", "http://en.wikipedia.org/wiki/Radio_galaxy"],
+    [ 1e40, "Typical amount released by a Quasar in one second", "http://en.wikipedia.org/wiki/Quasar"],
+
     [ 2e44, "A Supernova", "http://en.wikipedia.org/wiki/Supernova"],
     [ 1e46, "A Hypernova", "http://en.wikipedia.org/wiki/Hypernova"],
     [ 8.8e47, "GRB 080916C: the most powerful Gamma-Ray Burst (GRB) ever recorded", "http://en.wikipedia.org/wiki/GRB_080916C"]

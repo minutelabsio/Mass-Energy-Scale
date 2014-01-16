@@ -81,9 +81,11 @@ define(
                     ,scaleEnergy = d3.scale.log()
                         .domain([ self.min, self.max ])
                         .range([0, self.height])
+                        .clamp( true )
                     ,scaleMass = d3.scale.log()
                         .domain([ self.min * 1.11265006e-17, self.max * 1.11265006e-17 ])
                         .range([0, self.height])
+                        .clamp( true )
                     ,s
                     ;
 
@@ -216,8 +218,8 @@ define(
             initControls: function(){
                 var self = this
                     ,$mid = $('#middle').appendTo('#wrap-outer')
-                    ,$inputEnergy = $mid.find('.energy-controls input')
-                    ,$inputMass = $mid.find('.mass-controls input')
+                    ,$inputEnergy = $mid.find('.energy-controls .input')
+                    ,$inputMass = $mid.find('.mass-controls .input')
                     ,$win = $(window)
                     ,fudge = $mid.height()/2 + $mid.offset().top - self.axisOffset - self.wrap.offset().top
                     ,format = d3.format('.2e')
@@ -230,31 +232,44 @@ define(
                         return;
                     }
 
-                    var scroll = $win.scrollTop() + fudge;
+                    var scroll = $win.scrollTop() + fudge
+                        ,val
+                        ;
+                    
                     if ( scroll > 0 ){
                         $mid.removeClass('outside');
-                        $inputEnergy.val( format(self.scaleEnergy.invert(scroll)) );
-                        $inputMass.val( format(self.scaleMass.invert(scroll)) );
+
+                        val = format(self.scaleEnergy.invert(scroll)).split('e');
+                        $inputEnergy.find('.meter').val( val[ 0 ] );
+                        $inputEnergy.find('.mag').val( val[ 1 ] );
+
+                        val = format(self.scaleMass.invert(scroll)).split('e');
+                        $inputMass.find('.meter').val( val[ 0 ] );
+                        $inputMass.find('.mag').val( val[ 1 ] );
                     } else {
-                        $inputEnergy.val('');
-                        $inputMass.val('')
+                        $inputEnergy.find('input').val('');
+                        $inputMass.find('input').val('');
                         $mid.addClass('outside');
                     }
                 });
 
                 function scrollTo(){
                     var $this = $(this)
-                        ,val = $this.val()
-                        ,scale = $this.is($inputEnergy) ? self.scaleEnergy : self.scaleMass
+                        ,$par = $this.parent()
+                        ,meter = $par.find('.meter').val()
+                        ,mag = $par.find('.mag').val()
+                        ,val = parseFloat([meter, mag].join('e'))
+                        ,scale = $par.is($inputEnergy) ? self.scaleEnergy : self.scaleMass
                         ,pos = scale( val ) - fudge
                         ;
                     
-                    if (pos && pos > 0){
+                    if (pos && pos > 0 ){
                         $('body').animate({
                             scrollTop: pos
                         }, {
                             duration: 500,
                             complete: function(){
+                                disable = false;
                                 $(window).trigger('scroll');
                             }
                         });
@@ -262,10 +277,14 @@ define(
                 }
 
                 $(document).on({
-                    'keyup': function(){
+                    'keyup': function( e ){
                         disable = true;
                         clearTimeout(to);
-                        to = setTimeout(scrollTo.bind(this), 1000);
+                        if ( e.keyCode === 13 ){
+                            scrollTo.call(this);
+                        } else {
+                            to = setTimeout(scrollTo.bind(this), 1000);
+                        }
                     },
                     'blur': function(){
                         disable = false;
