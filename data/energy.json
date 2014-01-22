@@ -53,6 +53,7 @@
     
     [ 1e39, "Radiated by a Radio galaxy in one second", "http://en.wikipedia.org/wiki/Radio_galaxy"],
     [ 1e40, "Typical amount released by a Quasar in one second", "http://en.wikipedia.org/wiki/Quasar"],
+
     [ 2e44, "A Supernova", "http://en.wikipedia.org/wiki/Supernova"],
     [ 1e46, "A Hypernova", "http://en.wikipedia.org/wiki/Hypernova"],
     [ 8.8e47, "GRB 080916C: the most powerful Gamma-Ray Burst (GRB) ever recorded", "http://en.wikipedia.org/wiki/GRB_080916C"]

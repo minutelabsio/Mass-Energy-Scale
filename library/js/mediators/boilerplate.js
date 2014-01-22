@@ -380,8 +380,15 @@ define(
                         })
                         .attr('title', function( d ){ return d[0].toPrecision(2) + ' joules'; })
                         .html(function( d ){ 
-                            var link = d[2] ? ' <a href="'+d[2]+'" class="more" target="_blank">(ref)</a>' : '';
-                            return '<div class="shim"></div><div>'+d[1]+'</div>'+link; 
+                            var link = d[2] ? ' <a href="'+d[2]+'" class="more" target="_blank">(more info)</a>' : '';
+                            var img = '';
+                            var style = '';
+                            if ( d[4] ){
+                                img = d[4].split(':');
+                                style = (img.length > 1) ? 'style="left:'+img[1]+'px; top:'+img[2]+'px;"' : '';
+                                img = '<img width="160" class="thumb" src="library/images/drawings/'+img[0]+'" '+ style +'>';
+                            }
+                            return '<div class="shim"></div><div>'+d[1]+'</div>'+link+img; 
                         })
                         .select('div')
                         .style('height', function( d ){
