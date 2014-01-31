@@ -18,6 +18,13 @@ define(
 
         'use strict';
 
+        function sortData( a, b ){
+            return a[0] - b[0];
+        }
+
+        dataEnergy.sort( sortData );
+        dataMass.sort( sortData );
+
         function err( err ){
             console.error( err.toString() );
         }
@@ -28,6 +35,37 @@ define(
 
         function log10(val) {
             return Math.log(val) / Math.LN10;
+        }
+
+        function throttle( fn, delay ){
+            var to
+                ,cb = function(){
+                    to = null;
+                    fn();
+                }
+                ;
+            return function(){
+                if ( !to ){
+                    to = setTimeout( cb, delay );
+                }
+            };
+        }
+
+        function getNearest( data, val ){
+            var last = Infinity
+                ,diff
+                ;
+            for ( var i = 0, l = data.length; i < l; ++i ){
+                diff = Math.abs( val - data[ i ][ 0 ] );
+                
+                if ( diff > last ){
+                    if ( last/val > 0.2 ){
+                        return -1;
+                    }
+                    return i - 1;
+                }
+                last = diff;
+            }
         }
 
         /**
@@ -225,7 +263,23 @@ define(
                     ,format = d3.format('.2e')
                     ,to
                     ,disable
+                    ,$markersEnergy = $('#scale-left .marker')
+                    ,$markersMass = $('#scale-right .marker')
+                    ,idxE
+                    ,idxM
                     ;
+
+                var highlightNearest = throttle(function(){
+                    $markersEnergy.removeClass('highlight')
+                        .eq( idxE )
+                        .addClass('highlight')
+                        ;
+
+                    $markersMass.removeClass('highlight')
+                        .eq( idxM )
+                        .addClass('highlight')
+                        ;
+                }, 100);
 
                 $(window).on('scroll', function(){
                     if (disable){
@@ -239,13 +293,20 @@ define(
                     if ( scroll > 0 ){
                         $mid.removeClass('outside');
 
-                        val = format(self.scaleEnergy.invert(scroll)).split('e');
+                        val = self.scaleEnergy.invert(scroll);
+                        idxE = getNearest(dataEnergy, val);
+                        val = format(val).split('e');
                         $inputEnergy.find('.meter').val( val[ 0 ] );
                         $inputEnergy.find('.mag').val( val[ 1 ] );
 
-                        val = format(self.scaleMass.invert(scroll)).split('e');
+                        val = self.scaleMass.invert(scroll);
+                        idxM = getNearest(dataMass, val);
+                        val = format(val).split('e');
                         $inputMass.find('.meter').val( val[ 0 ] );
                         $inputMass.find('.mag').val( val[ 1 ] );
+
+                        highlightNearest();
+
                     } else {
                         $inputEnergy.find('input').val('');
                         $inputMass.find('input').val('');
@@ -291,6 +352,17 @@ define(
                         $(window).trigger('scroll');
                     }
                 }, '#middle input[type="text"]')
+                .on('click', '.marker', function(){
+                    var pos = $(this).offset().top - 348;
+                    $('body').animate({
+                        scrollTop: pos
+                    }, {
+                        duration: 500,
+                        complete: function(){
+                            $(window).trigger('scroll');
+                        }
+                    });
+                })
                 .on('change', '#middle .energy-controls select', function(){
                     // change the scale and remember it
                     self.scaleEnergy = self.axisEnergy.scaleBy( 1 / parseFloat($(this).val()) );
@@ -388,7 +460,7 @@ define(
                                 style = (img.length > 1) ? 'style="left:'+img[1]+'px; top:'+img[2]+'px;"' : '';
                                 img = '<img width="160" class="thumb" src="library/images/drawings/'+img[0]+'" '+ style +'>';
                             }
-                            return '<div class="shim"></div><div>'+d[1]+'</div>'+link+img; 
+                            return '<div class="shim"></div><div class="text">'+d[1]+'</div>'+link+img; 
                         })
                         .select('div')
                         .style('height', function( d ){

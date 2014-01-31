@@ -164,8 +164,13 @@ $offcenter: 100px;
         width: ($width - $pad)/2;
     }
 
+    &.highlight,
     &:hover {
         z-index: 2;
+
+        .text {
+            color: black;
+        }
 
         .shim,
         &:before,
@@ -355,17 +360,17 @@ $offcenter: 100px;
             content: '';
             position: absolute;
             top: 50%;
-            border-bottom: 2px solid $red;
-            width: 15px;
+            border-bottom: 4px solid transparentize($red, 0.6);
+            width: 45px;
         }
     }
 
     .energy:after{
-        left: -17px;
+        left: -47px;
     }
 
     .mass:after{
-        right: -17px;
+        right: -47px;
     }
 
     .energy-controls,
