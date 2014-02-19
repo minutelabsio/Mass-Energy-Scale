@@ -5,7 +5,7 @@ exclude: ["README.md", "CNAME", "LICENSE", "build", "config.rb", "Gruntfile.js",
 title : "Mass is Energy" # changeme
 id : "" # changeme
 description : "Short description" # changeme
-thumb: "http://minutelabs.io/assets/THUMB_IMAGE" # changeme
+thumb: "http://minutelabs.io/assets/THUMB_IMAGE" # changem
 version: "0.0.4"
 
 ml_url: "http://minutelabs.io"
