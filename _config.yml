@@ -3,12 +3,14 @@ markdown: rdiscount
 exclude: ["README.md", "CNAME", "LICENSE", "build", "config.rb", "Gruntfile.js", "package.json", "jshint.json"]
 
 title : "Mass is Energy" # changeme
-id : "/DATE/TITLE" # changeme
+id : "" # changeme
 description : "Short description" # changeme
 thumb: "http://minutelabs.io/assets/THUMB_IMAGE" # changeme
 version: "0.0.4"
 
 ml_url: "http://minutelabs.io"
+ml_library: "http://labs.minutelabs.io/library"
+ml_assets: "http://labs.minutelabs.io/assets"
 library_path: "library" # changeme
 
 show :
