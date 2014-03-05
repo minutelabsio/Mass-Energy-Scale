@@ -83,7 +83,7 @@ define(
 
                 var self = this;
 
-                self.min = 1e-19;
+                self.min = 1e-20;
                 self.max = 1e47;
                 self.height = 13000;
                 self.axisOffset = 30;
