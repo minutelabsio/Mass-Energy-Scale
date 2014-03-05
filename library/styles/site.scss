@@ -286,7 +286,7 @@ $offcenter: 100px;
 
 #equation {
     position: absolute;
-    top: 316px;
+    top: 303px;
     left: 50%;
     font-size: 70px;
     font-family: $font-family-comic;
@@ -294,13 +294,13 @@ $offcenter: 100px;
 
     .equals {
         position: relative;
-        right: 0.15em;
+        right: 0.2em;
         vertical-align: middle;
     }
 
     .c2 {
         position: relative;
-        left: 0.5em;
+        left: 0.25em;
     }
 }
 #explanations {
@@ -368,7 +368,7 @@ $offcenter: 100px;
 }
 
 #middle {
-    $width: 196px;
+    $width: 156px;
     position: fixed;
     top: 300px;
     left: 50%;
@@ -390,7 +390,7 @@ $offcenter: 100px;
         clear: none;
         float: left;
         width: 50%;
-        padding: .5em;
+        padding: .5em 0.3em;
         text-align: center;
         font-size: 70px;
         @include transition( background .27s linear );
@@ -405,23 +405,23 @@ $offcenter: 100px;
             content: '';
             position: absolute;
             top: 50%;
-            border-bottom: 4px solid transparentize($red, 0.6);
-            width: 45px;
+            border: 23px solid transparent;
+            margin-top: -22px;
         }
     }
 
     .energy:after{
-        left: -47px;
+        left: -44px;
     }
 
     .mass:after{
-        right: -47px;
+        right: -44px;
     }
 
     .energy-controls,
     .mass-controls {
         @include clearfix;
-        padding: 1em;
+        padding: .2em;
         @include transition( opacity .3s linear );
         opacity: 1;
 
@@ -430,14 +430,14 @@ $offcenter: 100px;
             @include border-radius( 3px );
             font-size: 1.4em;
             width: 100%;
-            margin-bottom: 0.5em;
+            margin-bottom: 0.15em;
             background: #fff;
             text-align: left;
 
             .meter {
                 text-align: right;
                 padding: 0.1em;
-                margin: 0 -0.05em 0.2em 0.2em;
+                margin: 0 -0.05em 0.2em -0.15em;
             }
             .mag {
                 width: 1.6em;
@@ -453,14 +453,6 @@ $offcenter: 100px;
             width: 40%;
             outline: none;
             border: 1px solid transparent;
-
-            &:hover {
-                border-color: $grey-dark;
-            }
-            &:focus {
-                border-color: $yellow-dark;
-            }
-
         }
         select {
             display: block;
@@ -472,7 +464,21 @@ $offcenter: 100px;
         // background: $yellow-light;
         background: transparentize($deep-grey-dark, 0);
         .input {
+            background: $deep-grey-dark;
+            &,
+            input {
+                color: $grey-light;
+                &:hover {
+                    border-color: $grey-dark;
+                }
+                &:focus {
+                    border-color: $yellow-dark;
+                }
+            }
             border-color: $grey-dark;
+        }
+        &:after {
+            border-color: transparent $deep-grey-dark transparent transparent;
         }
     }
 
@@ -481,10 +487,22 @@ $offcenter: 100px;
         // background: $blue-light;
         background: transparentize($grey-dark, 0);
         .input {
+            background: $grey-dark;
             border-color: $deep-grey-dark;
+            input {
+                &:hover {
+                    border-color: $deep-grey-dark;
+                }
+                &:focus {
+                    border-color: $yellow-dark;
+                }
+            }
         }
         select {
             float: right;
+        }
+        &:after {
+            border-color: transparent transparent transparent $grey-dark;
         }
     }
 
