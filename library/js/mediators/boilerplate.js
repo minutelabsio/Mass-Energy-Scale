@@ -59,7 +59,7 @@ define(
                 diff = Math.abs( val - data[ i ][ 0 ] );
                 
                 if ( diff > last ){
-                    if ( last/val > 0.2 ){
+                    if ( last/val > 0.3 ){
                         return -1;
                     }
                     return i - 1;
@@ -84,7 +84,7 @@ define(
                 var self = this;
 
                 self.min = 1e-20;
-                self.max = 1e47;
+                self.max = 1e49;
                 self.height = 13000;
                 self.axisOffset = 30;
 
@@ -137,8 +137,8 @@ define(
                 self.axisEnergy = self.placeAxis( self.elEnergy, scaleEnergy, 'left' );
                 self.axisMass = self.placeAxis( self.elMass, scaleMass, 'right' );
 
-                self.placeMarkers( self.elEnergy, dataEnergy, scaleEnergy );
-                self.placeMarkers( self.elMass, dataMass, scaleMass );
+                self.placeMarkers( self.elEnergy, dataEnergy, scaleEnergy, 'energy-' );
+                self.placeMarkers( self.elMass, dataMass, scaleMass, 'mass-' );
 
                 // fix scrolling issues on reload
                 s = $(window).scrollTop();
@@ -419,7 +419,7 @@ define(
                 };
             },
 
-            placeMarkers : function( wrap, data, scale ){
+            placeMarkers : function( wrap, data, scale, idPfx ){
 
                 var self = this
                     ,markers
@@ -427,6 +427,7 @@ define(
                     ,vals = data.map(function( el ){
                         return el[0];
                     })
+                    ,format = d3.format('.2e')
                     ;
 
                 
@@ -434,7 +435,16 @@ define(
 
                 tag = markers.enter()
                     .append('div')
-                    .attr('class', 'marker')
+                    .attr('id', function( d ){
+                        return idPfx + format( d[0] );
+                    })
+                    .attr('class', function( d ){
+                        var cls = 'marker ';
+                        if ( d[5] ){
+                            cls += d[5];
+                        }
+                        return cls;
+                    })
                     .style(pfx('transform'), function( d ){ return 'translate3d(0,'+scale( d[0] )+'px, 0)'; })
                     .append('abbr')
                         .each(function( d ){

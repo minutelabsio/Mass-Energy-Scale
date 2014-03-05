@@ -112,7 +112,14 @@ $offcenter: 100px;
         top: 0;
     }
 
+    .thumb,
+    .more,
     .text {
+        @include transition( opacity 0.3s ease );
+    }
+
+    .text,
+    .more {
         clear: both;
         background: white;
         background: rgba(255, 255, 255, 0.9);
@@ -122,23 +129,39 @@ $offcenter: 100px;
         @include box-shadow( 0 0 10px 5px rgba(255, 255, 255, 0.9) );
     }
 
+    &.inline {
+        .text {
+            display: inline;
+        }
+    }
+
+    .more {
+        white-space: nowrap;
+        width: 4.2em; // size of (see more)
+        display: inline;
+        opacity: 0;
+        text-decoration: none;
+
+        #scale-left & {
+            margin-left: 140px;
+        }
+        #scale-right & {
+            margin-right: 140px;
+        }
+    }
+
+    &.hide-text {
+        .text {
+            opacity: 0;
+        }
+    }
+
     abbr {
         display: block;
         text-decoration: none;
         // font: 1em/1.2 $font-family-minute-labs
         font: 1.3em/1.2 $font-family-comic;
         letter-spacing: 1px;
-
-        a {
-            display: block;
-            opacity: 0;
-            @include transition( opacity 0.3s ease-out );
-            text-decoration: none;
-        }
-
-        &:hover a {
-            opacity: 1;
-        }
 
         .shim {
             border: 0 solid $deep-grey-dark;
@@ -187,6 +210,18 @@ $offcenter: 100px;
         &:after {
             border-color: rgb(246, 185, 66);
         }
+
+        .more {
+            opacity: 1;
+        }
+
+        &.hide-text .text {
+            opacity: 1;
+        }
+
+        &.hide-text .thumb {
+            opacity: 0.5;
+        }
     }
 
     #scale-left & {
@@ -203,7 +238,7 @@ $offcenter: 100px;
                 margin-left: -100%;
             }
             .shim + div {
-                display: inline;
+                display: inline-block;
             }
         }
         .shim-down {
