@@ -114,6 +114,12 @@ $offcenter: 100px;
 
     .text {
         clear: both;
+        background: white;
+        background: rgba(255, 255, 255, 0.9);
+        position: relative;
+        z-index: 1;
+        @include border-radius( 3px );
+        @include box-shadow( 0 0 10px 5px rgba(255, 255, 255, 0.9) );
     }
 
     abbr {
