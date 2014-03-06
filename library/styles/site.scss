@@ -328,6 +328,8 @@ $offcenter: 100px;
         
         p {
             margin: 0;
+            background: rgba(255,255,255,0.9);
+            @include box-shadow( 0 0 10px 5px rgba(255,255,255,0.9) );
         }
 
         &.on {
@@ -541,6 +543,43 @@ $offcenter: 100px;
         .mass-controls {
             opacity: 0;
         }
+    }
+}
+
+.bgs-wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    opacity: 0.7;
+}
+.star-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: image-url('drawings/Background-0.png') repeat 0 0;
+    
+    @include transform(translateZ(0));
+
+    &.bg-0 {
+        opacity: 0.4;
+        z-index: 0;
+    }
+    &.bg-1 {
+        background-image: image-url('drawings/Background-1.png');
+        z-index: 1;
+    }
+    &.bg-2 {
+        background-image: image-url('drawings/Background-2.png');
+        z-index: 2;
+    }
+    &.bg-3 {
+        background-image: image-url('drawings/Background-3.png');
+        z-index: 3;
     }
 }
 

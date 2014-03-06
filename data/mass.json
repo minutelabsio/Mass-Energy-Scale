@@ -45,7 +45,7 @@
     [1.8e6, "Mass of the Space Shuttle (before takeoff)", "http://en.wikipedia.org/wiki/Space_Shuttle", false, "mass/m07-Mass-of-Space-Shuttle.png:140:-40"],
     [1e7, "Annual production of Darjeeling tea", "http://www.thunderbolttea.com/pages/darjeeling_tea_faq.html#where%20produced", false, "mass/m07-Annual-production-of-Dar-jeeling-tea.png:135:10"],
     [4.74e7, "The Titanic", "http://en.wikipedia.org/wiki/RMS_Titanic", false, "mass/m08-The-Titanic.png:50:-20"],
-    [6.2e8, "Garbage produced in U.S.A every day", "http://curiosity.discovery.com/question/america-produce-trash", 50, "mass/m12-Amount-of-garbage-USA-year.png:-10:-95"],
+    [6.2e8, "Garbage produced in U.S.A every day", "http://curiosity.discovery.com/question/america-produce-trash", 50, "mass/Amount-of-garbage-USA-day.png:-10:-95"],
     [2.7e9, "Great Pacific Garbage Patch", "http://www.telegraph.co.uk/earth/environment/5208645/Drowning-in-plastic-The-Great-Pacific-Garbage-Patch-is-twice-the-size-of-France.html", 20, "mass/Great-Pacific-Garbage-Patch.png:-10:-40", "hide-text"],
     [6e9, "Great Pyramid of Giza", "http://en.wikipedia.org/wiki/Great_Pyramid_of_Giza", 50, "mass/m10-Great-Pyramid-of-Giza.png:150:50", "inline"],
     [2.3e11, "Amount of garbage produced by the U.S.A per year", "http://curiosity.discovery.com/question/america-produce-trash", -20, "mass/m12-Amount-of-garbage-USA-year.png:-10:-165"],

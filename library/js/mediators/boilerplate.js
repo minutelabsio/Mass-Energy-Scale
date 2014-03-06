@@ -120,6 +120,8 @@ define(
                 var self = this
                     ,wrap = $('#scale-wrap').height(self.height)
                     ,$eqn = $('#equation')
+                    ,$bgs = $('<div/><div/><div/><div/>').addClass('star-bg').appendTo($('<div>').addClass('bgs-wrap').appendTo('#wrap-outer'))
+                    ,bgCuttoff = 2000
                     ,scaleEnergy = d3.scale.log()
                         .domain([ self.min, self.max ])
                         .range([0, self.height])
@@ -131,8 +133,39 @@ define(
                     ,s
                     ;
 
+                $bgs.each(function( i ){
+                    $(this).addClass( 'bg-'+i );
+                });
+
                 if ( Modernizr.touch ){
                     self.scroller = new IScroll('#wrap-outer', { mouseWheel: true, probeType: 3, tap: true });
+                    self.scroller.on('scroll', function(){
+
+                        if ( self.scroller.y < bgCuttoff ){
+                            $bgs.fadeIn('slow');
+                        } else {
+                            $bgs.fadeOut('slow');
+                        }
+
+                        $bgs.each(function( i ){
+                            $(this).css('background-position-y', self.scroller.y * Math.sqrt(i+0.5) * 0.5);
+                        });
+                    });
+                } else {
+                    $(window).on('scroll', function(){
+
+                        var scroll = $(window).scrollTop();
+
+                        if ( scroll < bgCuttoff ){
+                            $bgs.fadeIn('slow');
+                        } else {
+                            $bgs.fadeOut('slow');
+                        }
+                        
+                        $bgs.each(function( i ){
+                            $(this).css('background-position-y', -scroll * Math.sqrt(i+0.5) * 0.5);
+                        });
+                    });
                 }
 
                 $(window).on('resize', function(){
