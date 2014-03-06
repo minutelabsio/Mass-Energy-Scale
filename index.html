@@ -1,7 +1,9 @@
 ---
 layout: default
 ---
-
+<div id="small-screen-msg">
+  <p>Looks like your screen is cutting off some of the content. Try rotating your device or using a larger screen. (sorry, there's a LOT of stuff going on and we couldn't fit it inside smaller screen widths)</p>
+</div>
 <div id="middle" class="outside">
     <div class="energy-controls">
         <div class="input">
@@ -9,15 +11,17 @@ layout: default
             <span class="x10">x 10</span>
             <input type="text" class="mag"/>
         </div>
-        <select>
-            <option value="1.60217e-19">electronvolts ( eV )</option>
-            <option value="1e-7">ergs ( erg )</option>
-            <option value="1" selected="selected">Joules ( J )</option>
-            <option value="4.184">calories ( cal )</option>
-            <option value="4.184e3">food calories ( Cal )</option>
-            <option value="3.6e6">kilowatt-hours ( kWh )</option>
-            <option value="4.184e9">tonnes of TNT</option>
-        </select>
+        <div class="select-wrap">
+            <select>
+                <option value="1.60217e-19">electronvolts ( eV )</option>
+                <option value="1e-7">ergs ( erg )</option>
+                <option value="1" selected="selected">Joules ( J )</option>
+                <option value="4.184">calories ( cal )</option>
+                <option value="4.184e3">food calories ( Cal )</option>
+                <option value="3.6e6">kilowatt-hours ( kWh )</option>
+                <option value="4.184e9">tonnes of TNT</option>
+            </select>
+        </div>
     </div>
     <div class="energy">
         <label>E</label>
@@ -31,18 +35,20 @@ layout: default
             <span class="x10">x 10</span>
             <input type="text" class="mag"/>
         </div>
-        <select>
-            <option value="1.78266e-36">electronvolts per c^2 ( ev/c^2 )</option>
-            <option value="1.6605389e-27">atomic mass units ( u )</option>
-            <option value="2.18e-8">plank masses ( m_p )</option>
-            <option value="0.45359">pounds ( lb )</option>
-            <option value="1" selected="selected">kilograms ( kg )</option>
-            <option value="6.35029">stone ( st )</option>
-            <option value="9.07185e2">tons ( imperial )</option>
-            <option value="1e3">tonnes ( metric )</option>
-            <option value="5.97219e24">earth masses</option>
-            <option value="1.9891e30">solar masses</option>
-        </select>
+        <div class="select-wrap">
+            <select>
+                <option value="1.78266e-36">electronvolts per c^2 ( ev/c^2 )</option>
+                <option value="1.6605389e-27">atomic mass units ( u )</option>
+                <option value="2.18e-8">plank masses ( m_p )</option>
+                <option value="0.45359">pounds ( lb )</option>
+                <option value="1" selected="selected">kilograms ( kg )</option>
+                <option value="6.35029">stone ( st )</option>
+                <option value="9.07185e2">tons ( imperial )</option>
+                <option value="1e3">tonnes ( metric )</option>
+                <option value="5.97219e24">earth masses</option>
+                <option value="1.9891e30">solar masses</option>
+            </select>
+        </div>
     </div>
 </div>
 <div id="explanations">

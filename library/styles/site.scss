@@ -42,6 +42,12 @@ sup {
     }
 }
 
+// using iScroll
+.touch #wrap-outer {
+    overflow: hidden;
+    -webkit-transform-style: preserve-3d;
+}
+
 $offcenter: 100px;
  
 #scale-wrap {
@@ -286,7 +292,7 @@ $offcenter: 100px;
 
 #equation {
     position: absolute;
-    top: 303px;
+    top: 312px;
     left: 50%;
     font-size: 70px;
     font-family: $font-family-comic;
@@ -308,7 +314,7 @@ $offcenter: 100px;
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
+    height: 1000px;
     z-index: 1;
     font: 30px/1.2 $font-family-comic;
     letter-spacing: 1px;
@@ -319,7 +325,7 @@ $offcenter: 100px;
         position: absolute;
         opacity: 0;
         @include transition( opacity .3s ease );
-
+        
         p {
             margin: 0;
         }
@@ -382,6 +388,10 @@ $offcenter: 100px;
     
     input {
         font-family: $font-family-minute-labs;
+    }
+
+    .select-wrap {
+        height: 30px;
     }
 
     .energy,
@@ -456,6 +466,9 @@ $offcenter: 100px;
         }
         select {
             display: block;
+            margin: 0;
+            font-size: 12px;
+            padding: 0;
         }
     }
 
@@ -531,5 +544,41 @@ $offcenter: 100px;
     }
 }
 
+#small-screen-msg {
+    display: none;
+    position: fixed;
+    top: 58px;
+    left: 0;
+    padding: 1em 2em;
+    background: $deep-grey-dark;
+    color: $grey-light;
+    z-index:100;
+}
 
+@media screen and (max-width: 1019px) {
+    #middle,
+    #explanations,
+    #scale-wrap {
+        @include transform( scale(0.7) );
+    }
+    #middle {
+        // top: 260px;
+    }
+    #explanations {
+        margin-top: -33px;
+    }
+    #scale-wrap {
+        width: 143%;
+        margin-top: 690px;
+        margin-left: -21.5%;
+    }
+    #equation {
+        top: 296px;
+    }
+}
 
+@media screen and (max-width: 719px) {
+    #small-screen-msg {
+        display: block;
+    }
+}

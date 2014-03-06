@@ -3,6 +3,7 @@ define(
         'jquery'
         ,'moddef'
         ,'d3'
+        ,'iscroll'
 
         ,'json!../../../data/energy.json'
         ,'json!../../../data/mass.json'
@@ -11,6 +12,7 @@ define(
         $
         ,M
         ,d3
+        ,IScroll
 
         ,dataEnergy
         ,dataMass
@@ -87,6 +89,7 @@ define(
                 self.max = 1e49;
                 self.height = 13000;
                 self.axisOffset = 30;
+                self.scaleFactor = false;
 
                 self.initEvents();
 
@@ -115,7 +118,8 @@ define(
             onDomReady : function(){
 
                 var self = this
-                    ,wrap = $('#scale-wrap').height(self.height).css('margin-bottom', $(window).height() - 342)
+                    ,wrap = $('#scale-wrap').height(self.height)
+                    ,$eqn = $('#equation')
                     ,scaleEnergy = d3.scale.log()
                         .domain([ self.min, self.max ])
                         .range([0, self.height])
@@ -126,6 +130,22 @@ define(
                         .clamp( true )
                     ,s
                     ;
+
+                if ( Modernizr.touch ){
+                    self.scroller = new IScroll('#wrap-outer', { mouseWheel: true, probeType: 3, tap: true });
+                }
+
+                $(window).on('resize', function(){
+                    var margin;
+                    var scale = ( $(window).width() < 1020 ) ? 0.7 : 1;
+
+                    if ( scale !== self.scaleFactor ){
+                        self.scaleFactor = scale;
+
+                        margin = wrap.height() * (scale - 1) * 0.5 + $(window).height() - 342;
+                        wrap.css('margin-bottom', margin | 0);
+                    }
+                }).trigger('resize');
 
                 self.wrap = wrap;
                 self.scaleEnergy = scaleEnergy;
@@ -145,6 +165,7 @@ define(
                 $(window).scrollTop( 0 );
                 self.initControls();
                 self.initExplanations();
+                $('#small-screen-msg').appendTo('#wrap-outer');
 
                 self.niceLoad(function(){
                     $('body').removeClass('loading');
@@ -199,8 +220,9 @@ define(
                     }
                 });
 
-                $(window).on('scroll', function(){
-                    var pos = Math.max($(this).scrollTop(), 0)
+                function scrollCallback(){
+                    
+                    var pos = Math.max( self.scroller ? -self.scroller.y : $(this).scrollTop(), 0)
                         ,i
                         ,l
                         ;
@@ -250,7 +272,13 @@ define(
 
                     after.sort(sortExitDec);
                     before.sort(sortEnterAsc);
-                });
+                }
+
+                if ( self.scroller ){
+                    self.scroller.on('scroll', scrollCallback);
+                } else {
+                    $(window).on('scroll', scrollCallback);
+                }
             },
 
             initControls: function(){
@@ -281,12 +309,12 @@ define(
                         ;
                 }, 100);
 
-                $(window).on('scroll', function(){
+                function scrollCallback(){
                     if (disable){
                         return;
                     }
 
-                    var scroll = $win.scrollTop() + fudge
+                    var scroll = ((self.scroller ? -self.scroller.y : $win.scrollTop()) + fudge - $mid.height() * (1-self.scaleFactor) * 0.4) / self.scaleFactor
                         ,val
                         ;
                     
@@ -312,7 +340,13 @@ define(
                         $inputMass.find('input').val('');
                         $mid.addClass('outside');
                     }
-                });
+                }
+
+                if ( self.scroller ){
+                    self.scroller.on('scroll', scrollCallback);
+                } else {
+                    $(window).on('scroll', scrollCallback);
+                }
 
                 function scrollTo(){
                     var $this = $(this)
@@ -352,16 +386,23 @@ define(
                         $(window).trigger('scroll');
                     }
                 }, '#middle input[type="text"]')
-                .on('click', '.marker', function(){
-                    var pos = $(this).offset().top - 348;
-                    $('body').animate({
-                        scrollTop: pos
-                    }, {
-                        duration: 500,
-                        complete: function(){
-                            $(window).trigger('scroll');
-                        }
-                    });
+                .on('click tap', '.marker', function(){
+                    var pos = ($(this).offset().top - 340)|0;
+                    
+                    if ( self.scroller ){
+
+                        self.scroller.scrollBy(0, -pos, 500);
+                    } else {
+
+                        $('body').animate({
+                            scrollTop: pos
+                        }, {
+                            duration: 500,
+                            complete: function(){
+                                $(window).trigger('scroll');
+                            }
+                        });
+                    }
                 })
                 .on('change', '#middle .energy-controls select', function(){
                     // change the scale and remember it
