@@ -61,7 +61,7 @@ define(
                 diff = Math.abs( val - data[ i ][ 0 ] );
                 
                 if ( diff > last ){
-                    if ( last/val > 0.3 ){
+                    if ( last/val > 0.7 ){
                         return -1;
                     }
                     return i - 1;
@@ -118,6 +118,7 @@ define(
             onDomReady : function(){
 
                 var self = this
+                    ,$win = $(window)
                     ,wrap = $('#scale-wrap').height(self.height)
                     ,$eqn = $('#equation')
                     ,$bgs = $('<div/><div/><div/><div/>').addClass('star-bg').appendTo($('<div>').addClass('bgs-wrap').appendTo('#wrap-outer'))
@@ -139,43 +140,43 @@ define(
 
                 if ( Modernizr.touch ){
                     self.scroller = new IScroll('#wrap-outer', { mouseWheel: true, probeType: 3, tap: true });
+                } 
+
+                // init scroll event
+                if ( self.scroller ){
                     self.scroller.on('scroll', function(){
-
-                        if ( self.scroller.y < bgCuttoff  ){
-                            $bgs.fadeIn('slow');
-                        } else {
-                            $bgs.fadeOut('slow');
-                        }
-
-                        $bgs.each(function( i ){
-                            $(this).css('background-position-y', self.scroller.y * Math.sqrt(i+0.5) * 0.5);
-                        });
+                        self.emit('scroll', -self.scroller.y);
                     });
                 } else {
-                    $(window).on('scroll', function(){
-
-                        var scroll = $(window).scrollTop();
-
-                        if ( scroll < bgCuttoff  ){
-                            $bgs.fadeIn('slow');
-                        } else {
-                            $bgs.fadeOut('slow');
-                        }
-                        
-                        $bgs.each(function( i ){
-                            $(this).css('background-position-y', -scroll * Math.sqrt(i+0.5) * 0.5);
-                        });
+                    $win.on('scroll', function(){
+                        self.emit('scroll', $win.scrollTop());
                     });
                 }
 
-                $(window).on('resize', function(){
+                // backgrounds
+                self.on('scroll', function( e, scroll ){
+
+                    if ( scroll < bgCuttoff  ){
+                        $bgs.fadeIn('slow');
+                    } else {
+                        $bgs.fadeOut('slow');
+                    }
+                    
+                    $bgs.each(function( i ){
+                        var pos = -scroll * Math.sqrt(i+0.5) * 0.5;
+                        $(this).css('transform', 'translate3d(0,'+pos+'px,0)');
+                    });
+                });
+
+                // resizing
+                $win.on('resize', function(){
                     var margin;
-                    var scale = ( $(window).width() < 1020 ) ? 0.7 : 1;
+                    var scale = ( $win.width() < 1020 ) ? 0.7 : 1;
 
                     if ( scale !== self.scaleFactor ){
                         self.scaleFactor = scale;
 
-                        margin = wrap.height() * (scale - 1) * 0.5 + $(window).height() - 442;
+                        margin = wrap.height() * (scale - 1) * 0.5 + $win.height() - 442;
                         wrap.css('margin-bottom', margin | 0);
                     }
                 }).trigger('resize');
@@ -194,15 +195,24 @@ define(
                 self.placeMarkers( self.elMass, dataMass, scaleMass, 'mass-' );
 
                 // fix scrolling issues on reload
-                s = $(window).scrollTop();
-                $(window).scrollTop( 0 );
+                s = $win.scrollTop();
+                $win.scrollTop( 0 );
                 self.initControls();
                 self.initExplanations();
                 $('#small-screen-msg').appendTo('#wrap-outer');
 
                 self.niceLoad(function(){
                     $('body').removeClass('loading');
-                    $(window).scrollTop( s );
+                    $win.scrollTop( s );
+                });
+
+                var scrTimer;
+                self.on('scroll', function(){
+                    clearTimeout(scrTimer);
+                    wrap.addClass('scrolling');
+                    scrTimer = setTimeout(function(){
+                        wrap.removeClass('scrolling');
+                    }, 400);
                 });
             },
 
@@ -253,9 +263,9 @@ define(
                     }
                 });
 
-                function scrollCallback(){
+                self.on('scroll', function ( e, scr ){
                     
-                    var pos = Math.max( self.scroller ? -self.scroller.y : $(this).scrollTop(), 0)
+                    var pos = Math.max(scr, 0)
                         ,i
                         ,l
                         ;
@@ -305,13 +315,7 @@ define(
 
                     after.sort(sortExitDec);
                     before.sort(sortEnterAsc);
-                }
-
-                if ( self.scroller ){
-                    self.scroller.on('scroll', scrollCallback);
-                } else {
-                    $(window).on('scroll', scrollCallback);
-                }
+                });
             },
 
             initControls: function(){
@@ -342,12 +346,12 @@ define(
                         ;
                 }, 100);
 
-                function scrollCallback(){
+                self.on('scroll', function ( e, scr ){
                     if (disable){
                         return;
                     }
 
-                    var scroll = ((self.scroller ? -self.scroller.y : $win.scrollTop()) + fudge - $mid.height() * (1-self.scaleFactor) * 0.4) / self.scaleFactor
+                    var scroll = (scr + fudge - $mid.height() * (1-self.scaleFactor) * 0.4) / self.scaleFactor
                         ,val
                         ;
                     
@@ -379,13 +383,7 @@ define(
                     } else {
                         $mid.fadeIn('fast');
                     }
-                }
-
-                if ( self.scroller ){
-                    self.scroller.on('scroll', scrollCallback);
-                } else {
-                    $(window).on('scroll', scrollCallback);
-                }
+                });
 
                 function scrollTo(){
                     var $this = $(this)
@@ -398,28 +396,35 @@ define(
                         ;
                     
                     if (pos && pos > 0 ){
-                        $('body').animate({
-                            scrollTop: pos
-                        }, {
-                            duration: 500,
-                            complete: function(){
-                                disable = false;
-                                $(window).trigger('scroll');
-                            }
-                        });
+
+                        if ( self.scroller ){
+
+                            self.scroller.scrollBy(0, -pos, 500);
+                        } else {
+
+                            $('body').animate({
+                                scrollTop: pos
+                            }, {
+                                duration: 500,
+                                complete: function(){
+                                    disable = false;
+                                    $(window).trigger('scroll');
+                                }
+                            });
+                        }
                     }
                 }
 
                 $(document).on({
-                    'keyup': function( e ){
-                        disable = true;
-                        clearTimeout(to);
-                        if ( e.keyCode === 13 ){
-                            scrollTo.call(this);
-                        } else {
-                            to = setTimeout(scrollTo.bind(this), 1000);
-                        }
-                    },
+                    // 'keyup': function( e ){
+                    //     disable = true;
+                    //     clearTimeout(to);
+                    //     if ( e.keyCode === 13 ){
+                    //         scrollTo.call(this);
+                    //     } else {
+                    //         to = setTimeout(scrollTo.bind(this), 1000);
+                    //     }
+                    // },
                     'blur': function(){
                         disable = false;
                         $(window).trigger('scroll');
