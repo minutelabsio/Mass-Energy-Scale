@@ -121,7 +121,7 @@ define(
                     ,wrap = $('#scale-wrap').height(self.height)
                     ,$eqn = $('#equation')
                     ,$bgs = $('<div/><div/><div/><div/>').addClass('star-bg').appendTo($('<div>').addClass('bgs-wrap').appendTo('#wrap-outer'))
-                    ,bgCuttoff = 2000
+                    ,bgCuttoff = 3300
                     ,scaleEnergy = d3.scale.log()
                         .domain([ self.min, self.max ])
                         .range([0, self.height])
@@ -141,7 +141,7 @@ define(
                     self.scroller = new IScroll('#wrap-outer', { mouseWheel: true, probeType: 3, tap: true });
                     self.scroller.on('scroll', function(){
 
-                        if ( self.scroller.y < bgCuttoff ){
+                        if ( self.scroller.y < bgCuttoff  ){
                             $bgs.fadeIn('slow');
                         } else {
                             $bgs.fadeOut('slow');
@@ -156,7 +156,7 @@ define(
 
                         var scroll = $(window).scrollTop();
 
-                        if ( scroll < bgCuttoff ){
+                        if ( scroll < bgCuttoff  ){
                             $bgs.fadeIn('slow');
                         } else {
                             $bgs.fadeOut('slow');
@@ -175,7 +175,7 @@ define(
                     if ( scale !== self.scaleFactor ){
                         self.scaleFactor = scale;
 
-                        margin = wrap.height() * (scale - 1) * 0.5 + $(window).height() - 342;
+                        margin = wrap.height() * (scale - 1) * 0.5 + $(window).height() - 442;
                         wrap.css('margin-bottom', margin | 0);
                     }
                 }).trigger('resize');
@@ -372,6 +372,12 @@ define(
                         $inputEnergy.find('input').val('');
                         $inputMass.find('input').val('');
                         $mid.addClass('outside');
+                    }
+
+                    if ( scroll > self.scaleEnergy.range()[1] ){
+                        $mid.fadeOut('fast');
+                    } else {
+                        $mid.fadeIn('fast');
                     }
                 }
 
