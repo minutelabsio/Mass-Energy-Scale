@@ -6,7 +6,7 @@ title : "Mass is Energy" # changeme
 id : "" # changeme
 description : "Short description" # changeme
 thumb: "http://minutelabs.io/assets/THUMB_IMAGE" # changem
-version: "0.0.5"
+version: "0.0.6"
 
 ml_url: "http://minutelabs.io"
 ml_library: "http://labs.minutelabs.io/library"
