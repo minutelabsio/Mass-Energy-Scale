@@ -10,6 +10,9 @@ require.config({
     shim: {
         'd3': {
             exports: 'd3'
+        },
+        'iscroll': {
+            exports: 'IScroll'
         }
     },
 
@@ -34,7 +37,9 @@ require.config({
         // jQuery
         'jquery': 'vendor/jquery',
 
-        'd3': 'vendor/d3'
+        'd3': 'vendor/d3',
+
+        'iscroll': 'vendor/iscroll'
     },
 
     packages: [

@@ -42,11 +42,17 @@ sup {
     }
 }
 
+// using iScroll
+.touch #wrap-outer {
+    overflow: hidden;
+    -webkit-transform-style: preserve-3d;
+}
+
 $offcenter: 100px;
  
 #scale-wrap {
     position: relative;
-    margin-top: 2600px;
+    margin-top: 3800px;
     margin-bottom: 50%;
     overflow: hidden;
 }   
@@ -162,6 +168,7 @@ $offcenter: 100px;
         // font: 1em/1.2 $font-family-minute-labs
         font: 1.3em/1.2 $font-family-comic;
         letter-spacing: 1px;
+        cursor: pointer;
 
         .shim {
             border: 0 solid $deep-grey-dark;
@@ -286,7 +293,7 @@ $offcenter: 100px;
 
 #equation {
     position: absolute;
-    top: 303px;
+    top: 312px;
     left: 50%;
     font-size: 70px;
     font-family: $font-family-comic;
@@ -308,7 +315,7 @@ $offcenter: 100px;
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
+    height: 1000px;
     z-index: 1;
     font: 30px/1.2 $font-family-comic;
     letter-spacing: 1px;
@@ -319,9 +326,11 @@ $offcenter: 100px;
         position: absolute;
         opacity: 0;
         @include transition( opacity .3s ease );
-
+        
         p {
             margin: 0;
+            background: rgba(255,255,255,0.9);
+            @include box-shadow( 0 0 10px 5px rgba(255,255,255,0.9) );
         }
 
         &.on {
@@ -333,8 +342,22 @@ $offcenter: 100px;
         top: 400px;
         width: 600px;
         left: 50%;
-        margin-left: -270px;
+        margin-left: -280px;
         text-align: center;
+
+        &:after,
+        &:before {
+            content: '';
+            position: absolute;
+            bottom: -75px;
+            left: 269px;
+            display: block;
+            border: 30px solid black;
+            border-color: transparentize($deep-grey-dark, 0.2) transparent transparent;
+        }
+        &:after {
+            bottom: -113px;
+        }
     }
 
     section:nth-child(3) {
@@ -360,10 +383,43 @@ $offcenter: 100px;
     }
 
     section:nth-child(6) {
-        top: 400px;
+        top: 170px;
         width: 400px;
-        left: 50%;
+        left: 30%;
         margin-left: -180px;
+    }
+
+    section:nth-child(7) {
+        top: 140px;
+        width: 400px;
+        left: 73%;
+        margin-left: -180px;
+    }
+
+    section:nth-child(8) {
+        top: 410px;
+        width: 600px;
+        left: 50%;
+        margin-left: -300px;
+    }
+
+    section:nth-child(9) {
+        top: 410px;
+        width: 400px;
+        left: 73%;
+        margin-left: -180px;
+    }
+
+    #watch-video {
+        font-size: 20px;
+    }
+}
+
+#video {
+    width: 560px;
+    margin: 0 auto 200px;
+    .title {
+        text-align: center;
     }
 }
 
@@ -395,6 +451,10 @@ $offcenter: 100px;
     
     input {
         font-family: $font-family-minute-labs;
+    }
+
+    .select-wrap {
+        height: 30px;
     }
 
     .energy,
@@ -469,6 +529,9 @@ $offcenter: 100px;
         }
         select {
             display: block;
+            margin: 0;
+            font-size: 12px;
+            padding: 0;
         }
     }
 
@@ -544,5 +607,78 @@ $offcenter: 100px;
     }
 }
 
+.bgs-wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    opacity: 0.7;
+}
+.star-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: image-url('drawings/Background-0.png') repeat 0 0;
+    
+    @include transform(translateZ(0));
 
+    &.bg-0 {
+        opacity: 0.4;
+        z-index: 0;
+    }
+    &.bg-1 {
+        background-image: image-url('drawings/Background-1.png');
+        z-index: 1;
+    }
+    &.bg-2 {
+        background-image: image-url('drawings/Background-2.png');
+        z-index: 2;
+    }
+    &.bg-3 {
+        background-image: image-url('drawings/Background-3.png');
+        z-index: 3;
+    }
+}
 
+#small-screen-msg {
+    display: none;
+    position: fixed;
+    top: 58px;
+    left: 0;
+    padding: 1em 2em;
+    background: $deep-grey-dark;
+    color: $grey-light;
+    z-index:100;
+}
+
+@media screen and (max-width: 1019px) {
+    #middle,
+    #explanations,
+    #scale-wrap {
+        @include transform( scale(0.7) );
+    }
+    #middle {
+        // top: 260px;
+    }
+    #explanations {
+        margin-top: -33px;
+    }
+    #scale-wrap {
+        width: 143%;
+        margin-top: 1890px;
+        margin-left: -21.5%;
+    }
+    #equation {
+        top: 296px;
+    }
+}
+
+@media screen and (max-width: 719px) {
+    #small-screen-msg {
+        display: block;
+    }
+}

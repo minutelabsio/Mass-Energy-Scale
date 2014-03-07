@@ -1,7 +1,6 @@
 ---
 layout: default
 ---
-
 <div id="middle" class="outside">
     <div class="energy-controls">
         <div class="input">
@@ -9,15 +8,17 @@ layout: default
             <span class="x10">x 10</span>
             <input type="text" class="mag"/>
         </div>
-        <select>
-            <option value="1.60217e-19">electronvolts ( eV )</option>
-            <option value="1e-7">ergs ( erg )</option>
-            <option value="1" selected="selected">Joules ( J )</option>
-            <option value="4.184">calories ( cal )</option>
-            <option value="4.184e3">food calories ( Cal )</option>
-            <option value="3.6e6">kilowatt-hours ( kWh )</option>
-            <option value="4.184e9">tonnes of TNT</option>
-        </select>
+        <div class="select-wrap">
+            <select>
+                <option value="1.60217e-19">electronvolts ( eV )</option>
+                <option value="1e-7">ergs ( erg )</option>
+                <option value="1" selected="selected">Joules ( J )</option>
+                <option value="4.184">calories ( cal )</option>
+                <option value="4.184e3">food calories ( Cal )</option>
+                <option value="3.6e6">kilowatt-hours ( kWh )</option>
+                <option value="4.184e9">tonnes of TNT</option>
+            </select>
+        </div>
     </div>
     <div class="energy">
         <label>E</label>
@@ -31,22 +32,24 @@ layout: default
             <span class="x10">x 10</span>
             <input type="text" class="mag"/>
         </div>
-        <select>
-            <option value="1.78266e-36">electronvolts per c^2 ( ev/c^2 )</option>
-            <option value="1.6605389e-27">atomic mass units ( u )</option>
-            <option value="2.18e-8">plank masses ( m_p )</option>
-            <option value="0.45359">pounds ( lb )</option>
-            <option value="1" selected="selected">kilograms ( kg )</option>
-            <option value="6.35029">stone ( st )</option>
-            <option value="9.07185e2">tons ( imperial )</option>
-            <option value="1e3">tonnes ( metric )</option>
-            <option value="5.97219e24">earth masses</option>
-            <option value="1.9891e30">solar masses</option>
-        </select>
+        <div class="select-wrap">
+            <select>
+                <option value="1.78266e-36">electronvolts per c^2 ( ev/c^2 )</option>
+                <option value="1.6605389e-27">atomic mass units ( u )</option>
+                <option value="2.18e-8">plank masses ( m_p )</option>
+                <option value="0.45359">pounds ( lb )</option>
+                <option value="1" selected="selected">kilograms ( kg )</option>
+                <option value="6.35029">stone ( st )</option>
+                <option value="9.07185e2">tons ( imperial )</option>
+                <option value="1e3">tonnes ( metric )</option>
+                <option value="5.97219e24">earth masses</option>
+                <option value="1.9891e30">solar masses</option>
+            </select>
+        </div>
     </div>
 </div>
 <div id="explanations">
-    <section id="equation" data-exit="2000" class="on">
+    <section id="equation" data-exit="3200" class="on">
         <span class="equals">=</span>
         <span class="c2">c<sup>2</sup></span>
     </section>
@@ -54,23 +57,40 @@ layout: default
         <p>What does Einstein's famous equation really mean?</p>
         <p>(scroll down)</p>
     </section>
-    <section data-enter="300" data-exit="600">
+    <section data-enter="200" data-exit="600">
         <p>The "E" is for "energy". Like the number of calories in foods.</p>
     </section>
-    <section data-enter="700" data-exit="1000">
+    <section data-enter="600" data-exit="1000">
         <p>The "m" is for "mass". Related to weight.</p>
     </section>
-    <section data-enter="1100" data-exit="1400">
+    <section data-enter="1000" data-exit="1400">
         <p>The "c<sup>2</sup>" is the speed of light squared.</p>
     </section>
-    <section data-enter="1500" data-exit="1800">
-        <p>Since the speed of light is a constant of nature, you can think of this term as a conversion factor. It's how you change units of mass into units of energy, and vice versa.</p>
+    <section data-enter="1400" data-exit="1800">
+        <p>The speed of light, "c<sup>2</sup>", is a <strong>constant</strong> of nature. So it doesn't change. You can think of it like a unit conversion factor.
+        </p>
+    </section>
+    <section data-enter="1800" data-exit="2200">
+        <p>Just like multiplying by 1.61... will convert kilometers into miles, multiplying by c<sup>2</sup> will convert mass (kilograms) into energy (joules).</p>
+    </section>
+    <section data-enter="2200" data-exit="2600">
+        <p>So... how much mass-energy is stored in, say, a raisin? Well, we created a scale to help answer these questions and give you better intuition about the scales of Mass and Energy...</p>
+    </section>
+    <section data-enter="2600" data-exit="3000">
+        <p>Just one more thing: E = mc<sup>2</sup> isn't the whole story. The MinutePhysics video at the bottom of the page explains what's missing.</p>
     </section>
 
+</div>
+<div id="small-screen-msg">
+  <p>Looks like your screen is cutting off some of the content. Try rotating your device or using a larger screen. (sorry, there's a LOT of stuff going on and we couldn't fit it inside smaller screen widths)</p>
 </div>
 <div id="scale-wrap">
     <div id="scale-left">
     </div>
     <div id="scale-right">
     </div>
+</div>
+<div id="video">
+    <h2 class="title">The rest of the story...</h2>
+    <iframe width="560" height="315" src="//www.youtube.com/embed/NnMIhxWRGNw" frameborder="0" allowfullscreen></iframe>
 </div>
