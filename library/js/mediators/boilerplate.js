@@ -61,7 +61,7 @@ define(
                 diff = Math.abs( val - data[ i ][ 0 ] );
                 
                 if ( diff > last ){
-                    if ( last/val > 0.3 ){
+                    if ( last/val > 0.7 ){
                         return -1;
                     }
                     return i - 1;
@@ -87,7 +87,7 @@ define(
 
                 self.min = 1e-20;
                 self.max = 1e49;
-                self.height = 13000;
+                self.height = 16000;
                 self.axisOffset = 30;
                 self.scaleFactor = false;
 
@@ -108,7 +108,18 @@ define(
              */
             initEvents : function(){
 
-                var self = this;
+                var self = this
+                    ;
+
+                $(document).on('click.more-link-cfm tap.more-link-cfm', '.marker .more', function( e ){
+
+                    $(document).off('.more-link-cfm');
+                    
+                    if ( !window.confirm('Just FYI, the "more info" will open a new tab') ){
+                        e.preventDefault();
+                        return false;
+                    }
+                });
             },
 
             /**
@@ -118,6 +129,7 @@ define(
             onDomReady : function(){
 
                 var self = this
+                    ,$win = $(window)
                     ,wrap = $('#scale-wrap').height(self.height)
                     ,$eqn = $('#equation')
                     ,$bgs = $('<div/><div/><div/><div/>').addClass('star-bg').appendTo($('<div>').addClass('bgs-wrap').appendTo('#wrap-outer'))
@@ -139,43 +151,43 @@ define(
 
                 if ( Modernizr.touch ){
                     self.scroller = new IScroll('#wrap-outer', { mouseWheel: true, probeType: 3, tap: true });
+                } 
+
+                // init scroll event
+                if ( self.scroller ){
                     self.scroller.on('scroll', function(){
-
-                        if ( self.scroller.y < bgCuttoff  ){
-                            $bgs.fadeIn('slow');
-                        } else {
-                            $bgs.fadeOut('slow');
-                        }
-
-                        $bgs.each(function( i ){
-                            $(this).css('background-position-y', self.scroller.y * Math.sqrt(i+0.5) * 0.5);
-                        });
+                        self.emit('scroll', -self.scroller.y);
                     });
                 } else {
-                    $(window).on('scroll', function(){
-
-                        var scroll = $(window).scrollTop();
-
-                        if ( scroll < bgCuttoff  ){
-                            $bgs.fadeIn('slow');
-                        } else {
-                            $bgs.fadeOut('slow');
-                        }
-                        
-                        $bgs.each(function( i ){
-                            $(this).css('background-position-y', -scroll * Math.sqrt(i+0.5) * 0.5);
-                        });
+                    $win.on('scroll', function(){
+                        self.emit('scroll', $win.scrollTop());
                     });
                 }
 
-                $(window).on('resize', function(){
+                // backgrounds
+                self.on('scroll', function( e, scroll ){
+
+                    if ( scroll < bgCuttoff  ){
+                        $bgs.fadeIn('slow');
+                    } else {
+                        $bgs.fadeOut('slow');
+                    }
+                    
+                    $bgs.each(function( i ){
+                        var pos = -scroll * Math.sqrt(i+0.5) * 0.5;
+                        $(this).css('transform', 'translate3d(0,'+pos+'px,0)');
+                    });
+                });
+
+                // resizing
+                $win.on('resize', function(){
                     var margin;
-                    var scale = ( $(window).width() < 1020 ) ? 0.7 : 1;
+                    var scale = ( $win.width() < 1020 ) ? 0.7 : 1;
 
                     if ( scale !== self.scaleFactor ){
                         self.scaleFactor = scale;
 
-                        margin = wrap.height() * (scale - 1) * 0.5 + $(window).height() - 442;
+                        margin = wrap.height() * (scale - 1) * 0.5 + $win.height() - 442;
                         wrap.css('margin-bottom', margin | 0);
                     }
                 }).trigger('resize');
@@ -194,15 +206,24 @@ define(
                 self.placeMarkers( self.elMass, dataMass, scaleMass, 'mass-' );
 
                 // fix scrolling issues on reload
-                s = $(window).scrollTop();
-                $(window).scrollTop( 0 );
+                s = $win.scrollTop();
+                $win.scrollTop( 0 );
                 self.initControls();
                 self.initExplanations();
                 $('#small-screen-msg').appendTo('#wrap-outer');
 
                 self.niceLoad(function(){
                     $('body').removeClass('loading');
-                    $(window).scrollTop( s );
+                    $win.scrollTop( s );
+                });
+
+                var scrTimer;
+                self.on('scroll', function(){
+                    clearTimeout(scrTimer);
+                    wrap.addClass('scrolling');
+                    scrTimer = setTimeout(function(){
+                        wrap.removeClass('scrolling');
+                    }, 400);
                 });
             },
 
@@ -253,9 +274,37 @@ define(
                     }
                 });
 
-                function scrollCallback(){
+                $(document).on('click tap', '#next-btn', function( e ){
+
+                    var next = before[ 0 ]
+                        ,pos
+                        ;
+
+                    if ( next ){
+                        pos = next.enter + 5;
+                    } else {
+                        pos = 3500;
+                    }
+
+                    if ( self.scroller ){
+
+                        self.scroller.scrollTo(0, -pos, 500);
+                    } else {
+
+                        $('body').animate({
+                            scrollTop: pos
+                        }, {
+                            duration: 500,
+                            complete: function(){
+                                $(window).trigger('scroll');
+                            }
+                        });
+                    }
+                });
+
+                self.on('scroll', function ( e, scr ){
                     
-                    var pos = Math.max( self.scroller ? -self.scroller.y : $(this).scrollTop(), 0)
+                    var pos = Math.max(scr, 0)
                         ,i
                         ,l
                         ;
@@ -305,18 +354,13 @@ define(
 
                     after.sort(sortExitDec);
                     before.sort(sortEnterAsc);
-                }
-
-                if ( self.scroller ){
-                    self.scroller.on('scroll', scrollCallback);
-                } else {
-                    $(window).on('scroll', scrollCallback);
-                }
+                });
             },
 
             initControls: function(){
                 var self = this
                     ,$mid = $('#middle').appendTo('#wrap-outer')
+                    ,$headings = $('#headings').appendTo('#wrap-outer')
                     ,$inputEnergy = $mid.find('.energy-controls .input')
                     ,$inputMass = $mid.find('.mass-controls .input')
                     ,$win = $(window)
@@ -342,17 +386,18 @@ define(
                         ;
                 }, 100);
 
-                function scrollCallback(){
+                self.on('scroll', function ( e, scr ){
                     if (disable){
                         return;
                     }
 
-                    var scroll = ((self.scroller ? -self.scroller.y : $win.scrollTop()) + fudge - $mid.height() * (1-self.scaleFactor) * 0.4) / self.scaleFactor
+                    var scroll = (scr + fudge - $mid.height() * (1-self.scaleFactor) * 0.4) / self.scaleFactor
                         ,val
                         ;
                     
                     if ( scroll > 0 ){
                         $mid.removeClass('outside');
+                        $headings.removeClass('outside');
 
                         val = self.scaleEnergy.invert(scroll);
                         idxE = getNearest(dataEnergy, val);
@@ -372,20 +417,17 @@ define(
                         $inputEnergy.find('input').val('');
                         $inputMass.find('input').val('');
                         $mid.addClass('outside');
+                        $headings.addClass('outside');
                     }
 
                     if ( scroll > self.scaleEnergy.range()[1] ){
                         $mid.fadeOut('fast');
+                        $headings.fadeOut('fast');
                     } else {
                         $mid.fadeIn('fast');
+                        $headings.fadeIn('fast');
                     }
-                }
-
-                if ( self.scroller ){
-                    self.scroller.on('scroll', scrollCallback);
-                } else {
-                    $(window).on('scroll', scrollCallback);
-                }
+                });
 
                 function scrollTo(){
                     var $this = $(this)
@@ -398,28 +440,35 @@ define(
                         ;
                     
                     if (pos && pos > 0 ){
-                        $('body').animate({
-                            scrollTop: pos
-                        }, {
-                            duration: 500,
-                            complete: function(){
-                                disable = false;
-                                $(window).trigger('scroll');
-                            }
-                        });
+
+                        if ( self.scroller ){
+
+                            self.scroller.scrollBy(0, -pos, 500);
+                        } else {
+
+                            $('body').animate({
+                                scrollTop: pos
+                            }, {
+                                duration: 500,
+                                complete: function(){
+                                    disable = false;
+                                    $(window).trigger('scroll');
+                                }
+                            });
+                        }
                     }
                 }
 
                 $(document).on({
-                    'keyup': function( e ){
-                        disable = true;
-                        clearTimeout(to);
-                        if ( e.keyCode === 13 ){
-                            scrollTo.call(this);
-                        } else {
-                            to = setTimeout(scrollTo.bind(this), 1000);
-                        }
-                    },
+                    // 'keyup': function( e ){
+                    //     disable = true;
+                    //     clearTimeout(to);
+                    //     if ( e.keyCode === 13 ){
+                    //         scrollTo.call(this);
+                    //     } else {
+                    //         to = setTimeout(scrollTo.bind(this), 1000);
+                    //     }
+                    // },
                     'blur': function(){
                         disable = false;
                         $(window).trigger('scroll');
@@ -464,23 +513,61 @@ define(
                     ,axis = d3.svg.axis()
                     ,width = 100
                     ,domain = scale.domain()
+                    ,axesGrp
+                    ,tick
+                    ,vals
+                    ,arr
                     ;
 
                 axis.scale( scale )
                     .orient( orientation || 'left' )
-                    .tickFormat( function(n){
-                        return Math.abs(n / Math.pow(10, Math.round(log10(n))) - 1) < 1e-4 ? ['(', Math.round(log10(n)), ')'].join(' ') : '';
-                    })
+                    .tickFormat('')
                     .innerTickSize( 4 )
                     // .outerTickSize( 20 )
                     ;
                 
-                svg.attr('class', 'axis')
+                axesGrp = svg.attr('class', 'axis')
                     .attr('width', width)
                     .attr('height', scale.range()[1])
                     .append('g')
-                    .attr('transform', 'translate('+ (orientation === 'left' ? width - 1 : 1) +','+self.axisOffset+')')
+                    ;
+
+                axesGrp.attr('transform', 'translate('+ (orientation === 'left' ? width - 1 : 1) +','+self.axisOffset+')')
                     .call( axis )
+                    ;
+
+                arr = scale.ticks();
+                vals = [];
+                for ( var i = 0, l = arr.length; i < l; ++i ){
+                    
+                    if (Math.abs(arr[i] / Math.pow(10, Math.round(log10(arr[i]))) - 1) < 1e-4){
+                        vals.push( arr[i] );
+                    }
+                }
+
+                tick = axesGrp.append('g').selectAll('text').data( vals )
+                    .enter()
+                    .append('g')
+                    .attr('class', 'tick-labels')
+                    .attr('transform', function(d){
+                        return 'translate(0,'+scale(d)+')';
+                    })
+                    ;
+
+                tick.append('line')
+                    .attr('x2', (orientation === 'left' ? -8 : 8))
+                    .attr('y2', 0)
+                    ;
+                tick.append('text')
+                    .attr('x', (orientation === 'left' ? -20 : 20))
+                    .attr('text-anchor', (orientation === 'left')? 'end': 'start')
+                    .attr('alignment-baseline', 'central')
+                    .text('10')
+                    .append('tspan')
+                    .attr('baseline-shift', 'super')
+                    .text(function(n){
+                        return Math.round(log10(n));  
+                    })
                     ;
 
                 // scale the original axis by a value and return the d3 scale

@@ -1,12 +1,23 @@
 ---
 layout: default
 ---
+<div id="headings" class="outside">
+    <div class="left">
+        <h6 class="heading-energy">Energy...</h6>
+    </div>
+    <div class="right">
+        <h6 class="heading-mass">Mass of...</h6>
+    </div>
+</div>
 <div id="middle" class="outside">
+    <div id="next-btn">
+        next
+    </div>
     <div class="energy-controls">
         <div class="input">
-            <input type="text" class="meter"/>
+            <input type="text" class="meter" disabled="disabled"/>
             <span class="x10">x 10</span>
-            <input type="text" class="mag"/>
+            <input type="text" class="mag" disabled="disabled"/>
         </div>
         <div class="select-wrap">
             <select>
@@ -28,9 +39,9 @@ layout: default
     </div>
     <div class="mass-controls">
         <div class="input">
-            <input type="text" class="meter"/>
+            <input type="text" class="meter" disabled="disabled"/>
             <span class="x10">x 10</span>
-            <input type="text" class="mag"/>
+            <input type="text" class="mag" disabled="disabled"/>
         </div>
         <div class="select-wrap">
             <select>
@@ -67,7 +78,7 @@ layout: default
         <p>The "c<sup>2</sup>" is the speed of light squared.</p>
     </section>
     <section data-enter="1400" data-exit="1800">
-        <p>The speed of light, "c<sup>2</sup>", is a <strong>constant</strong> of nature. So it doesn't change. You can think of it like a unit conversion factor.
+        <p>The speed of light, "c", is a <strong>constant</strong> of nature. It doesn't change, so you can think of it like a unit conversion factor.
         </p>
     </section>
     <section data-enter="1800" data-exit="2200">
@@ -79,7 +90,6 @@ layout: default
     <section data-enter="2600" data-exit="3000">
         <p>Just one more thing: E = mc<sup>2</sup> isn't the whole story. The MinutePhysics video at the bottom of the page explains what's missing.</p>
     </section>
-
 </div>
 <div id="small-screen-msg">
   <p>Looks like your screen is cutting off some of the content. Try rotating your device or using a larger screen. (sorry, there's a LOT of stuff going on and we couldn't fit it inside smaller screen widths)</p>
