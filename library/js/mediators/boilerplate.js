@@ -20,6 +20,8 @@ define(
 
         'use strict';
 
+        var transformStyle = Modernizr.prefixed('transform');
+
         function sortData( a, b ){
             return a[0] - b[0];
         }
@@ -41,14 +43,14 @@ define(
 
         function throttle( fn, delay ){
             var to
-                ,cb = function(){
+                ,cb = function( args ){
                     to = null;
-                    fn();
+                    fn.apply(this, args);
                 }
                 ;
             return function(){
                 if ( !to ){
-                    to = setTimeout( cb, delay );
+                    to = setTimeout( cb.bind(this, arguments), delay );
                 }
             };
         }
@@ -167,16 +169,19 @@ define(
                 // backgrounds
                 self.on('scroll', function( e, scroll ){
 
+                    var i, l, pos;
+
                     if ( scroll < bgCuttoff  ){
                         $bgs.fadeIn('slow');
                     } else {
                         $bgs.fadeOut('slow');
                     }
                     
-                    $bgs.each(function( i ){
-                        var pos = -scroll * Math.sqrt(i+0.5) * 0.5;
-                        $(this).css('transform', 'translate3d(0,'+pos+'px,0)');
-                    });
+                    for ( i = 0, l = $bgs.length; i < l; ++i ){
+                        
+                        pos = -scroll * (i+0.5) * 0.5;
+                        $bgs[i].style[transformStyle] = 'translate3d(0,'+pos+'px,0)';
+                    }
                 });
 
                 // resizing
@@ -217,14 +222,17 @@ define(
                     $win.scrollTop( s );
                 });
 
-                var scrTimer;
-                self.on('scroll', function(){
-                    clearTimeout(scrTimer);
-                    wrap.addClass('scrolling');
-                    scrTimer = setTimeout(function(){
-                        wrap.removeClass('scrolling');
-                    }, 400);
-                });
+                // triggers recalc style... only needed on desktop (over events)
+                if ( !Modernizr.touch ){
+                    var scrTimer;
+                    self.on('scroll', function(){
+                        clearTimeout(scrTimer);
+                        wrap.addClass('scrolling');
+                        scrTimer = setTimeout(function(){
+                            wrap.removeClass('scrolling');
+                        }, 400);
+                    });
+                }
             },
 
             niceLoad: function( fn ){
@@ -302,8 +310,8 @@ define(
                     }
                 });
 
-                self.on('scroll', function ( e, scr ){
-                    
+                self.on('scroll', throttle(function ( e, scr ){
+
                     var pos = Math.max(scr, 0)
                         ,i
                         ,l
@@ -354,7 +362,7 @@ define(
 
                     after.sort(sortExitDec);
                     before.sort(sortEnterAsc);
-                });
+                }, 100));
             },
 
             initControls: function(){
@@ -372,6 +380,19 @@ define(
                     ,$markersMass = $('#scale-right .marker')
                     ,idxE
                     ,idxM
+                    ,midHeight = $mid.height()
+                    ,endScroll = self.scaleEnergy.range()[1]
+                    ,els = {
+                        inputs: $mid.find('input')
+                        ,energy: {
+                            meter: $inputEnergy.find('.meter')
+                            ,mag: $inputEnergy.find('.mag')
+                        }
+                        ,mass: {
+                            meter: $inputMass.find('.meter')
+                            ,mag: $inputMass.find('.mag')
+                        }
+                    }
                     ;
 
                 var highlightNearest = throttle(function(){
@@ -386,12 +407,12 @@ define(
                         ;
                 }, 100);
 
-                self.on('scroll', function ( e, scr ){
+                self.on('scroll', throttle(function ( e, scr ){
                     if (disable){
                         return;
                     }
 
-                    var scroll = (scr + fudge - $mid.height() * (1-self.scaleFactor) * 0.4) / self.scaleFactor
+                    var scroll = (scr + fudge - midHeight * (1-self.scaleFactor) * 0.4) / self.scaleFactor
                         ,val
                         ;
                     
@@ -402,32 +423,31 @@ define(
                         val = self.scaleEnergy.invert(scroll);
                         idxE = getNearest(dataEnergy, val);
                         val = format(val).split('e');
-                        $inputEnergy.find('.meter').val( val[ 0 ] );
-                        $inputEnergy.find('.mag').val( val[ 1 ] );
+                        els.energy.meter.val( val[ 0 ] );
+                        els.energy.mag.val( val[ 1 ] );
 
                         val = self.scaleMass.invert(scroll);
                         idxM = getNearest(dataMass, val);
                         val = format(val).split('e');
-                        $inputMass.find('.meter').val( val[ 0 ] );
-                        $inputMass.find('.mag').val( val[ 1 ] );
+                        els.mass.meter.val( val[ 0 ] );
+                        els.mass.mag.val( val[ 1 ] );
 
                         highlightNearest();
 
                     } else {
-                        $inputEnergy.find('input').val('');
-                        $inputMass.find('input').val('');
+                        els.inputs.val('');
                         $mid.addClass('outside');
                         $headings.addClass('outside');
                     }
 
-                    if ( scroll > self.scaleEnergy.range()[1] ){
+                    if ( scroll > endScroll ){
                         $mid.fadeOut('fast');
                         $headings.fadeOut('fast');
                     } else {
                         $mid.fadeIn('fast');
                         $headings.fadeIn('fast');
                     }
-                });
+                }, 80));
 
                 function scrollTo(){
                     var $this = $(this)
