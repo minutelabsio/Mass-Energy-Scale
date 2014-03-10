@@ -87,7 +87,7 @@ define(
 
                 self.min = 1e-20;
                 self.max = 1e49;
-                self.height = 13000;
+                self.height = 16000;
                 self.axisOffset = 30;
                 self.scaleFactor = false;
 
