@@ -43,6 +43,7 @@ define(
 
         function throttle( fn, delay ){
             var to
+                ,lastTo
                 ,cb = function( args ){
                     to = null;
                     fn.apply(this, args);
@@ -51,6 +52,10 @@ define(
             return function(){
                 if ( !to ){
                     to = setTimeout( cb.bind(this, arguments), delay );
+                } else {
+                    // make sure the last one gets called
+                    clearTimeout( lastTo );
+                    lastTo = setTimeout( cb.bind(this, arguments), delay );
                 }
             };
         }
@@ -291,7 +296,7 @@ define(
                     if ( next ){
                         pos = next.enter + 5;
                     } else {
-                        pos = 3500;
+                        pos = 3550;
                     }
 
                     if ( self.scroller ){

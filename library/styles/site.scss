@@ -693,16 +693,30 @@ $offcenter: 100px;
     }
     .heading-energy {
         text-align: right;
-        padding-right: 4em;
+        padding-right: 2em;
         background: $deep-grey-dark;
         color: $grey-light;
         font-family: $font-family-mono-light;
         margin-right: 98px;
     }
     .heading-mass {
-        padding-left: 4em;
+        padding-left: 2em;
         background: $grey-dark;
         margin-left: 98px;
+    }
+    .heading-mid {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 196px;
+        margin: 0;
+        font-size: 17px;
+        font-weight: normal;
+        text-align: center;
+        margin-left: -98px;
+        padding: 0.7em 2.3em;
+        background: white;
+        @include box-sizing( border-box );
     }
 }
 
@@ -780,6 +794,11 @@ $offcenter: 100px;
         }
         .heading-mass {
             margin-left: 68px;
+        }
+        .heading-mid {
+            width: 137px;
+            margin-left: -69px;
+            padding: 0.7em 0;
         }
     }
 }
