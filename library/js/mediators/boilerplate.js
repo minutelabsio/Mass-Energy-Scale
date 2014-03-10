@@ -108,7 +108,18 @@ define(
              */
             initEvents : function(){
 
-                var self = this;
+                var self = this
+                    ;
+
+                $(document).on('click.more-link-cfm', '.marker .more', function( e ){
+
+                    $(document).off('.more-link-cfm');
+                    
+                    if ( !window.confirm('Just FYI, the "more info" will open a new tab') ){
+                        e.preventDefault();
+                        return false;
+                    }
+                });
             },
 
             /**
