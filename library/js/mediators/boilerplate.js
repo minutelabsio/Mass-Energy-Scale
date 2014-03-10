@@ -111,7 +111,7 @@ define(
                 var self = this
                     ;
 
-                $(document).on('click.more-link-cfm', '.marker .more', function( e ){
+                $(document).on('click.more-link-cfm tap.more-link-cfm', '.marker .more', function( e ){
 
                     $(document).off('.more-link-cfm');
                     
@@ -274,7 +274,7 @@ define(
                     }
                 });
 
-                $(document).on('click', '#next-btn', function( e ){
+                $(document).on('click tap', '#next-btn', function( e ){
 
                     var next = before[ 0 ]
                         ,pos
@@ -283,12 +283,12 @@ define(
                     if ( next ){
                         pos = next.enter + 5;
                     } else {
-                        pos = $('#scale-wrap').offset().top - 300;
+                        pos = 3500;
                     }
 
                     if ( self.scroller ){
 
-                        self.scroller.scrollBy(0, -pos, 500);
+                        self.scroller.scrollTo(0, -pos, 500);
                     } else {
 
                         $('body').animate({
