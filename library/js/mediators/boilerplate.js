@@ -263,6 +263,34 @@ define(
                     }
                 });
 
+                $(document).on('click', '#next-btn', function( e ){
+
+                    var next = before[ 0 ]
+                        ,pos
+                        ;
+
+                    if ( next ){
+                        pos = next.enter + 5;
+                    } else {
+                        pos = $('#scale-wrap').offset().top - 300;
+                    }
+
+                    if ( self.scroller ){
+
+                        self.scroller.scrollBy(0, -pos, 500);
+                    } else {
+
+                        $('body').animate({
+                            scrollTop: pos
+                        }, {
+                            duration: 500,
+                            complete: function(){
+                                $(window).trigger('scroll');
+                            }
+                        });
+                    }
+                });
+
                 self.on('scroll', function ( e, scr ){
                     
                     var pos = Math.max(scr, 0)
@@ -321,6 +349,7 @@ define(
             initControls: function(){
                 var self = this
                     ,$mid = $('#middle').appendTo('#wrap-outer')
+                    ,$headings = $('#headings').appendTo('#wrap-outer')
                     ,$inputEnergy = $mid.find('.energy-controls .input')
                     ,$inputMass = $mid.find('.mass-controls .input')
                     ,$win = $(window)
@@ -357,6 +386,7 @@ define(
                     
                     if ( scroll > 0 ){
                         $mid.removeClass('outside');
+                        $headings.removeClass('outside');
 
                         val = self.scaleEnergy.invert(scroll);
                         idxE = getNearest(dataEnergy, val);
@@ -376,12 +406,15 @@ define(
                         $inputEnergy.find('input').val('');
                         $inputMass.find('input').val('');
                         $mid.addClass('outside');
+                        $headings.addClass('outside');
                     }
 
                     if ( scroll > self.scaleEnergy.range()[1] ){
                         $mid.fadeOut('fast');
+                        $headings.fadeOut('fast');
                     } else {
                         $mid.fadeIn('fast');
+                        $headings.fadeIn('fast');
                     }
                 });
 
@@ -469,23 +502,61 @@ define(
                     ,axis = d3.svg.axis()
                     ,width = 100
                     ,domain = scale.domain()
+                    ,axesGrp
+                    ,tick
+                    ,vals
+                    ,arr
                     ;
 
                 axis.scale( scale )
                     .orient( orientation || 'left' )
-                    .tickFormat( function(n){
-                        return Math.abs(n / Math.pow(10, Math.round(log10(n))) - 1) < 1e-4 ? ['(', Math.round(log10(n)), ')'].join(' ') : '';
-                    })
+                    .tickFormat('')
                     .innerTickSize( 4 )
                     // .outerTickSize( 20 )
                     ;
                 
-                svg.attr('class', 'axis')
+                axesGrp = svg.attr('class', 'axis')
                     .attr('width', width)
                     .attr('height', scale.range()[1])
                     .append('g')
-                    .attr('transform', 'translate('+ (orientation === 'left' ? width - 1 : 1) +','+self.axisOffset+')')
+                    ;
+
+                axesGrp.attr('transform', 'translate('+ (orientation === 'left' ? width - 1 : 1) +','+self.axisOffset+')')
                     .call( axis )
+                    ;
+
+                arr = scale.ticks();
+                vals = [];
+                for ( var i = 0, l = arr.length; i < l; ++i ){
+                    
+                    if (Math.abs(arr[i] / Math.pow(10, Math.round(log10(arr[i]))) - 1) < 1e-4){
+                        vals.push( arr[i] );
+                    }
+                }
+
+                tick = axesGrp.append('g').selectAll('text').data( vals )
+                    .enter()
+                    .append('g')
+                    .attr('class', 'tick-labels')
+                    .attr('transform', function(d){
+                        return 'translate(0,'+scale(d)+')';
+                    })
+                    ;
+
+                tick.append('line')
+                    .attr('x2', (orientation === 'left' ? -8 : 8))
+                    .attr('y2', 0)
+                    ;
+                tick.append('text')
+                    .attr('x', (orientation === 'left' ? -20 : 20))
+                    .attr('text-anchor', (orientation === 'left')? 'end': 'start')
+                    .attr('alignment-baseline', 'central')
+                    .text('10')
+                    .append('tspan')
+                    .attr('baseline-shift', 'super')
+                    .text(function(n){
+                        return Math.round(log10(n));  
+                    })
                     ;
 
                 // scale the original axis by a value and return the d3 scale

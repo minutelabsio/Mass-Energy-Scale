@@ -42,8 +42,8 @@
     [ 3.85e24, "that strikes the earth (from the Sun) every day", "http://en.wikipedia.org/wiki/Orders_of_magnitude_(energy)#cite_note-sun1-150", false, "energy/e23-Absorbed-by-Earth-from-Sun.png:150:30"],
     [ 4e25, "held in 1 cubic meter of a Magnetar's magnetic field", "http://en.wikipedia.org/wiki/Magnetar", false, "energy/e26-Cubic-meter-of-magnetar.png:60:20"],
     [ 3.84e26, "produced by the Sun, every second", "http://en.wikipedia.org/wiki/Sun#Core", false, "energy/e27-Sun-every-second.png:70:20"],
-    [ 2.138e29, "needed to stop the Earth rotating", "http://en.wikipedia.org/wiki/Rotational_energy", false, "energy/e30-The-Earth-rotational-energy.png:150:20"],
-
+    [ 2.138e29, "needed to stop the Earth rotating", "http://en.wikipedia.org/wiki/Rotational_energy", false, "energy/e30-The-Earth-rotational-energy.png:180:-150"],
+    [ 3.31e31, "produced by the Sun, every day", "http://en.wikipedia.org/wiki/Sun#Core", -100, "energy/e27-Sun-every-second.png:180:-260"],
     [ 1e32, "delivered by the laser on the Death Star (if it were real)", "http://www.youtube.com/watch?v=HDL0KAm9Cbs", false, "energy/e32-Death-Star.png:150:-130"],
     [ 5e36, "radiated by all stars in the Milky Way galaxy in one second", "http://en.wikipedia.org/wiki/Milky_Way", false, "energy/e37-Radiated-by-Milky-way.png:150:-160"],
     
