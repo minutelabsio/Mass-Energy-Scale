@@ -28,14 +28,17 @@
 <body class="loading">
   
   <div id="wrap-outer">
-    <div data-offcanvas="wrap">
-      {% include nav.html %}
-      <div id="viewport" role="main">
-        
-        {{ content }}
+    <div id="scroll-layer">
+      <div data-offcanvas="wrap">
+        {% include nav.html %}
+        <div id="viewport" role="main">
+          
+          {{ content }}
 
+        </div>
       </div>
     </div>
+    <div id="floating"></div>
   </div>
 
   <div id="mp-loader"></div>

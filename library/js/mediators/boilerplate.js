@@ -43,6 +43,7 @@ define(
 
         function throttle( fn, delay ){
             var to
+                ,lastTo
                 ,cb = function( args ){
                     to = null;
                     fn.apply(this, args);
@@ -51,6 +52,10 @@ define(
             return function(){
                 if ( !to ){
                     to = setTimeout( cb.bind(this, arguments), delay );
+                } else {
+                    // make sure the last one gets called
+                    clearTimeout( lastTo );
+                    lastTo = setTimeout( cb.bind(this, arguments), delay );
                 }
             };
         }
@@ -134,7 +139,7 @@ define(
                     ,$win = $(window)
                     ,wrap = $('#scale-wrap').height(self.height)
                     ,$eqn = $('#equation')
-                    ,$bgs = $('<div/><div/><div/><div/>').addClass('star-bg').appendTo($('<div>').addClass('bgs-wrap').appendTo('#wrap-outer'))
+                    ,$bgs = $('<div/><div/><div/><div/>').addClass('star-bg').appendTo($('<div>').addClass('bgs-wrap').appendTo('#floating'))
                     ,bgCuttoff = 3300
                     ,scaleEnergy = d3.scale.log()
                         .domain([ self.min, self.max ])
@@ -215,7 +220,7 @@ define(
                 $win.scrollTop( 0 );
                 self.initControls();
                 self.initExplanations();
-                $('#small-screen-msg').appendTo('#wrap-outer');
+                $('#small-screen-msg').appendTo('#floating');
 
                 self.niceLoad(function(){
                     $('body').removeClass('loading');
@@ -247,7 +252,7 @@ define(
             initExplanations: function(){
 
                 var self = this
-                    ,$expl = $('#explanations').appendTo('#wrap-outer')
+                    ,$expl = $('#explanations').appendTo('#floating')
                     ,before = []
                     ,inside = []
                     ,after = []
@@ -289,9 +294,9 @@ define(
                         ;
 
                     if ( next ){
-                        pos = next.enter + 5;
+                        pos = next.enter + 10;
                     } else {
-                        pos = 3500;
+                        pos = 3550;
                     }
 
                     if ( self.scroller ){
@@ -367,8 +372,8 @@ define(
 
             initControls: function(){
                 var self = this
-                    ,$mid = $('#middle').appendTo('#wrap-outer')
-                    ,$headings = $('#headings').appendTo('#wrap-outer')
+                    ,$mid = $('#middle').appendTo('#floating')
+                    ,$headings = $('#headings').appendTo('#floating')
                     ,$inputEnergy = $mid.find('.energy-controls .input')
                     ,$inputMass = $mid.find('.mass-controls .input')
                     ,$win = $(window)

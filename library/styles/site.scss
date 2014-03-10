@@ -34,6 +34,11 @@ sup {
     z-index: 2;
 }
 
+#scroll-layer {
+    position: relative;
+    z-index: 2;
+}
+
 .offcanvas-inside {
     @include transition( transform .35s ease-out );
 
@@ -42,10 +47,17 @@ sup {
     }
 }
 
+#floating {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    @extend .offcanvas-inside;
+}
+
 // using iScroll
 .touch #wrap-outer {
     overflow: hidden;
-    -webkit-transform-style: preserve-3d;
 }
 
 $offcenter: 100px;
@@ -334,7 +346,7 @@ $offcenter: 100px;
     font: 30px/1.2 $font-family-comic;
     letter-spacing: 1px;
 
-    @extend .offcanvas-inside;
+    // @extend .offcanvas-inside;
 
     section {
         position: absolute;
@@ -448,20 +460,7 @@ $offcenter: 100px;
     width: $width;
     color: $deep-grey-dark;
 
-    @extend .offcanvas-inside;
-
-    // &:after {
-    //     content: '';
-    //     position: absolute;
-    //     top: 50%;
-    //     left: 50%;
-    //     background: image-url('double-sided-arrow.png') no-repeat center center;
-    //     background-size: 100%;
-    //     width: 54px;
-    //     height: 30px;
-    //     margin-top: -4px;
-    //     margin-left: -27px;
-    // }
+    // @extend .offcanvas-inside;
     
     input {
         font-family: $font-family-minute-labs;
@@ -681,7 +680,7 @@ $offcenter: 100px;
     left: 0;
     z-index: 2;
     @include transition( opacity 0.3s ease );
-    @extend .offcanvas-inside;
+    // @extend .offcanvas-inside;
 
     font-size: 30px;
 
@@ -706,16 +705,30 @@ $offcenter: 100px;
     }
     .heading-energy {
         text-align: right;
-        padding-right: 4em;
+        padding-right: 2em;
         background: $deep-grey-dark;
         color: $grey-light;
         font-family: $font-family-mono-light;
         margin-right: 98px;
     }
     .heading-mass {
-        padding-left: 4em;
+        padding-left: 2em;
         background: $grey-dark;
         margin-left: 98px;
+    }
+    .heading-mid {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 196px;
+        margin: 0;
+        font-size: 17px;
+        font-weight: normal;
+        text-align: center;
+        margin-left: -98px;
+        padding: 0.7em 2.3em;
+        background: white;
+        @include box-sizing( border-box );
     }
 }
 
@@ -793,6 +806,11 @@ $offcenter: 100px;
         }
         .heading-mass {
             margin-left: 68px;
+        }
+        .heading-mid {
+            width: 137px;
+            margin-left: -69px;
+            padding: 0.7em 0;
         }
     }
 }

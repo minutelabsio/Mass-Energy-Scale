@@ -2,10 +2,10 @@ permalink: /:year-:month-:day/:title
 markdown: rdiscount
 exclude: ["README.md", "CNAME", "LICENSE", "build", "config.rb", "Gruntfile.js", "package.json", "jshint.json"]
 
-title : "Mass is Energy" # changeme
+title : "Mass-Energy Scale"
 id : "" # changeme
-description : "Short description" # changeme
-thumb: "http://minutelabs.io/assets/THUMB_IMAGE" # changem
+description : "Understandable masses and energies and how they relate"
+thumb: "thumb.gif"
 version: "0.0.8"
 
 ml_url: "http://minutelabs.io"
