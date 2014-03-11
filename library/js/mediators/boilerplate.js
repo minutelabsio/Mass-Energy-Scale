@@ -227,7 +227,9 @@ define(
                 self.initExplanations();
                 
                 self.niceLoad(function(){
-                    $('body').removeClass('loading');
+                    setTimeout(function(){
+                        $('body').removeClass('loading');
+                    }, 500);
                     $win.scrollTop( s );
                 });
 
@@ -308,7 +310,7 @@ define(
                         self.scroller.scrollTo(0, -pos, 500);
                     } else {
 
-                        $('body').animate({
+                        $('html,body').animate({
                             scrollTop: pos
                         }, {
                             duration: 500,
@@ -475,7 +477,7 @@ define(
                             self.scroller.scrollBy(0, -pos, 500);
                         } else {
 
-                            $('body').animate({
+                            $('html,body').animate({
                                 scrollTop: pos
                             }, {
                                 duration: 500,
@@ -511,7 +513,7 @@ define(
                         self.scroller.scrollBy(0, -pos, 500);
                     } else {
 
-                        $('body').animate({
+                        $('html,body').animate({
                             scrollTop: pos
                         }, {
                             duration: 500,
