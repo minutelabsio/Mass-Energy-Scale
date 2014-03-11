@@ -192,7 +192,7 @@ define(
                 // resizing
                 $win.on('resize', function(){
                     var margin;
-                    var scale = ( $win.width() < 1020 ) ? 0.7 : 1;
+                    var scale = ( $win.width() < 1060 ) ? 0.7 : 1;
 
                     if ( scale !== self.scaleFactor ){
                         self.scaleFactor = scale;
