@@ -139,6 +139,7 @@ define(
                     ,$win = $(window)
                     ,wrap = $('#scale-wrap').height(self.height)
                     ,$eqn = $('#equation')
+                    ,$next = $('#next-btn')
                     ,$bgs = $('<div/><div/>' + (Modernizr.touch ? '' : '<div/><div/>') ).addClass('star-bg').appendTo($('<div>').addClass('bgs-wrap').appendTo('#floating'))
                     ,bgCuttoff = 3300
                     ,scaleEnergy = d3.scale.log()
@@ -178,8 +179,10 @@ define(
 
                     if ( scroll < bgCuttoff  ){
                         $bgs.fadeIn('slow');
+                        $next.fadeIn('fast');
                     } else {
                         $bgs.fadeOut('slow');
+                        $next.fadeOut('fast');
                     }
                     
                     for ( i = 0, l = $bgs.length; i < l; ++i ){
@@ -519,17 +522,21 @@ define(
                     }
                 })
                 .on('change', '#middle .energy-controls select', function(){
+                    $('#headings .heading-energy .unit').text('in units of ' + $(this).find('option:selected').text());
                     // change the scale and remember it
                     self.scaleEnergy = self.axisEnergy.scaleBy( 1 / parseFloat($(this).val()) );
                     // reset numbers
                     $(window).trigger('scroll');
                 })
                 .on('change', '#middle .mass-controls select', function(){
+                    $('#headings .heading-mass .unit').text('in units of ' + $(this).find('option:selected').text());
                     // change the scale and remember it
                     self.scaleMass = self.axisMass.scaleBy( 1 / parseFloat($(this).val()) );
                     // reset numbers
                     $(window).trigger('scroll');
-                });
+                })
+                .find('#middle select').trigger('change')
+                ;
             },
 
             placeAxis : function( el, scale, orientation ){
@@ -541,8 +548,7 @@ define(
                     ,domain = scale.domain()
                     ,axesGrp
                     ,tick
-                    ,vals
-                    ,arr
+                    ,tickText
                     ;
 
                 axis.scale( scale )
@@ -562,39 +568,51 @@ define(
                     .call( axis )
                     ;
 
-                arr = scale.ticks();
-                vals = [];
-                for ( var i = 0, l = arr.length; i < l; ++i ){
-                    
-                    if (Math.abs(arr[i] / Math.pow(10, Math.round(log10(arr[i]))) - 1) < 1e-4){
-                        vals.push( arr[i] );
+                function getMajorTicks( scale ){
+
+                    var arr = scale.ticks();
+                    var vals = [];
+                    for ( var i = 0, l = arr.length; i < l; ++i ){
+                        
+                        if (Math.abs(arr[i] / Math.pow(10, Math.round(log10(arr[i]))) - 1) < 1e-4){
+                            vals.push( arr[i] );
+                        }
                     }
+
+                    return vals;
+                }                
+
+                function setTickText( scale ){
+                    axesGrp.select('.tick-text').remove();
+                    tickText = axesGrp.append('g').attr('class', 'tick-text').selectAll('text').data( getMajorTicks(scale) );
+                    tick = tickText.enter()
+                        .append('g')
+                        .attr('class', 'tick-labels')
+                        .attr('transform', function(d){
+                            return 'translate(0,'+scale(d)+')';
+                        })
+                        ;
+
+                    tick.append('line')
+                        .attr('x2', (orientation === 'left' ? -8 : 8))
+                        .attr('y2', 0)
+                        ;
+                    tick.append('text')
+                        .attr('x', (orientation === 'left' ? -20 : 20))
+                        .attr('text-anchor', (orientation === 'left')? 'end': 'start')
+                        .attr('alignment-baseline', 'central')
+                        .text('10')
+                        .append('tspan')
+                        .attr('baseline-shift', 'super')
+                        .text(function(n){
+                            return Math.round(log10(n));  
+                        })
+                        ;
+
+                    tickText.exit().remove();
                 }
 
-                tick = axesGrp.append('g').selectAll('text').data( vals )
-                    .enter()
-                    .append('g')
-                    .attr('class', 'tick-labels')
-                    .attr('transform', function(d){
-                        return 'translate(0,'+scale(d)+')';
-                    })
-                    ;
-
-                tick.append('line')
-                    .attr('x2', (orientation === 'left' ? -8 : 8))
-                    .attr('y2', 0)
-                    ;
-                tick.append('text')
-                    .attr('x', (orientation === 'left' ? -20 : 20))
-                    .attr('text-anchor', (orientation === 'left')? 'end': 'start')
-                    .attr('alignment-baseline', 'central')
-                    .text('10')
-                    .append('tspan')
-                    .attr('baseline-shift', 'super')
-                    .text(function(n){
-                        return Math.round(log10(n));  
-                    })
-                    ;
+                setTickText( scale );
 
                 // scale the original axis by a value and return the d3 scale
                 function scaleBy( val ){
@@ -602,6 +620,7 @@ define(
                     var sc = scale.copy().domain([ domain[0] * val, domain[1] * val ]);
                     axis.scale( sc );
                     svg.select('g').call( axis );
+                    setTickText( sc );
                     return sc;
                 }
 
