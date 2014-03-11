@@ -329,14 +329,16 @@ $offcenter: 100px;
     color: $deep-grey-dark;
 
     .equals {
-        position: relative;
-        right: 0.2em;
-        vertical-align: middle;
+        position: absolute;
+        left: -14px;
+        top: 8px;
     }
 
     .c2 {
-        position: relative;
-        left: 0.25em;
+        position: absolute;
+        left: 64px;
+        top: 0px;
+        width: 2em;
     }
 }
 #explanations {
