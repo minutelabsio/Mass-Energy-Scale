@@ -139,7 +139,7 @@ define(
                     ,$win = $(window)
                     ,wrap = $('#scale-wrap').height(self.height)
                     ,$eqn = $('#equation')
-                    ,$bgs = $('<div/><div/><div/><div/>').addClass('star-bg').appendTo($('<div>').addClass('bgs-wrap').appendTo('#floating'))
+                    //,$bgs = $('<div/><div/><div/><div/>').addClass('star-bg').appendTo($('<div>').addClass('bgs-wrap').appendTo('#floating'))
                     ,bgCuttoff = 3300
                     ,scaleEnergy = d3.scale.log()
                         .domain([ self.min, self.max ])
@@ -152,9 +152,9 @@ define(
                     ,s
                     ;
 
-                $bgs.each(function( i ){
-                    $(this).addClass( 'bg-'+i );
-                });
+                // $bgs.each(function( i ){
+                //     $(this).addClass( 'bg-'+i );
+                // });
 
                 if ( Modernizr.touch ){
                     self.scroller = new IScroll('#wrap-outer', { mouseWheel: true, probeType: 3, tap: true });
@@ -172,22 +172,22 @@ define(
                 }
 
                 // backgrounds
-                self.on('scroll', function( e, scroll ){
+                // self.on('scroll', function( e, scroll ){
 
-                    var i, l, pos;
+                //     var i, l, pos;
 
-                    if ( scroll < bgCuttoff  ){
-                        $bgs.fadeIn('slow');
-                    } else {
-                        $bgs.fadeOut('slow');
-                    }
+                //     if ( scroll < bgCuttoff  ){
+                //         $bgs.fadeIn('slow');
+                //     } else {
+                //         $bgs.fadeOut('slow');
+                //     }
                     
-                    for ( i = 0, l = $bgs.length; i < l; ++i ){
+                //     for ( i = 0, l = $bgs.length; i < l; ++i ){
                         
-                        pos = -scroll * (i+0.5) * 0.5;
-                        $bgs[i].style[transformStyle] = 'translate3d(0,'+pos+'px,0)';
-                    }
-                });
+                //         pos = -scroll * (i+0.5) * 0.5;
+                //         $bgs[i].style[transformStyle] = 'translate3d(0,'+pos+'px,0)';
+                //     }
+                // });
 
                 // resizing
                 $win.on('resize', function(){
