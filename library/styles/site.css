@@ -654,9 +654,10 @@ sup {
 /* line 452, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #video .title {
   text-align: center;
+  font-weight: normal;
 }
 
-/* line 457, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 458, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #middle {
   position: fixed;
   top: 300px;
@@ -667,19 +668,19 @@ sup {
   width: 156px;
   color: #1a1a1a;
 }
-/* line 470, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 471, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #middle input {
   font-family: "latin-modern-mono", Courier, monospace;
 }
-/* line 474, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 475, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #middle label {
   cursor: auto;
 }
-/* line 478, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 479, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #middle .select-wrap {
   height: 30px;
 }
-/* line 483, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 484, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #middle .energy,
 #middle .mass {
   position: relative;
@@ -697,14 +698,14 @@ sup {
   -o-transition: background 0.27s linear;
   transition: background 0.27s linear;
 }
-/* line 494, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 495, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #middle .energy label,
 #middle .mass label {
   font-family: "sf_cartoonist_hand", Helvetica, Arial, sans-serif;
   margin: 0;
   padding: 0;
 }
-/* line 500, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 501, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #middle .energy:after,
 #middle .mass:after {
   content: '';
@@ -713,15 +714,15 @@ sup {
   border: 23px solid transparent;
   margin-top: -22px;
 }
-/* line 509, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 510, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #middle .energy:after {
   left: -44px;
 }
-/* line 513, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 514, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #middle .mass:after {
   right: -44px;
 }
-/* line 517, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 518, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #middle .mass:before {
   content: '';
   position: absolute;
@@ -737,7 +738,7 @@ sup {
   background-image: -o-linear-gradient(left, #1a1a1a 0%, #c8c8c8 100%);
   background-image: linear-gradient(left, #1a1a1a 0%, #c8c8c8 100%);
 }
-/* line 529, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 530, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #middle .energy-controls,
 #middle .mass-controls {
   overflow: hidden;
@@ -749,7 +750,7 @@ sup {
   transition: opacity 0.3s linear;
   opacity: 1;
 }
-/* line 535, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 536, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #middle .energy-controls .input,
 #middle .mass-controls .input {
   -webkit-box-sizing: border-box;
@@ -765,15 +766,16 @@ sup {
   margin-bottom: 0.15em;
   background: #fff;
   text-align: left;
+  height: 43px;
 }
-/* line 544, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 546, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #middle .energy-controls .input .meter,
 #middle .mass-controls .input .meter {
   text-align: right;
   padding: 0.1em;
   margin: 0 -0.05em 0.2em -0.15em;
 }
-/* line 549, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 551, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #middle .energy-controls .input .mag,
 #middle .mass-controls .input .mag {
   width: 1.6em;
@@ -781,7 +783,7 @@ sup {
   vertical-align: super;
   margin-left: -0.35em;
 }
-/* line 556, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 558, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #middle .energy-controls input,
 #middle .mass-controls input {
   border: none;
@@ -791,7 +793,7 @@ sup {
   outline: none;
   border: 1px solid transparent;
 }
-/* line 564, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 566, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #middle .energy-controls select,
 #middle .mass-controls select {
   display: block;
@@ -799,18 +801,18 @@ sup {
   font-size: 12px;
   padding: 0;
 }
-/* line 573, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 575, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #middle .energy,
 #middle .energy-controls {
   background: #1a1a1a;
 }
-/* line 576, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 578, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #middle .energy .input,
 #middle .energy-controls .input {
   background: #1a1a1a;
   border-color: #c8c8c8;
 }
-/* line 579, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 581, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #middle .energy .input,
 #middle .energy .input input,
 #middle .energy-controls .input,
@@ -819,23 +821,23 @@ sup {
   color: #ededed;
   opacity: 1;
 }
-/* line 592, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 594, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #middle .energy:after,
 #middle .energy-controls:after {
   border-color: transparent #1a1a1a transparent transparent;
 }
-/* line 598, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 600, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #middle .mass,
 #middle .mass-controls {
   background: #c8c8c8;
 }
-/* line 601, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 603, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #middle .mass .input,
 #middle .mass-controls .input {
   background: #c8c8c8;
   border-color: #1a1a1a;
 }
-/* line 605, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 607, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #middle .mass .input,
 #middle .mass .input input,
 #middle .mass-controls .input,
@@ -844,41 +846,41 @@ sup {
   color: #1a1a1a;
   opacity: 1;
 }
-/* line 617, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 619, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #middle .mass select,
 #middle .mass-controls select {
   float: right;
 }
-/* line 620, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 622, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #middle .mass:after,
 #middle .mass-controls:after {
   border-color: transparent transparent transparent #c8c8c8;
 }
-/* line 625, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 627, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #middle .energy {
   color: #ededed;
 }
-/* line 632, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 634, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #middle.outside .energy:after,
 #middle.outside .mass:after,
 #middle.outside .mass:before {
   display: none;
 }
-/* line 635, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 637, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #middle.outside .energy {
   background: rgba(26, 26, 26, 0);
   color: #1a1a1a;
 }
-/* line 640, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 642, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #middle.outside .mass {
   background: rgba(200, 200, 200, 0);
 }
-/* line 645, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 647, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #middle.outside .energy-controls,
 #middle.outside .mass-controls {
   opacity: 0;
 }
-/* line 650, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 652, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #middle #next-btn {
   display: none;
   position: absolute;
@@ -900,7 +902,7 @@ sup {
   text-decoration: none;
   color: #1a1a1a;
 }
-/* line 667, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 669, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #middle #next-btn:before {
   content: '';
   position: absolute;
@@ -910,16 +912,16 @@ sup {
   border: 20px solid black;
   border-color: rgba(26, 26, 26, 0.8) transparent transparent;
 }
-/* line 677, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 679, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #middle #next-btn:hover {
   background-color: rgba(91, 191, 243, 0.5);
 }
-/* line 680, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 682, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #middle #next-btn:active {
   background-color: rgba(91, 191, 243, 0.8);
 }
 
-/* line 690, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 692, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #headings {
   position: fixed;
   top: 0;
@@ -932,12 +934,12 @@ sup {
   transition: opacity 0.3s ease;
   font-size: 30px;
 }
-/* line 701, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 703, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #headings.outside {
   opacity: 0;
   z-index: 0;
 }
-/* line 708, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 710, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #headings .left,
 #headings .right {
   float: left;
@@ -946,7 +948,7 @@ sup {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 715, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 717, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #headings .heading-mass,
 #headings .heading-energy {
   position: relative;
@@ -954,7 +956,7 @@ sup {
   padding: 0.5em 0;
   font-weight: normal;
 }
-/* line 721, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 723, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #headings .heading-mass .unit,
 #headings .heading-energy .unit {
   position: absolute;
@@ -963,7 +965,7 @@ sup {
   height: 3em;
   width: 300px;
 }
-/* line 729, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 731, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #headings .heading-energy {
   text-align: right;
   padding-right: 2em;
@@ -972,23 +974,23 @@ sup {
   font-family: "latin-modern-mono-light", Courier, monospace;
   margin-right: 98px;
 }
-/* line 736, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 738, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #headings .heading-energy .unit {
   left: 1em;
   text-align: left;
 }
-/* line 741, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 743, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #headings .heading-mass {
   padding-left: 2em;
   background: #c8c8c8;
   margin-left: 98px;
 }
-/* line 745, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 747, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #headings .heading-mass .unit {
   right: 1em;
   text-align: right;
 }
-/* line 750, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 752, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #headings .heading-mid {
   position: absolute;
   top: 0;
@@ -1006,7 +1008,7 @@ sup {
   box-sizing: border-box;
 }
 
-/* line 766, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 768, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 .bgs-wrap {
   position: fixed;
   top: 0;
@@ -1016,7 +1018,7 @@ sup {
   z-index: 0;
 }
 
-/* line 774, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 776, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 .star-bg {
   position: absolute;
   top: 0;
@@ -1030,27 +1032,27 @@ sup {
   -o-transform: translateZ(0);
   transform: translateZ(0);
 }
-/* line 784, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 786, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 .star-bg.bg-0 {
   z-index: 0;
 }
-/* line 787, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 789, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 .star-bg.bg-1 {
   background-image: url('../images/drawings/Background-1.png?1394560456');
   z-index: 1;
 }
-/* line 791, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 793, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 .star-bg.bg-2 {
   background-image: url('../images/drawings/Background-2.png?1394560456');
   z-index: 2;
 }
-/* line 795, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 797, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 .star-bg.bg-3 {
   background-image: url('../images/drawings/Background-3.png?1394560456');
   z-index: 3;
 }
 
-/* line 801, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+/* line 803, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #small-screen-msg {
   display: none;
   position: fixed;
@@ -1063,7 +1065,7 @@ sup {
 }
 
 @media screen and (max-width: 1060px) {
-  /* line 815, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+  /* line 817, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
   #middle,
   #explanations,
   #scale-wrap {
@@ -1074,37 +1076,37 @@ sup {
     transform: scale(0.7);
   }
 
-  /* line 820, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+  /* line 822, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
   #middle #next-btn {
     top: 360px;
   }
 
-  /* line 824, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+  /* line 826, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
   #explanations {
     margin-top: -33px;
   }
 
-  /* line 827, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+  /* line 829, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
   #scale-wrap {
     width: 143%;
     margin-top: 1440px;
     margin-left: -21.5%;
   }
 
-  /* line 832, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+  /* line 834, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
   #equation {
     top: 296px;
   }
 
-  /* line 836, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+  /* line 838, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
   #headings .heading-energy {
     margin-right: 69px;
   }
-  /* line 839, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+  /* line 841, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
   #headings .heading-mass {
     margin-left: 68px;
   }
-  /* line 842, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+  /* line 844, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
   #headings .heading-mid {
     width: 137px;
     margin-left: -69px;
@@ -1112,7 +1114,7 @@ sup {
   }
 }
 @media screen and (max-width: 719px) {
-  /* line 851, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+  /* line 853, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
   #small-screen-msg {
     display: block;
   }
