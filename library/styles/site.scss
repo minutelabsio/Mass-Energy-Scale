@@ -154,8 +154,6 @@ $offcenter: 100px;
         background: rgba(255, 255, 255, 0.9);
         position: relative;
         z-index: 1;
-        @include border-radius( 3px );
-        @include box-shadow( 0 0 10px 5px rgba(255, 255, 255, 0.9) );
     }
 
     &.inline {
@@ -182,6 +180,11 @@ $offcenter: 100px;
     &.hide-text {
         .text {
             opacity: 0;
+        }
+        .text,
+        .more {
+            @include border-radius( 3px );
+            @include box-shadow( 0 0 10px 5px rgba(255, 255, 255, 0.9) );
         }
     }
 
