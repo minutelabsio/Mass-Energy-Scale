@@ -133,18 +133,19 @@ $offcenter: 100px;
     margin-top: - $circle - 2px;
     // background: #fff;
 
-    @include transition( transform 0.3s ease );
-
     .thumb {
         position: absolute;
         left: 50%;
         top: 0;
     }
 
-    .thumb,
-    .more,
-    .text {
-        @include transition( opacity 1s ease-in );
+    .no-touch &
+    {
+        .thumb,
+        .more,
+        .text {
+            @include transition( opacity 1s ease-in );
+        }
     }
 
     .text,
@@ -249,10 +250,12 @@ $offcenter: 100px;
             opacity: 1;
         }
 
-        .more,
-        &.hide-text .text,
-        &.hide-text .thumb {
-            @include transition( opacity 0.2s ease-out );
+        .no-touch & {
+            .more,
+            &.hide-text .text,
+            &.hide-text .thumb {
+                @include transition( opacity 0.2s ease-out );
+            }
         }
 
         &.hide-text .thumb {

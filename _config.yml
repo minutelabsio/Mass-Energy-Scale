@@ -3,7 +3,7 @@ markdown: rdiscount
 exclude: ["README.md", "CNAME", "LICENSE", "build", "config.rb", "Gruntfile.js", "package.json", "jshint.json"]
 
 title : "Mass-Energy Scale"
-id : "" # changeme
+id : "79381778094"
 description : "Understandable masses and energies and how they relate"
 thumb: "thumb.gif"
 version: "0.0.8"
@@ -11,7 +11,7 @@ version: "0.0.8"
 ml_url: "http://minutelabs.io"
 ml_library: "http://labs.minutelabs.io/library"
 ml_assets: "http://labs.minutelabs.io/assets"
-library_path: "library" # changeme
+library_path: "library-build"
 
 show :
   branding: true
