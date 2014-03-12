@@ -972,7 +972,7 @@ sup {
 }
 /* line 741, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #headings .heading-energy .unit {
-  left: 1em;
+  right: -3em;
   text-align: left;
 }
 /* line 746, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
@@ -983,8 +983,8 @@ sup {
 }
 /* line 750, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #headings .heading-mass .unit {
-  right: 1em;
-  text-align: right;
+  left: 5em;
+  text-align: left;
 }
 /* line 755, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
 #headings .heading-mid {

@@ -739,7 +739,7 @@ $offcenter: 100px;
         font-family: $font-family-mono-light;
         margin-right: 98px;
         .unit {
-            left: 1em;
+            right: -3em;
             text-align: left;
         }
     }
@@ -748,8 +748,8 @@ $offcenter: 100px;
         background: $grey-dark;
         margin-left: 98px;
         .unit {
-            right: 1em;
-            text-align: right;
+            left: 5em;
+            text-align: left;
         }
     }
     .heading-mid {
