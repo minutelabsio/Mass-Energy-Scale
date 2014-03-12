@@ -678,7 +678,7 @@ define(
                             el.attr('class', (shim > 0) ? 'shim-down' : 'shim-up');
                             el.style('margin-top', (shim > 0) ? '' : shim + 'px');
                         })
-                        .attr('title', function( d ){ return d[0].toPrecision(2) + ' joules'; })
+                        .attr('title', function( d ){ return d[0].toPrecision(2) + (idPfx === 'mass-' ? ' kilograms' : ' joules'); })
                         .html(function( d ){ 
                             var link = d[2] ? ' <a href="'+d[2]+'" class="more" target="_blank">(more info)</a>' : '';
                             var img = '';
