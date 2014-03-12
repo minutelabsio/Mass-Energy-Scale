@@ -1,6 +1,7 @@
 define(
     [
-        'jquery'
+        'require'
+        ,'jquery'
         ,'moddef'
         ,'d3'
         ,'iscroll'
@@ -9,7 +10,8 @@ define(
         ,'json!../../../data/mass.json'
     ],
     function(
-        $
+        require
+        ,$
         ,M
         ,d3
         ,IScroll
@@ -20,6 +22,7 @@ define(
 
         'use strict';
 
+        var libPath = require.toUrl('./').split('/')[0];
         var transformStyle = window.Modernizr.prefixed('transform');
 
         function sortData( a, b ){
@@ -683,7 +686,7 @@ define(
                             if ( d[4] ){
                                 img = d[4].split(':');
                                 style = (img.length > 1) ? 'style="left:'+img[1]+'px; top:'+img[2]+'px;"' : '';
-                                img = '<img width="160" class="thumb" src="library/images/drawings/'+img[0]+'" '+ style +'>';
+                                img = '<img width="160" class="thumb" src="'+libPath+'/images/drawings/'+img[0]+'" '+ style +'>';
                             }
                             return '<div class="shim"></div><div class="text">'+d[1]+'</div>'+link+img; 
                         })
