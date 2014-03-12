@@ -1,6 +1,7 @@
 define(
     [
-        'jquery'
+        'require'
+        ,'jquery'
         ,'moddef'
         ,'d3'
         ,'iscroll'
@@ -9,7 +10,8 @@ define(
         ,'json!../../../data/mass.json'
     ],
     function(
-        $
+        require
+        ,$
         ,M
         ,d3
         ,IScroll
@@ -20,7 +22,8 @@ define(
 
         'use strict';
 
-        var transformStyle = Modernizr.prefixed('transform');
+        var libPath = require.toUrl('./').split('/')[0];
+        var transformStyle = window.Modernizr.prefixed('transform');
 
         function sortData( a, b ){
             return a[0] - b[0];
@@ -29,12 +32,12 @@ define(
         dataEnergy.sort( sortData );
         dataMass.sort( sortData );
 
-        function err( err ){
-            console.error( err.toString() );
+        function err( e ){
+            window.console.error( e.toString() );
         }
 
         function pfx( str ){
-            return Modernizr.prefixed( str ).replace(/([A-Z])/g, function(str,m1){ return '-' + m1.toLowerCase(); }).replace(/^ms-/,'-ms-');
+            return window.Modernizr.prefixed( str ).replace(/([A-Z])/g, function(str,m1){ return '-' + m1.toLowerCase(); }).replace(/^ms-/,'-ms-');
         }
 
         function log10(val) {
@@ -140,7 +143,7 @@ define(
                     ,wrap = $('#scale-wrap').height(self.height)
                     ,$eqn = $('#equation')
                     ,$next = $('#next-btn')
-                    ,$bgs = $('<div/><div/>' + (Modernizr.touch ? '' : '<div/><div/>') ).addClass('star-bg').appendTo($('<div>').addClass('bgs-wrap').appendTo('#floating'))
+                    ,$bgs = $('<div/><div/>' + (window.Modernizr.touch ? '' : '<div/><div/>') ).addClass('star-bg').appendTo($('<div>').addClass('bgs-wrap').appendTo('#floating'))
                     ,bgCuttoff = 3300
                     ,scaleEnergy = d3.scale.log()
                         .domain([ self.min, self.max ])
@@ -153,7 +156,7 @@ define(
                     ,s
                     ;
 
-                if ( Modernizr.touch ){
+                if ( window.Modernizr.touch ){
                     self.scroller = new IScroll('#wrap-outer', { mouseWheel: true, probeType: 3, tap: true });
                 } 
 
@@ -234,7 +237,7 @@ define(
                 });
 
                 // triggers recalc style... only needed on desktop (over events)
-                if ( !Modernizr.touch ){
+                if ( !window.Modernizr.touch ){
                     var scrTimer;
                     self.on('scroll', function(){
                         clearTimeout(scrTimer);
@@ -460,6 +463,7 @@ define(
                     }
                 }, 80));
 
+                /* jshint -W040 */
                 function scrollTo(){
                     var $this = $(this)
                         ,$par = $this.parent()
@@ -682,7 +686,7 @@ define(
                             if ( d[4] ){
                                 img = d[4].split(':');
                                 style = (img.length > 1) ? 'style="left:'+img[1]+'px; top:'+img[2]+'px;"' : '';
-                                img = '<img width="160" class="thumb" src="library/images/drawings/'+img[0]+'" '+ style +'>';
+                                img = '<img width="160" class="thumb" src="'+libPath+'/images/drawings/'+img[0]+'" '+ style +'>';
                             }
                             return '<div class="shim"></div><div class="text">'+d[1]+'</div>'+link+img; 
                         })
