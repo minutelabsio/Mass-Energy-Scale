@@ -1,0 +1,1117 @@
+@-webkit-keyframes flicker {
+  /* line 28, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/_loading-screen.scss */
+  0%,
+  15%,
+  28%,
+  38%,
+  52%,
+  69%,
+  74%,
+  84%,
+  93%,
+  100% {
+    opacity: 0;
+  }
+
+  /* line 39, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/_loading-screen.scss */
+  5%,
+  25%,
+  30%,
+  47%,
+  59%,
+  71%,
+  79%,
+  88%,
+  97% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes flicker {
+  /* line 28, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/_loading-screen.scss */
+  0%,
+  15%,
+  28%,
+  38%,
+  52%,
+  69%,
+  74%,
+  84%,
+  93%,
+  100% {
+    opacity: 0;
+  }
+
+  /* line 39, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/_loading-screen.scss */
+  5%,
+  25%,
+  30%,
+  47%,
+  59%,
+  71%,
+  79%,
+  88%,
+  97% {
+    opacity: 1;
+  }
+}
+
+@-ms-keyframes flicker {
+  /* line 28, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/_loading-screen.scss */
+  0%,
+  15%,
+  28%,
+  38%,
+  52%,
+  69%,
+  74%,
+  84%,
+  93%,
+  100% {
+    opacity: 0;
+  }
+
+  /* line 39, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/_loading-screen.scss */
+  5%,
+  25%,
+  30%,
+  47%,
+  59%,
+  71%,
+  79%,
+  88%,
+  97% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes flicker {
+  /* line 28, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/_loading-screen.scss */
+  0%,
+  15%,
+  28%,
+  38%,
+  52%,
+  69%,
+  74%,
+  84%,
+  93%,
+  100% {
+    opacity: 0;
+  }
+
+  /* line 39, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/_loading-screen.scss */
+  5%,
+  25%,
+  30%,
+  47%,
+  59%,
+  71%,
+  79%,
+  88%,
+  97% {
+    opacity: 1;
+  }
+}
+
+@keyframes flicker {
+  /* line 28, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/_loading-screen.scss */
+  0%,
+  15%,
+  28%,
+  38%,
+  52%,
+  69%,
+  74%,
+  84%,
+  93%,
+  100% {
+    opacity: 0;
+  }
+
+  /* line 39, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/_loading-screen.scss */
+  5%,
+  25%,
+  30%,
+  47%,
+  59%,
+  71%,
+  79%,
+  88%,
+  97% {
+    opacity: 1;
+  }
+}
+
+/* line 10, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+html, body, #wrap-outer {
+  height: 100%;
+}
+
+/* line 14, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#mp-loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000000;
+  background: #fff no-repeat center 40%;
+  background-image: url(data:image/jpeg;base64,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);
+  -webkit-transition: opacity 0.3s ease, z-index 0.3s step-end;
+  -moz-transition: opacity 0.3s ease, z-index 0.3s step-end;
+  -o-transition: opacity 0.3s ease, z-index 0.3s step-end;
+  transition: opacity 0.3s ease, z-index 0.3s step-end;
+  opacity: 0;
+  z-index: -1;
+}
+/* line 56, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/_loading-screen.scss */
+#mp-loader:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  background: no-repeat center 40%;
+  background-image: url(data:image/jpeg;base64,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);
+  -webkit-animation: flicker 1.5s infinite;
+  -moz-animation: flicker 1.5s infinite;
+  -ms-animation: flicker 1.5s infinite;
+  -o-animation: flicker 1.5s infinite;
+  animation: flicker 1.5s infinite;
+}
+/* line 73, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/_loading-screen.scss */
+#mp-loader:after {
+  content: 'loading...';
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  width: 220px;
+  margin-top: 160px;
+  margin-left: -90px;
+  font-size: 40px;
+  text-align: center;
+  z-index: 2;
+  color: #1a1a1a;
+  font-family: "latin-modern-mono", Courier, monospace;
+}
+
+/* line 20, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+body.loading {
+  overflow: hidden;
+}
+/* line 23, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+body.loading #mp-loader {
+  opacity: 1;
+  z-index: 10000;
+}
+
+/* line 29, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+sup {
+  font-size: 0.4em;
+}
+
+/* line 33, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+[data-offcanvas="wrap"] {
+  z-index: 2;
+}
+
+/* line 37, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#scroll-layer {
+  position: relative;
+  z-index: 2;
+}
+
+/* line 42, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+.offcanvas-inside, #floating {
+  -webkit-transition: -webkit-transform 0.35s ease-out;
+  -moz-transition: -moz-transform 0.35s ease-out;
+  -o-transition: -o-transform 0.35s ease-out;
+  transition: transform 0.35s ease-out;
+}
+/* line 45, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+.offcanvas-active .offcanvas-inside, .offcanvas-active #floating {
+  -webkit-transform: translate3d(500px, 0, 0);
+  -moz-transform: translate3d(500px, 0, 0);
+  -ms-transform: translate3d(500px, 0, 0);
+  -o-transform: translate3d(500px, 0, 0);
+  transform: translate3d(500px, 0, 0);
+}
+
+/* line 50, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#floating {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+/* line 59, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+.touch #wrap-outer {
+  overflow: hidden;
+}
+
+/* line 65, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#scale-wrap {
+  position: relative;
+  margin-top: 3800px;
+  margin-bottom: 50%;
+  overflow: hidden;
+}
+
+/* line 72, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#scale-left,
+#scale-right {
+  position: absolute;
+  top: 2em;
+  width: 50%;
+}
+/* line 77, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#scale-left .axis,
+#scale-right .axis {
+  position: absolute;
+  top: -30px;
+}
+/* line 82, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#scale-left .axis path,
+#scale-left .axis line,
+#scale-right .axis path,
+#scale-right .axis line {
+  fill: none;
+  stroke-width: 2px;
+  stroke: #1a1a1a;
+  shape-rendering: crispEdges;
+}
+/* line 89, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#scale-left .axis .tick text,
+#scale-right .axis .tick text {
+  stroke: #bbbbbb;
+  fill: #bbbbbb;
+  font-family: "sf_cartoonist_hand", Helvetica, Arial, sans-serif;
+  font-size: 38px;
+}
+/* line 96, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#scale-left .axis .tick-labels,
+#scale-right .axis .tick-labels {
+  stroke: #bbbbbb;
+  fill: #bbbbbb;
+  font-family: "sf_cartoonist_hand", Helvetica, Arial, sans-serif;
+  font-size: 38px;
+}
+/* line 102, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#scale-left .axis .tick-labels tspan,
+#scale-right .axis .tick-labels tspan {
+  font-size: 22px;
+}
+
+/* line 109, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#scale-left {
+  left: 0;
+}
+/* line 112, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#scale-left .axis {
+  right: 98px;
+}
+
+/* line 116, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#scale-right {
+  right: 0;
+}
+/* line 119, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#scale-right .axis {
+  left: 98px;
+}
+
+/* line 124, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+.marker {
+  position: absolute;
+  top: 0;
+  width: 300px;
+  margin-top: -10px;
+}
+/* line 136, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+.marker .thumb {
+  position: absolute;
+  left: 50%;
+  top: 0;
+}
+/* line 146, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+.no-touch .marker .thumb,
+.no-touch .marker .more,
+.no-touch .marker .text {
+  -webkit-transition: opacity 1s ease-in;
+  -moz-transition: opacity 1s ease-in;
+  -o-transition: opacity 1s ease-in;
+  transition: opacity 1s ease-in;
+}
+/* line 152, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+.marker .text,
+.marker .more {
+  clear: both;
+  background: white;
+  background: rgba(255, 255, 255, 0.9);
+  position: relative;
+  z-index: 1;
+}
+/* line 161, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+.marker.inline .text {
+  display: inline;
+}
+/* line 166, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+.marker .more {
+  white-space: nowrap;
+  width: 4.2em;
+  display: inline;
+  opacity: 0;
+  text-decoration: none;
+}
+/* line 173, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#scale-left .marker .more {
+  margin-left: 140px;
+}
+/* line 176, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#scale-right .marker .more {
+  margin-right: 140px;
+}
+/* line 182, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+.marker.hide-text .text {
+  opacity: 0;
+}
+/* line 186, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+.marker.hide-text .text,
+.marker.hide-text .more {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.9);
+  -moz-box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.9);
+}
+/* line 192, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+.marker abbr {
+  display: block;
+  text-decoration: none;
+  font: 1.3em/1.2 "sf_cartoonist_hand", Helvetica, Arial, sans-serif;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+/* line 200, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+.marker abbr .shim {
+  border: 0 solid #1a1a1a;
+  border-top-width: 3px;
+  position: relative;
+  top: 10px;
+  width: 43px;
+}
+/* line 210, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+.marker abbr.shim-up .shim, .marker abbr.shim-down .shim {
+  display: block;
+}
+/* line 216, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+.marker:before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  background: #fff;
+  border: 3px solid #1a1a1a;
+  width: 8px;
+  height: 8px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+}
+/* line 226, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+.marker:after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  border-bottom: 3px solid #1a1a1a;
+  width: 43px;
+}
+/* line 235, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+.marker.highlight, #scale-wrap:not(.scrolling) .marker:hover {
+  z-index: 2;
+}
+/* line 238, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+.marker.highlight .text, #scale-wrap:not(.scrolling) .marker:hover .text {
+  color: black;
+}
+/* line 244, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+.marker.highlight .shim, .marker.highlight:before, .marker.highlight:after, #scale-wrap:not(.scrolling) .marker:hover .shim, #scale-wrap:not(.scrolling) .marker:hover:before, #scale-wrap:not(.scrolling) .marker:hover:after {
+  border-color: #f6b942;
+}
+/* line 249, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+.marker.highlight .more, .marker.highlight.hide-text .text, #scale-wrap:not(.scrolling) .marker:hover .more, #scale-wrap:not(.scrolling) .marker:hover.hide-text .text {
+  opacity: 1;
+}
+/* line 256, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+.no-touch .marker.highlight .more, .no-touch .marker.highlight.hide-text .text, .no-touch .marker.highlight.hide-text .thumb, .no-touch #scale-wrap:not(.scrolling) .marker:hover .more, .no-touch #scale-wrap:not(.scrolling) .marker:hover.hide-text .text, .no-touch #scale-wrap:not(.scrolling) .marker:hover.hide-text .thumb {
+  -webkit-transition: opacity 0.2s ease-out;
+  -moz-transition: opacity 0.2s ease-out;
+  -o-transition: opacity 0.2s ease-out;
+  transition: opacity 0.2s ease-out;
+}
+/* line 261, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+.marker.highlight.hide-text .thumb, #scale-wrap:not(.scrolling) .marker:hover.hide-text .thumb {
+  opacity: 0.5;
+}
+/* line 266, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#scale-left .marker {
+  text-align: right;
+  right: 202px;
+}
+/* line 269, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#scale-left .marker .shim {
+  left: 53px;
+  float: right;
+}
+/* line 274, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#scale-left .marker .shim-up .shim {
+  border-width: 3px 3px 0 0;
+  float: right;
+  margin-left: -100%;
+}
+/* line 279, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#scale-left .marker .shim-up .shim + div {
+  display: inline-block;
+}
+/* line 284, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#scale-left .marker .shim-down .shim {
+  border-width: 0 3px 3px 0;
+}
+/* line 288, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#scale-left .marker:before {
+  right: -110px;
+}
+/* line 291, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#scale-left .marker:after {
+  right: -96px;
+}
+/* line 296, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#scale-right .marker {
+  left: 203px;
+}
+/* line 298, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#scale-right .marker .shim {
+  right: 53px;
+}
+/* line 302, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#scale-right .marker .shim-up .shim {
+  border-width: 3px 0 0 3px;
+  float: left;
+  margin-right: -100%;
+}
+/* line 307, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#scale-right .marker .shim-up .shim + div {
+  display: inline;
+}
+/* line 312, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#scale-right .marker .shim-down .shim {
+  border-width: 0 0 3px 3px;
+}
+/* line 316, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#scale-right .marker:before {
+  left: -110px;
+}
+/* line 319, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#scale-right .marker:after {
+  left: -96px;
+}
+
+/* line 326, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#equation {
+  position: absolute;
+  top: 312px;
+  left: 50%;
+  font-size: 70px;
+  font-family: "sf_cartoonist_hand", Helvetica, Arial, sans-serif;
+  color: #1a1a1a;
+}
+/* line 334, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#equation .equals {
+  position: absolute;
+  left: -14px;
+  top: 8px;
+}
+/* line 340, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#equation .c2 {
+  position: absolute;
+  left: 64px;
+  top: 0px;
+  width: 2em;
+}
+
+/* line 347, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#explanations {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1000px;
+  z-index: 1;
+  font: 30px/1.2 "sf_cartoonist_hand", Helvetica, Arial, sans-serif;
+  letter-spacing: 1px;
+}
+/* line 359, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#explanations section {
+  position: absolute;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s ease;
+  -moz-transition: opacity 0.3s ease;
+  -o-transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease;
+}
+/* line 364, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#explanations section p {
+  margin: 0;
+  background: rgba(255, 255, 255, 0.9);
+  -webkit-box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.9);
+  -moz-box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.9);
+}
+/* line 370, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#explanations section.on {
+  opacity: 1;
+}
+/* line 375, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#explanations section:nth-child(2) {
+  top: 400px;
+  width: 600px;
+  left: 50%;
+  margin-left: -280px;
+  text-align: center;
+}
+/* line 397, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#explanations section:nth-child(3) {
+  top: 300px;
+  width: 250px;
+  left: 50%;
+  margin-left: -350px;
+}
+/* line 404, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#explanations section:nth-child(4) {
+  top: 300px;
+  width: 250px;
+  left: 50%;
+  margin-left: 180px;
+}
+/* line 411, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#explanations section:nth-child(5) {
+  top: 225px;
+  width: 450px;
+  left: 50%;
+  margin-left: -200px;
+  text-align: center;
+}
+/* line 419, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#explanations section:nth-child(6) {
+  top: 170px;
+  width: 400px;
+  left: 30%;
+  margin-left: -180px;
+}
+/* line 426, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#explanations section:nth-child(7) {
+  top: 140px;
+  width: 400px;
+  left: 73%;
+  margin-left: -180px;
+}
+/* line 433, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#explanations section:nth-child(8) {
+  top: 410px;
+  width: 600px;
+  left: 50%;
+  margin-left: -300px;
+}
+/* line 440, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#explanations section:nth-child(9) {
+  top: 410px;
+  width: 400px;
+  left: 73%;
+  margin-left: -180px;
+}
+/* line 447, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#explanations #watch-video {
+  font-size: 20px;
+}
+
+/* line 452, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#video {
+  width: 560px;
+  margin: 0 auto 200px;
+}
+/* line 455, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#video .title {
+  text-align: center;
+  font-weight: normal;
+}
+
+/* line 461, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#middle {
+  position: fixed;
+  top: 300px;
+  left: 50%;
+  z-index: 3;
+  margin-left: -78px;
+  margin-top: -78px;
+  width: 156px;
+  color: #1a1a1a;
+}
+/* line 474, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#middle input {
+  font-family: "latin-modern-mono", Courier, monospace;
+}
+/* line 478, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#middle label {
+  cursor: auto;
+}
+/* line 482, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#middle .select-wrap {
+  height: 30px;
+}
+/* line 487, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#middle .energy,
+#middle .mass {
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  clear: none;
+  float: left;
+  width: 50%;
+  padding: .5em 0.3em;
+  text-align: center;
+  font-size: 70px;
+  -webkit-transition: background 0.27s linear;
+  -moz-transition: background 0.27s linear;
+  -o-transition: background 0.27s linear;
+  transition: background 0.27s linear;
+}
+/* line 498, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#middle .energy label,
+#middle .mass label {
+  font-family: "sf_cartoonist_hand", Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+/* line 504, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#middle .energy:after,
+#middle .mass:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  border: 23px solid transparent;
+  margin-top: -22px;
+}
+/* line 513, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#middle .energy:after {
+  left: -44px;
+}
+/* line 517, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#middle .mass:after {
+  right: -44px;
+}
+/* line 521, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#middle .mass:before {
+  content: '';
+  position: absolute;
+  left: -10px;
+  top: 0;
+  bottom: 0;
+  width: 20px;
+  *zoom: 1;
+  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=1, startColorstr='#FF1A1A1A', endColorstr='#FFC8C8C8');
+  background-image: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #1a1a1a), color-stop(100%, #c8c8c8));
+  background-image: -webkit-linear-gradient(left, #1a1a1a 0%, #c8c8c8 100%);
+  background-image: -moz-linear-gradient(left, #1a1a1a 0%, #c8c8c8 100%);
+  background-image: -o-linear-gradient(left, #1a1a1a 0%, #c8c8c8 100%);
+  background-image: linear-gradient(left, #1a1a1a 0%, #c8c8c8 100%);
+}
+/* line 533, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#middle .energy-controls,
+#middle .mass-controls {
+  overflow: hidden;
+  *zoom: 1;
+  padding: .2em;
+  -webkit-transition: opacity 0.3s linear;
+  -moz-transition: opacity 0.3s linear;
+  -o-transition: opacity 0.3s linear;
+  transition: opacity 0.3s linear;
+  opacity: 1;
+}
+/* line 539, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#middle .energy-controls .input,
+#middle .mass-controls .input {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  font-size: 1.4em;
+  width: 100%;
+  margin-bottom: 0.15em;
+  background: #fff;
+  text-align: left;
+  height: 43px;
+}
+/* line 549, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#middle .energy-controls .input .meter,
+#middle .mass-controls .input .meter {
+  text-align: right;
+  padding: 0.1em;
+  margin: 0 -0.05em 0.2em -0.15em;
+}
+/* line 554, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#middle .energy-controls .input .mag,
+#middle .mass-controls .input .mag {
+  width: 1.6em;
+  font-size: 0.8em;
+  vertical-align: super;
+  margin-left: -0.35em;
+}
+/* line 561, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#middle .energy-controls input,
+#middle .mass-controls input {
+  border: none;
+  background: none;
+  display: inline-block;
+  width: 40%;
+  outline: none;
+  border: 1px solid transparent;
+}
+/* line 569, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#middle .energy-controls select,
+#middle .mass-controls select {
+  display: block;
+  margin: 0;
+  font-size: 12px;
+  padding: 0;
+}
+/* line 578, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#middle .energy,
+#middle .energy-controls {
+  background: #1a1a1a;
+}
+/* line 581, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#middle .energy .input,
+#middle .energy-controls .input {
+  background: #1a1a1a;
+  border-color: #c8c8c8;
+}
+/* line 584, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#middle .energy .input,
+#middle .energy .input input,
+#middle .energy-controls .input,
+#middle .energy-controls .input input {
+  -webkit-text-fill-color: #ededed;
+  color: #ededed;
+  opacity: 1;
+}
+/* line 597, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#middle .energy:after,
+#middle .energy-controls:after {
+  border-color: transparent #1a1a1a transparent transparent;
+}
+/* line 603, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#middle .mass,
+#middle .mass-controls {
+  background: #c8c8c8;
+}
+/* line 606, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#middle .mass .input,
+#middle .mass-controls .input {
+  background: #c8c8c8;
+  border-color: #1a1a1a;
+}
+/* line 610, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#middle .mass .input,
+#middle .mass .input input,
+#middle .mass-controls .input,
+#middle .mass-controls .input input {
+  -webkit-text-fill-color: #1a1a1a;
+  color: #1a1a1a;
+  opacity: 1;
+}
+/* line 622, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#middle .mass select,
+#middle .mass-controls select {
+  float: right;
+}
+/* line 625, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#middle .mass:after,
+#middle .mass-controls:after {
+  border-color: transparent transparent transparent #c8c8c8;
+}
+/* line 630, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#middle .energy {
+  color: #ededed;
+}
+/* line 637, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#middle.outside .energy:after,
+#middle.outside .mass:after,
+#middle.outside .mass:before {
+  display: none;
+}
+/* line 640, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#middle.outside .energy {
+  background: rgba(26, 26, 26, 0);
+  color: #1a1a1a;
+}
+/* line 645, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#middle.outside .mass {
+  background: rgba(200, 200, 200, 0);
+}
+/* line 650, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#middle.outside .energy-controls,
+#middle.outside .mass-controls {
+  opacity: 0;
+}
+/* line 655, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#middle #next-btn {
+  display: none;
+  position: absolute;
+  top: 300px;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  margin-left: -28px;
+  font-size: 26px;
+  text-align: center;
+  padding: 20px;
+  border: 1px solid #1a1a1a;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+  cursor: pointer;
+  text-decoration: none;
+  color: #1a1a1a;
+}
+/* line 672, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#middle #next-btn:before {
+  content: '';
+  position: absolute;
+  left: 25px;
+  top: 52px;
+  display: block;
+  border: 20px solid black;
+  border-color: rgba(26, 26, 26, 0.8) transparent transparent;
+}
+/* line 682, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#middle #next-btn:hover {
+  background-color: rgba(91, 191, 243, 0.5);
+}
+/* line 685, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#middle #next-btn:active {
+  background-color: rgba(91, 191, 243, 0.8);
+}
+
+/* line 695, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#headings {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  left: 0;
+  z-index: 2;
+  -webkit-transition: opacity 0.3s ease;
+  -moz-transition: opacity 0.3s ease;
+  -o-transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease;
+  font-size: 30px;
+}
+/* line 706, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#headings.outside {
+  opacity: 0;
+  z-index: 0;
+}
+/* line 713, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#headings .left,
+#headings .right {
+  float: left;
+  width: 50%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* line 720, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#headings .heading-mass,
+#headings .heading-energy {
+  position: relative;
+  margin: 0;
+  padding: 0.5em 0;
+  font-weight: normal;
+}
+/* line 726, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#headings .heading-mass .unit,
+#headings .heading-energy .unit {
+  position: absolute;
+  bottom: 0;
+  font-size: 12px;
+  height: 3em;
+  width: 300px;
+}
+/* line 734, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#headings .heading-energy {
+  text-align: right;
+  padding-right: 2em;
+  background: #1a1a1a;
+  color: #ededed;
+  font-family: "latin-modern-mono-light", Courier, monospace;
+  margin-right: 98px;
+}
+/* line 741, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#headings .heading-energy .unit {
+  left: 1em;
+  text-align: left;
+}
+/* line 746, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#headings .heading-mass {
+  padding-left: 2em;
+  background: #c8c8c8;
+  margin-left: 98px;
+}
+/* line 750, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#headings .heading-mass .unit {
+  right: 1em;
+  text-align: right;
+}
+/* line 755, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#headings .heading-mid {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 196px;
+  margin: 0;
+  font-size: 17px;
+  font-weight: normal;
+  text-align: center;
+  margin-left: -98px;
+  padding: 0.7em 2.3em;
+  background: white;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 771, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+.bgs-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+}
+
+/* line 779, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+.star-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1000%;
+  background: url('../images/drawings/Background-0.png?1394560456') repeat 0 0;
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+}
+/* line 789, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+.star-bg.bg-0 {
+  z-index: 0;
+}
+/* line 792, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+.star-bg.bg-1 {
+  background-image: url('../images/drawings/Background-1.png?1394560456');
+  z-index: 1;
+}
+/* line 796, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+.star-bg.bg-2 {
+  background-image: url('../images/drawings/Background-2.png?1394560456');
+  z-index: 2;
+}
+/* line 800, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+.star-bg.bg-3 {
+  background-image: url('../images/drawings/Background-3.png?1394560456');
+  z-index: 3;
+}
+
+/* line 806, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+#small-screen-msg {
+  display: none;
+  position: fixed;
+  top: 58px;
+  left: 0;
+  padding: 1em 2em;
+  background: #1a1a1a;
+  color: #ededed;
+  z-index: 100;
+}
+
+@media screen and (max-width: 1060px) {
+  /* line 820, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+  #middle,
+  #explanations,
+  #scale-wrap {
+    -webkit-transform: scale(0.7);
+    -moz-transform: scale(0.7);
+    -ms-transform: scale(0.7);
+    -o-transform: scale(0.7);
+    transform: scale(0.7);
+  }
+
+  /* line 825, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+  #middle #next-btn {
+    top: 360px;
+  }
+
+  /* line 829, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+  #explanations {
+    margin-top: -33px;
+  }
+
+  /* line 832, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+  #scale-wrap {
+    width: 143%;
+    margin-top: 1440px;
+    margin-left: -21.5%;
+  }
+
+  /* line 837, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+  #equation {
+    top: 296px;
+  }
+
+  /* line 841, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+  #headings .heading-energy {
+    margin-right: 69px;
+  }
+  /* line 844, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+  #headings .heading-mass {
+    margin-left: 68px;
+  }
+  /* line 847, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+  #headings .heading-mid {
+    width: 137px;
+    margin-left: -69px;
+    padding: 0.7em 0.7em;
+  }
+}
+@media screen and (max-width: 719px) {
+  /* line 856, /Users/wellcaffeinated/Documents/github/minutelabs/Energy-Mass-Scale/library/styles/site.scss */
+  #small-screen-msg {
+    display: block;
+  }
+}
