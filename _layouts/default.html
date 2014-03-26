@@ -64,11 +64,14 @@
 
       (function(){
         var el = document.getElementById('nav-toggle');
+        function cb(){
+          load_disqus();
+          el.removeEventListener('click', cb);
+          el.removeEventListener('touchstart', cb);
+        }
         if ( el ){
-          el.addEventListener('click', function cb(){
-            load_disqus();
-            el.removeEventListener('click', cb);
-          });
+          el.addEventListener('click', cb);
+          el.addEventListener('touchstart', cb);
         }
       })();
   </script>
