@@ -24,7 +24,7 @@
     [ 4.6e6, "required per day by a sedentary two year old child", "http://www.hc-sc.gc.ca/fn-an/food-guide-aliment/basics-base/1_1_1-eng.php", false, "energy/e07-Sedentary--child_160.png:200:-120" ],
     [ 4e7, "used to drive a passenger car for 10 kilometers (6.2 miles)", "http://portal.unesco.org/education/es/file_download.php/a01355752c9e869a63cc5651084cfa30Cars+and+energy.pdf", -50, "energy/e08-Car-for-10-km_160.png:150:-90", "hide-text"],
     [ 1e8, "used by an average american household in a day", "http://www.eia.gov/tools/faqs/faq.cfm?id=97&t=3", 90, "energy/Household-1-day_160.png:160:40", "hide-text"],
-    [ 4.686e9, "of one (metric) tonne of TNT", "http://en.wikipedia.org/wiki/TNT_equivalent", false, "energy/e10-one-tonne-TNT_160.png:150:-55", "hide-text"],
+    [ 4.184e9, "of one (metric) tonne of TNT", "http://en.wikipedia.org/wiki/TNT_equivalent", false, "energy/e10-one-tonne-TNT_160.png:150:-55", "hide-text"],
     [ 3.9e10, "used by an average american household in a year", "http://www.eia.gov/tools/faqs/faq.cfm?id=97&t=3", false, "energy/Household-1-year_160.png:150:-60", "hide-text" ],
     [ 1.76e11, "released by nuclear fission of 2 grams of uranium-235", "http://hyperphysics.phy-astr.gsu.edu/hbase/nucene/u235chn.html#c3", 80, "energy/e-10-Fission-U-235_160.png:150:20", "hide-text"],
     [ 6.4e12, "available to a Boeing 747-100B aircraft at max fuel capacity", "http://en.wikipedia.org/wiki/Boeing_747", false, "energy/e13-Boeing-747_160.png:140:-60", "hide-text"],
